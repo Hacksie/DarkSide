@@ -48,16 +48,19 @@ namespace HackedDesign
             }
         }
 
-        public void SetPlaying() => CurrentState = new PlayingState(this.playerController);
-
-        private GameManager() => Instance = this;
-
         void Awake() => CheckBindings();
         void Start() => Initialization();
 
         void Update() => CurrentState.Update();
         void LateUpdate() => CurrentState.LateUpdate();
         void FixedUpdate() => CurrentState.FixedUpdate();
+
+        public void SetPlaying() => CurrentState = new PlayingState(this.playerController);
+        public void AddTime(int time) => Data.timer += time;
+
+        private GameManager() => Instance = this;
+
+        
 
         private void CheckBindings()
         {

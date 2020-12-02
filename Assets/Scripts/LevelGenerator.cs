@@ -15,35 +15,40 @@ namespace HackedDesign
         [SerializeField] List<Section> startPrefabs;
         [SerializeField] List<Section> endPrefabs;
         [SerializeField] List<Section> sectionPrefabs;
+        [SerializeField] GameObject startTimeBarrier;
+        [SerializeField] GameObject sectionTimeBarrier;
+        [SerializeField] GameObject endTimeBarrier;
 
         public void Generate(int length)
         {
-            Logger.Log(this, length.ToString());
+            Logger.Log(this, "Generating level");
+            Logger.Log(this, "Length: ", length.ToString());
             DestroyLevel();
-            var entryPos = parent.transform.position;
             var remainingLength = length;
-            var section = GenerateSection(startPrefabs, entryPos, remainingLength);
+            var section = SpawnSection(startPrefabs, parent.transform.position, remainingLength);
 
             remainingLength -= section.length;
-            entryPos = section.exit.transform.position;
+
+            SpawnBarrier(startTimeBarrier, entryPos);
 
 
-            Logger.Log(this, "remainingLength:", remainingLength.ToString());
+            Logger.Log(this, "Remaining Length:", remainingLength.ToString());
 
             while(remainingLength > 1)
             {
-                section = GenerateSection(sectionPrefabs, entryPos, remainingLength);
-
+                section = SpawnSection(sectionPrefabs, section.exit.transform.position, remainingLength);
+                
                 remainingLength -= section.length;
-                entryPos = section.exit.transform.position;
+
+                SpawnBarrier(sectionTimeBarrier, section.exit.transform.position);
 
 
-                Logger.Log(this, "remainingLength:", remainingLength.ToString());
+                Logger.Log(this, "Remaining Length:", remainingLength.ToString());
             }
             
             //Logger.Log(this, "remainingLength:", remainingLength.ToString());
 
-            section = GenerateSection(endPrefabs, entryPos, 1);
+            section = SpawnSection(endPrefabs, section.exit.transform.position, 1);
         }
 
         public void DestroyLevel()
@@ -54,14 +59,20 @@ namespace HackedDesign
             }
         }
 
-        public Section GenerateSection(List<Section> sectionList, Vector3 entry, int remainingLength)
+        public Section SpawnSection(List<Section> sectionList, Vector3 position, int remainingLength)
         {
             var available = sectionList.Where(s => s.length <= remainingLength).ToList();
 
             int index = Random.Range(0, available.Count());
 
-            var sectionObj = GameObject.Instantiate(available[index].gameObject, entry, Quaternion.identity, parent.transform);
+            var sectionObj = GameObject.Instantiate(available[index].gameObject, position, Quaternion.identity, parent.transform);
             return sectionObj.GetComponent<Section>();
+        }
+
+        public TimeBarrier SpawnBarrier(GameObject barrier, Vector3 position)
+        {
+            var barrierObj = GameObject.Instantiate(barrier, position, Quaternion.identity, parent.transform);
+            return barrierObj.GetComponent<TimeBarrier>();
         }
     }
 }
