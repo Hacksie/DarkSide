@@ -1,110 +1,148 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+namespace HackedDesign
 {
-    [SerializeField] private CharacterController character = null;
-    [SerializeField] private Camera cam = null;
-    [SerializeField] private float moveSpeed = 20.0f;
-    public float mouseSensitivity = 100f;
-
-    Vector3 velocity;
-    [SerializeField] private float gravity = -9.81f;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private float groundDistance = 0.4f;
-    [SerializeField] private LayerMask groundMask;
-    [SerializeField] private float jumpSpeed = 20f;
-    [SerializeField] private float dashSpeed = 20.0f;
-    [SerializeField] private float dashTimeout = 5f;
-    [SerializeField] private float dashPlayTime = 0.4f;
-
-    bool isDashing = false;
-    float dashLastTimer = 0;
-    Vector3 dashDirection = Vector3.zero;
-
-    bool isGrounded;
-    bool doubleJumpAllowed = true;
-
-    float xRotation = 0f;
-    float verticalVelocity = 0;
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerController : MonoBehaviour
     {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
+        [Header("GameObjects")]
+        [SerializeField] private CharacterController character = null;
+        [SerializeField] private Camera lookCam = null;
 
-    // Update is called once per frame
-    void Update()
-    {
-        Look();
-        Movement();
-    }
+        [Header("Settings")]
+        [SerializeField] private float mouseSensitivity = 200f;
+        [SerializeField] private float moveSpeed = 20.0f;
+        [SerializeField] private float gravity = -9.81f;
+        [SerializeField] private Transform groundCheck;
+        [SerializeField] private float groundDistance = 0.4f;
+        [SerializeField] private LayerMask groundMask;
+        [SerializeField] private float jumpSpeed = 20f;
+        [SerializeField] private float dashSpeed = 20.0f;
+        [SerializeField] private float dashTimeout = 5f;
+        [SerializeField] private float dashPlayTime = 0.4f;
 
-    void FixedUpdate()
-    {
-        //
-    }
 
-    private void Movement()
-    {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        Vector3 velocity;
 
-        Vector3 direction = Vector3.ClampMagnitude(((transform.right * x) + (transform.forward * z)), 1);
 
-        if (isGrounded)
+        bool isDashing = false;
+        float dashLastTimer = 0;
+        Vector3 dashDirection = Vector3.zero;
+
+        bool isGrounded;
+        bool doubleJumpAllowed = true;
+
+        float xRotation = 0f;
+        float verticalVelocity = 0;
+
+        private Vector2 lookDirection = Vector2.zero;
+        private Vector2 moveDirection = Vector2.zero;
+        private bool jumpFlag = false;
+        private bool dashFlag = false;
+
+        // Start is called before the first frame update
+        void Start()
         {
-            doubleJumpAllowed = true;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
-        if (isGrounded && verticalVelocity < 0)
+        // Update is called once per frame
+        public void UpdateBehaviour()
         {
-            verticalVelocity = -groundDistance;
+            Look();
+            Movement();
         }
 
-        if (isDashing && Time.time > (dashLastTimer + dashPlayTime))
+        public void MoveEvent(InputAction.CallbackContext context)
         {
-            isDashing = false;
-            dashDirection = Vector3.zero;
-        }        
-
-        verticalVelocity += gravity * Time.deltaTime;
-
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            verticalVelocity += Mathf.Sqrt(jumpSpeed * gravity * -2);
+            this.moveDirection = context.ReadValue<Vector2>();
         }
 
-        if (Input.GetButtonDown("Jump") && !isGrounded && doubleJumpAllowed)
+
+        public void LookEvent(InputAction.CallbackContext context)
         {
-            verticalVelocity += Mathf.Sqrt(jumpSpeed * gravity * -2);
-            doubleJumpAllowed = false;
+            this.lookDirection = context.ReadValue<Vector2>();
         }
 
-        if (Input.GetButtonDown("Dash") && Time.time >= (dashLastTimer + dashTimeout))
+        public void JumpEvent(InputAction.CallbackContext context)
         {
-            Debug.Log("Dash");
-            dashLastTimer = Time.time;
-            isDashing = true;
-            dashDirection = direction == Vector3.zero ? transform.forward : direction;
+            if (context.started)
+            {
+                this.jumpFlag = true;
+            }
         }
 
-        Vector3 move = ((direction * moveSpeed) + (transform.up * verticalVelocity) + (isDashing ? dashDirection * dashSpeed : Vector3.zero)) * Time.deltaTime;
-        character.Move(move);
-    }
+        public void FireEvent(InputAction.CallbackContext context)
+        {
+            Logger.Log(this, "Fire!");
+        }
 
-    private void Look()
-    {
-        var mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity;
-        var mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * mouseSensitivity;
+        public void DashEvent(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                this.dashFlag = true;
+            }
+        }
 
-        this.transform.Rotate(Vector3.up * mouseX);
+        private void Movement()
+        {
+            Vector3 direction = Vector3.ClampMagnitude(((transform.right * this.moveDirection.x) + (transform.forward * this.moveDirection.y)), 1);
+            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90, 90);
+            if (isGrounded)
+            {
+                doubleJumpAllowed = true;
+            }
 
-        cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+            if (isGrounded && verticalVelocity < 0)
+            {
+                verticalVelocity = -groundDistance;
+            }
+
+            if (isDashing && Time.time > (dashLastTimer + dashPlayTime))
+            {
+                isDashing = false;
+                dashDirection = Vector3.zero;
+            }
+
+            verticalVelocity += gravity * Time.deltaTime;
+
+            if (jumpFlag && isGrounded)
+            {
+                verticalVelocity += Mathf.Sqrt(jumpSpeed * gravity * -2);
+            }
+
+            if (jumpFlag && !isGrounded && doubleJumpAllowed)
+            {
+                verticalVelocity += Mathf.Sqrt(jumpSpeed * gravity * -2);
+                doubleJumpAllowed = false;
+            }
+
+            if (dashFlag && Time.time >= (dashLastTimer + dashTimeout))
+            {
+                dashLastTimer = Time.time;
+                isDashing = true;
+                dashDirection = direction == Vector3.zero ? transform.forward : direction;
+            }
+
+            Vector3 move = ((direction * moveSpeed) + (transform.up * verticalVelocity) + (isDashing ? dashDirection * dashSpeed : Vector3.zero)) * Time.deltaTime;
+            character.Move(move);
+
+            jumpFlag = false;
+            dashFlag = false;
+        }
+
+        private void Look()
+        {
+            var mouse = this.lookDirection * Time.deltaTime * mouseSensitivity;
+
+            this.transform.Rotate(Vector3.up * mouse.x);
+
+            xRotation -= mouse.y;
+            xRotation = Mathf.Clamp(xRotation, -90, 90);
+
+            lookCam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+        }
     }
 }
