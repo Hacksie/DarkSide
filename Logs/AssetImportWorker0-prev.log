@@ -15,11 +15,11 @@ C:/Users/Ben/Documents/dev/DarkSide
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-58971
+63543
 Successfully changed project path to: C:/Users/Ben/Documents/dev/DarkSide
 C:/Users/Ben/Documents/dev/DarkSide
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 59.62 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 51.39 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.0b13 (655e1a328b90)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/Resources/UnitySubsystems
@@ -36,689 +36,73 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56600
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56944
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.002485 seconds.
+Registered in 0.002253 seconds.
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 58.05 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 54.55 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.981 seconds
+- Completed reload, in  0.877 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001312 seconds.
+Registered in 0.001510 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Users\Ben\Documents\dev\DarkSide\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 59.38 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 56.80 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.132 seconds
+- Completed reload, in  1.035 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.53 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3097 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 214.4 MB.
-System memory in use after: 214.5 MB.
+Unloading 3099 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 214.2 MB.
+System memory in use after: 214.3 MB.
 
-Unloading 94 unused Assets to reduce memory usage. Loaded Objects now: 3539.
-Total: 2.756300 ms (FindLiveObjects: 0.393700 ms CreateObjectMapping: 0.228300 ms MarkObjects: 1.957500 ms  DeleteObjects: 0.175800 ms)
+Unloading 94 unused Assets to reduce memory usage. Loaded Objects now: 3543.
+Total: 2.517300 ms (FindLiveObjects: 0.296500 ms CreateObjectMapping: 0.169800 ms MarkObjects: 1.886900 ms  DeleteObjects: 0.162900 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/_External/Kenney Icons/cross.png
-  artifactKey: Guid(51d53a44bf68307429488dbe35002345) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/cross.png using Guid(51d53a44bf68307429488dbe35002345) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cc29d552f208ffde666373452a0ab12') in 0.077857 seconds
-  Import took 0.082757 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000482 seconds.
-  path: Assets/_External/Kenney Icons/contrast.png
-  artifactKey: Guid(4fc18c280806a0e4f873f3e277048669) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/contrast.png using Guid(4fc18c280806a0e4f873f3e277048669) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34aecbb35f1ec8f66b0a11663ca84560') in 0.021466 seconds
-  Import took 0.028274 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 64.359551 seconds.
-  path: Assets/_External/Kenney Icons/door.png
-  artifactKey: Guid(9da605c9c40637446bf189454675d6ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/door.png using Guid(9da605c9c40637446bf189454675d6ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a17252ff8c1f5aaa4c2f218ebc5855b9') in 0.025522 seconds
-  Import took 0.031527 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.049072 seconds.
-  path: Assets/_External/Kenney Icons/down.png
-  artifactKey: Guid(03bfefba6d9c44549ab60ccf6728b614) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/down.png using Guid(03bfefba6d9c44549ab60ccf6728b614) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '737d8c717460068bb2b82e301893137e') in 0.015691 seconds
-  Import took 0.020281 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000170 seconds.
-  path: Assets/_External/Kenney Icons/exitLeft.png
-  artifactKey: Guid(a2ca67cc000d1434ebe4ed2a30e4928c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/exitLeft.png using Guid(a2ca67cc000d1434ebe4ed2a30e4928c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f7dc0a39603249ddffb19b107a81e4b') in 0.018875 seconds
-  Import took 0.025234 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000155 seconds.
-  path: Assets/_External/Kenney Icons/exitRight.png
-  artifactKey: Guid(db06c314455ee1b41af4f692f879edf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/exitRight.png using Guid(db06c314455ee1b41af4f692f879edf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '835a7431c7ddeff5f513945357244894') in 0.028900 seconds
-  Import took 0.033970 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000154 seconds.
-  path: Assets/_External/Kenney Icons/downRight.png
-  artifactKey: Guid(a82308209a6e6954691d1c2b6e804b7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/downRight.png using Guid(a82308209a6e6954691d1c2b6e804b7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d1244af1dac6b8dc03022ac6a8795f0') in 0.031994 seconds
-  Import took 0.036576 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000145 seconds.
-  path: Assets/_External/Kenney Icons/downLeft.png
-  artifactKey: Guid(c2aa2117a615be24286a2d2cbd95471d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/downLeft.png using Guid(c2aa2117a615be24286a2d2cbd95471d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f917dc1b759ca79e8079a29cf25b86df') in 0.029753 seconds
-  Import took 0.034563 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000148 seconds.
-  path: Assets/_External/Kenney Icons/export.png
-  artifactKey: Guid(5ad2164a5a87faa4c99390f2a51080ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/export.png using Guid(5ad2164a5a87faa4c99390f2a51080ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53841bb7f31128ff5e922b641e3d0cfe') in 0.019089 seconds
-  Import took 0.024224 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000133 seconds.
-  path: Assets/_External/Kenney Icons/exclamation.png
-  artifactKey: Guid(edda86b69f2913e40b76209d56763c8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/exclamation.png using Guid(edda86b69f2913e40b76209d56763c8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '609be6295d2b76a5a89640343f70c8fc') in 0.018076 seconds
-  Import took 0.023298 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.383010 seconds.
-  path: Assets/_External/Kenney Icons/fastForward.png
-  artifactKey: Guid(e45a00899f8323d4d8c1dc7b660de21d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/fastForward.png using Guid(e45a00899f8323d4d8c1dc7b660de21d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d5a857eb944580ad58f40990ccc5237') in 0.015311 seconds
-  Import took 0.019928 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000205 seconds.
-  path: Assets/_External/Kenney Icons/gamepad1.png
-  artifactKey: Guid(eb12e648747c1f444a5a527ca35f2590) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/gamepad1.png using Guid(eb12e648747c1f444a5a527ca35f2590) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b30a52c71010f85545df4da24a893fc') in 0.018569 seconds
-  Import took 0.023584 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000168 seconds.
-  path: Assets/_External/Kenney Icons/gamepad3.png
-  artifactKey: Guid(4eb9f5673b656d34e8adabfcb41d91c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/gamepad3.png using Guid(4eb9f5673b656d34e8adabfcb41d91c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4bf6c9db182252c6a61c53b414457147') in 0.026850 seconds
-  Import took 0.031766 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000207 seconds.
-  path: Assets/_External/Kenney Icons/gamepad.png
-  artifactKey: Guid(f61c85aba59d3e04ca6401237fbd947a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/gamepad.png using Guid(f61c85aba59d3e04ca6401237fbd947a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96127c760df7e56877a0b2370b796fb2') in 0.019527 seconds
-  Import took 0.024959 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000146 seconds.
-  path: Assets/_External/Kenney Icons/gamepad2.png
-  artifactKey: Guid(053f0dfe2e3975347b60c1706affcce0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/gamepad2.png using Guid(053f0dfe2e3975347b60c1706affcce0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ed38d9fb0bbe0efaf4d1c4bebdb0031') in 0.016463 seconds
-  Import took 0.021918 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000117 seconds.
-  path: Assets/_External/Kenney Icons/forward.png
-  artifactKey: Guid(1c833b1c198bdbe48a1209ada29c35f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/forward.png using Guid(1c833b1c198bdbe48a1209ada29c35f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba9918f076151e9b74dbb92f4f2065f2') in 0.033316 seconds
-  Import took 0.038488 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000156 seconds.
-  path: Assets/_External/Kenney Icons/film.png
-  artifactKey: Guid(9b961c35091001d41bfa020fee5c3825) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/film.png using Guid(9b961c35091001d41bfa020fee5c3825) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39db6bf90677c2f2e28c2925da3d2250') in 0.031956 seconds
-  Import took 0.036986 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.627047 seconds.
-  path: Assets/_External/Kenney Icons/gamepad4.png
-  artifactKey: Guid(cbdab73a1058fa241bf893388fb6e2d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/gamepad4.png using Guid(cbdab73a1058fa241bf893388fb6e2d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3825d139d5d38fb307f85af1b63ca164') in 0.014507 seconds
-  Import took 0.019048 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000243 seconds.
-  path: Assets/_External/Kenney Icons/information.png
-  artifactKey: Guid(b3ac05ebd234cab4abc06d3511a6614f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/information.png using Guid(b3ac05ebd234cab4abc06d3511a6614f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e3a3d5064914337fe54f519b1f99bac') in 0.017054 seconds
-  Import took 0.021951 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000146 seconds.
-  path: Assets/_External/Kenney Icons/joystick.png
-  artifactKey: Guid(015d85a14008bb2499e12965decd6f07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/joystick.png using Guid(015d85a14008bb2499e12965decd6f07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9b404bb09ab07cfd872dfd86f32ce74') in 0.017250 seconds
-  Import took 0.022853 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000207 seconds.
-  path: Assets/_External/Kenney Icons/joystickLeft.png
-  artifactKey: Guid(5431f0406057cb942ab36fdc5916fe15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/joystickLeft.png using Guid(5431f0406057cb942ab36fdc5916fe15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcb88537dcd7505296244e332c164e65') in 0.018246 seconds
-  Import took 0.023056 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000202 seconds.
-  path: Assets/_External/Kenney Icons/gear.png
-  artifactKey: Guid(788d6e0ee8f4a134e840b9256d8f8656) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/gear.png using Guid(788d6e0ee8f4a134e840b9256d8f8656) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a1b44b699a5ac3f62be39044e46f358') in 0.017146 seconds
-  Import took 0.023028 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000250 seconds.
-  path: Assets/_External/Kenney Icons/home.png
-  artifactKey: Guid(e1da45f66ccf86c40ac594872428b7fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/home.png using Guid(e1da45f66ccf86c40ac594872428b7fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e55dac7c8bcbc7a97cd87e437ba66d3') in 0.016242 seconds
-  Import took 0.022099 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000156 seconds.
-  path: Assets/_External/Kenney Icons/import.png
-  artifactKey: Guid(1c96910dbeb2b064cab7a23df62e7677) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/import.png using Guid(1c96910dbeb2b064cab7a23df62e7677) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b4fc2ee0f5462258e8193062e1069b0') in 0.019186 seconds
-  Import took 0.023596 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.274947 seconds.
-  path: Assets/_External/Kenney Icons/joystickRight.png
-  artifactKey: Guid(9b5ff3dbc640b1545a3562c42a71d3d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/joystickRight.png using Guid(9b5ff3dbc640b1545a3562c42a71d3d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '863894909ac82235363718bdf9233f35') in 0.014213 seconds
-  Import took 0.019688 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000184 seconds.
-  path: Assets/_External/Kenney Icons/leaderboardsSimple.png
-  artifactKey: Guid(0712346d364fd87408a9e743ea12e5cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/leaderboardsSimple.png using Guid(0712346d364fd87408a9e743ea12e5cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c87735965eaf821e22124f19cae6fc61') in 0.016805 seconds
-  Import took 0.021009 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000168 seconds.
-  path: Assets/_External/Kenney Icons/joystickUp.png
-  artifactKey: Guid(011fbff35d27c7e41aa9a8a67303ed60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/joystickUp.png using Guid(011fbff35d27c7e41aa9a8a67303ed60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '19cb18b5e08c5922f3612611fbf22bb6') in 0.019147 seconds
-  Import took 0.024057 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000197 seconds.
-  path: Assets/_External/Kenney Icons/larger.png
-  artifactKey: Guid(ce4c8536a90f1fa41b478114a299f7be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/larger.png using Guid(ce4c8536a90f1fa41b478114a299f7be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8ed5579889f41d0cf7a56b77cf8ba91') in 0.019977 seconds
-  Import took 0.024599 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000152 seconds.
-  path: Assets/_External/Kenney Icons/locked.png
-  artifactKey: Guid(7bf9ac85c6784054c9bc0e3350048af1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/locked.png using Guid(7bf9ac85c6784054c9bc0e3350048af1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b3519385e0d93b472cb7e9965e0146e') in 0.017295 seconds
-  Import took 0.023426 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000312 seconds.
-  path: Assets/_External/Kenney Icons/larger.png
-  artifactKey: Guid(ce4c8536a90f1fa41b478114a299f7be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/larger.png using Guid(ce4c8536a90f1fa41b478114a299f7be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8ed5579889f41d0cf7a56b77cf8ba91') in 0.009534 seconds
-  Import took 0.015686 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000457 seconds.
-  path: Assets/_External/Kenney Icons/massiveMultiplayer.png
-  artifactKey: Guid(59a9a27c4a1f1844298159c854058acb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/massiveMultiplayer.png using Guid(59a9a27c4a1f1844298159c854058acb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34cf61a01794148960a4b9ddb5c0b826') in 0.020050 seconds
-  Import took 0.025115 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000273 seconds.
-  path: Assets/_External/Kenney Icons/leaderboardsComplex.png
-  artifactKey: Guid(8968c2722b46ee44690a7413c24ccd3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/leaderboardsComplex.png using Guid(8968c2722b46ee44690a7413c24ccd3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f07683aa1d1201bbacbb24598f2dd30') in 0.018466 seconds
-  Import took 0.023486 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.776953 seconds.
-  path: Assets/_External/Kenney Icons/medal1.png
-  artifactKey: Guid(a78ca509034148a4abb761b9dab8d80f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/medal1.png using Guid(a78ca509034148a4abb761b9dab8d80f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c0a4e120ca663f4635d7fcd4ae5569a') in 0.014616 seconds
-  Import took 0.019419 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000267 seconds.
-  path: Assets/_External/Kenney Icons/menuList.png
-  artifactKey: Guid(18c757a4be858e14284809a5fff917c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/menuList.png using Guid(18c757a4be858e14284809a5fff917c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68b92d366acefd73b3e3156c9f7cd570') in 0.017857 seconds
-  Import took 0.022153 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000152 seconds.
-  path: Assets/_External/Kenney Icons/menuGrid.png
-  artifactKey: Guid(a3aa49a3863dae54b9d37b68f640ba03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/menuGrid.png using Guid(a3aa49a3863dae54b9d37b68f640ba03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38ffaf28c9e3ff21a80b07c7f96e64d2') in 0.019223 seconds
-  Import took 0.025108 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000158 seconds.
-  path: Assets/_External/Kenney Icons/medal2.png
-  artifactKey: Guid(c21640c318799de4b8cbff2f2ec575da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/medal2.png using Guid(c21640c318799de4b8cbff2f2ec575da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51c6cf84ac3fd1a43b4ca2931a4c7d4c') in 0.021168 seconds
-  Import took 0.025815 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000164 seconds.
-  path: Assets/_External/Kenney Icons/minus.png
-  artifactKey: Guid(b5bf32d55c48d5b44abb5afd6ff56e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/minus.png using Guid(b5bf32d55c48d5b44abb5afd6ff56e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92b607e94714e1e78f342a81efee5d67') in 0.018268 seconds
-  Import took 0.023572 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.006742 seconds.
-  path: Assets/_External/Kenney Icons/minus.png
-  artifactKey: Guid(b5bf32d55c48d5b44abb5afd6ff56e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/minus.png using Guid(b5bf32d55c48d5b44abb5afd6ff56e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92b607e94714e1e78f342a81efee5d67') in 0.008908 seconds
-  Import took 0.013796 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 39.734467 seconds.
-  path: Assets/_External/Kenney Icons/mouse.png
-  artifactKey: Guid(c8a3d49781cecfd43a1c2dac352abc9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/mouse.png using Guid(c8a3d49781cecfd43a1c2dac352abc9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '990494447a724fb693ed3ba6c3c7d22d') in 0.015927 seconds
-  Import took 0.021669 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000182 seconds.
-  path: Assets/_External/Kenney Icons/save.png
-  artifactKey: Guid(f3d41e160b8f2a948ad761b90498b01e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/save.png using Guid(f3d41e160b8f2a948ad761b90498b01e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59c8aae93f86c53f58981acadc7c1696') in 0.018770 seconds
-  Import took 0.023489 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000255 seconds.
-  path: Assets/_External/Kenney Icons/upLeft.png
-  artifactKey: Guid(2f9bf58b7ac9c954baa17b4bb41beaf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/upLeft.png using Guid(2f9bf58b7ac9c954baa17b4bb41beaf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b25cb7e83fdb246caa3d6688d5df4ddf') in 0.018414 seconds
-  Import took 0.023525 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000165 seconds.
-  path: Assets/_External/Kenney Icons/unlocked.png
-  artifactKey: Guid(dc0179100f34e9b43af468f92a7d40a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/unlocked.png using Guid(dc0179100f34e9b43af468f92a7d40a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3d1dd0e466f0c138755d966f3bb7e76') in 0.019813 seconds
-  Import took 0.026438 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000276 seconds.
-  path: Assets/_External/Kenney Icons/signal1.png
-  artifactKey: Guid(a232ed7b3071aab4f9d8f686d181adc7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/signal1.png using Guid(a232ed7b3071aab4f9d8f686d181adc7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5fad14d2c3653c2886236189e6e59717') in 0.017816 seconds
-  Import took 0.023543 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000301 seconds.
-  path: Assets/_External/Kenney Icons/target.png
-  artifactKey: Guid(5f8f988f6ec11954f9600d2cf12aefe0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/target.png using Guid(5f8f988f6ec11954f9600d2cf12aefe0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90c6d4498fbebe1998633ac1755532b5') in 0.016462 seconds
-  Import took 0.021673 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000267 seconds.
-  path: Assets/_External/Kenney Icons/zoomDefault.png
-  artifactKey: Guid(95afc5a28bcae504bbca03659fbd9fb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/zoomDefault.png using Guid(95afc5a28bcae504bbca03659fbd9fb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ee91d502d2d52a3dabf240a8de032b5') in 0.019788 seconds
-  Import took 0.024469 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000150 seconds.
-  path: Assets/_External/Kenney Icons/signal2.png
-  artifactKey: Guid(9e09645348eacb24696b9d67475d847e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/signal2.png using Guid(9e09645348eacb24696b9d67475d847e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b91f4c3990600a8273c86bbc1b3b16cf') in 0.018818 seconds
-  Import took 0.024177 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000316 seconds.
-  path: Assets/_External/Kenney Icons/previous.png
-  artifactKey: Guid(80df8102ea806ff49b87ab92cf0882f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/previous.png using Guid(80df8102ea806ff49b87ab92cf0882f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7b1dd239614240b923079cf2d8507d4') in 0.019759 seconds
-  Import took 0.025055 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000147 seconds.
-  path: Assets/_External/Kenney Icons/next.png
-  artifactKey: Guid(eacd0ceaab5947240952b84a1ecfb31e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/next.png using Guid(eacd0ceaab5947240952b84a1ecfb31e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '517f59108c6910859aa611362b474bea') in 0.019245 seconds
-  Import took 0.024586 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000167 seconds.
-  path: Assets/_External/Kenney Icons/stop.png
-  artifactKey: Guid(7e6bf4d92332a564cb66b1adbe23b427) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/stop.png using Guid(7e6bf4d92332a564cb66b1adbe23b427) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7ba044a48a7d87e6f9207224cf7b875') in 0.019405 seconds
-  Import took 0.024481 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000135 seconds.
-  path: Assets/_External/Kenney Icons/signal3.png
-  artifactKey: Guid(bd22f22a502d3a6428b7f0a370a0a79d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/signal3.png using Guid(bd22f22a502d3a6428b7f0a370a0a79d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59f7e4f88ff9021b3af189265095aafe') in 0.020458 seconds
-  Import took 0.024964 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000216 seconds.
-  path: Assets/_External/Kenney Icons/open.png
-  artifactKey: Guid(8711b1dbc544cc942a7cb3c2db36c5ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/open.png using Guid(8711b1dbc544cc942a7cb3c2db36c5ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7651ea4c3900ad92868521fb48c9eda2') in 0.017256 seconds
-  Import took 0.021875 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000148 seconds.
-  path: Assets/_External/Kenney Icons/video.png
-  artifactKey: Guid(9aa8641c684b6594aa5978dbe6d682ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/video.png using Guid(9aa8641c684b6594aa5978dbe6d682ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45976bd502abd0e85c5713be6b73f4cd') in 0.021286 seconds
-  Import took 0.025950 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000188 seconds.
-  path: Assets/_External/Kenney Icons/wrench.png
-  artifactKey: Guid(2f2a35ccb416aae4fbdb45e6a4755c02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/wrench.png using Guid(2f2a35ccb416aae4fbdb45e6a4755c02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b01943aa41542aa367064b330af438e7') in 0.019314 seconds
-  Import took 0.025319 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000143 seconds.
-  path: Assets/_External/Kenney Icons/smaller.png
-  artifactKey: Guid(afb565b3c1b0c9749a012f4fcc5c94ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/smaller.png using Guid(afb565b3c1b0c9749a012f4fcc5c94ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a36768ce13e2a569587080f7aa49a21f') in 0.019002 seconds
-  Import took 0.024267 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000071 seconds.
-  path: Assets/_External/Kenney Icons/trashcanOpen.png
-  artifactKey: Guid(76cc3b5083b5fa341bd255edcf411178) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/trashcanOpen.png using Guid(76cc3b5083b5fa341bd255edcf411178) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a13e571523d789845fca2c57e3c2536a') in 0.018686 seconds
-  Import took 0.023722 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000139 seconds.
-  path: Assets/_External/Kenney Icons/multiplayer.png
-  artifactKey: Guid(d2961a02c5393a44eb2f9df8849cde21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/multiplayer.png using Guid(d2961a02c5393a44eb2f9df8849cde21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13f395da77dfe2391ee8303c65895f16') in 0.019496 seconds
-  Import took 0.026156 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000167 seconds.
-  path: Assets/_External/Kenney Icons/question.png
-  artifactKey: Guid(994ae5a14c1bdc447a084f4dd7b92557) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/question.png using Guid(994ae5a14c1bdc447a084f4dd7b92557) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e44a84045768c0f4a05e42a7c0e276cb') in 0.019207 seconds
-  Import took 0.024351 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000155 seconds.
-  path: Assets/_External/Kenney Icons/rewind.png
-  artifactKey: Guid(4649e11934bbebc4093c024e8d9f886b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/rewind.png using Guid(4649e11934bbebc4093c024e8d9f886b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f621908ccc592e41453a9bb10745be1') in 0.018830 seconds
-  Import took 0.024791 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000175 seconds.
-  path: Assets/_External/Kenney Icons/tablet.png
-  artifactKey: Guid(39c73d8dab80cb943a74a400a635cdae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/tablet.png using Guid(39c73d8dab80cb943a74a400a635cdae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '938e6dee635a9384391bf7a12abdd4d7') in 0.017611 seconds
-  Import took 0.022903 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000147 seconds.
-  path: Assets/_External/Kenney Icons/scrollHorizontal.png
-  artifactKey: Guid(7d44a952557827d4e84cf0cc0e59e9ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/scrollHorizontal.png using Guid(7d44a952557827d4e84cf0cc0e59e9ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f08cdd68a46b6a4ad993dea78abc3f44') in 0.018027 seconds
-  Import took 0.023411 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000162 seconds.
-  path: Assets/_External/Kenney Icons/share1.png
-  artifactKey: Guid(b68c10a086e6a654d9887f6422514810) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/share1.png using Guid(b68c10a086e6a654d9887f6422514810) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1347093ef1dade176b743a10cdc73216') in 0.019359 seconds
-  Import took 0.023890 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000191 seconds.
-  path: Assets/_External/Kenney Icons/zoomIn.png
-  artifactKey: Guid(c70f40834e6e1124d8e12ffcc24101f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/zoomIn.png using Guid(c70f40834e6e1124d8e12ffcc24101f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f7e952516b0fc8916be164f1ae61402') in 0.016948 seconds
-  Import took 0.022015 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000150 seconds.
-  path: Assets/_External/Kenney Icons/zoomOut.png
-  artifactKey: Guid(b87b9c9ecb8963748a279c8a30cd80ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/zoomOut.png using Guid(b87b9c9ecb8963748a279c8a30cd80ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b099d313464573914f87cc195bac44e9') in 0.018890 seconds
-  Import took 0.024497 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000157 seconds.
-  path: Assets/_External/Kenney Icons/power.png
-  artifactKey: Guid(dfbf43e0be0174e4aad729c7bb4fc932) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/power.png using Guid(dfbf43e0be0174e4aad729c7bb4fc932) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b1d916260268fb07b4b2aa804a2c8ad') in 0.019637 seconds
-  Import took 0.024449 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000140 seconds.
-  path: Assets/_External/Kenney Icons/trophy.png
-  artifactKey: Guid(53b23e4a701c3d04b87b9f00b6fdebfe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/trophy.png using Guid(53b23e4a701c3d04b87b9f00b6fdebfe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e40025de99133c9b377e82c7cf291acf') in 0.019775 seconds
-  Import took 0.025282 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000175 seconds.
-  path: Assets/_External/Kenney Icons/star.png
-  artifactKey: Guid(f722ea82c015f2748b28aa82f8dbd06c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/star.png using Guid(f722ea82c015f2748b28aa82f8dbd06c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3e9b6251011b2643e1e2ae5d707638b') in 0.017469 seconds
-  Import took 0.022820 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000146 seconds.
-  path: Assets/_External/Kenney Icons/trashcan.png
-  artifactKey: Guid(cb1bffa266e364646be6f2b33e6b3473) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/trashcan.png using Guid(cb1bffa266e364646be6f2b33e6b3473) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9577c4848dcfbf4959aef6719f23ef0') in 0.018791 seconds
-  Import took 0.023373 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000152 seconds.
-  path: Assets/_External/Kenney Icons/scrollVertical.png
-  artifactKey: Guid(3a97222a9c627364d8ef9a4b64b12759) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/scrollVertical.png using Guid(3a97222a9c627364d8ef9a4b64b12759) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f12906d3e0845e1991311c7faae2c3ab') in 0.020097 seconds
-  Import took 0.025032 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000165 seconds.
-  path: Assets/_External/Kenney Icons/up.png
-  artifactKey: Guid(2a2a87d47ca0e804da0c87b2ab1fbd46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/up.png using Guid(2a2a87d47ca0e804da0c87b2ab1fbd46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '859c90642212f16c2fc1726696204ede') in 0.017493 seconds
-  Import took 0.022965 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.001551 seconds.
-  path: Assets/_External/Kenney Icons/pause.png
-  artifactKey: Guid(36a49841784d3be45a7567d68b2de0ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/pause.png using Guid(36a49841784d3be45a7567d68b2de0ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d322fba035c162a58d80c425a56c80b') in 0.016245 seconds
-  Import took 0.022901 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000155 seconds.
-  path: Assets/_External/Kenney Icons/musicOff.png
-  artifactKey: Guid(542fffa5eb2617b43b49af47cce47a7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/musicOff.png using Guid(542fffa5eb2617b43b49af47cce47a7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '413c39d0286622135f449ea624459002') in 0.019385 seconds
-  Import took 0.023894 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000327 seconds.
-  path: Assets/_External/Kenney Icons/warning.png
-  artifactKey: Guid(357b16ad666a9f04d8ae3a912e453a78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/warning.png using Guid(357b16ad666a9f04d8ae3a912e453a78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '526ee8407428cf403509dceffa2dbda9') in 0.016989 seconds
-  Import took 0.021878 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000302 seconds.
-  path: Assets/_External/Kenney Icons/plus.png
-  artifactKey: Guid(95ef9aa5522847248ae272fdf258d87e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/plus.png using Guid(95ef9aa5522847248ae272fdf258d87e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '456af70ea765ed9c013e498b16ba68c4') in 0.016993 seconds
-  Import took 0.022673 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000159 seconds.
-  path: Assets/_External/Kenney Icons/upRight.png
-  artifactKey: Guid(828ff84d1c32f164fb65c74481e403ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/upRight.png using Guid(828ff84d1c32f164fb65c74481e403ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eaf4c51d1de0ff2bc3b671b3207d2859') in 0.019707 seconds
-  Import took 0.024200 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000147 seconds.
-  path: Assets/_External/Kenney Icons/share2.png
-  artifactKey: Guid(3f0c25a05c60d1a4fb792ce71ce57712) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/share2.png using Guid(3f0c25a05c60d1a4fb792ce71ce57712) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75535c2c3fdc82bf025718f16eeb7fc4') in 0.016650 seconds
-  Import took 0.021531 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000260 seconds.
-  path: Assets/_External/Kenney Icons/zoom.png
-  artifactKey: Guid(7937f27744f8ad44db275b696fda9661) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/zoom.png using Guid(7937f27744f8ad44db275b696fda9661) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c825e497eaf636d503831c9dc1027b6') in 0.016949 seconds
-  Import took 0.023172 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000187 seconds.
-  path: Assets/_External/Kenney Icons/musicOn.png
-  artifactKey: Guid(0d2d612740c19e74e8e15de12417eee1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/musicOn.png using Guid(0d2d612740c19e74e8e15de12417eee1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ec82069875b2df49ee688df1c5168a5') in 0.018309 seconds
-  Import took 0.023429 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000296 seconds.
-  path: Assets/_External/Kenney Icons/return.png
-  artifactKey: Guid(ec388b87de091b0408d4fb4fcd29b4b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_External/Kenney Icons/return.png using Guid(ec388b87de091b0408d4fb4fcd29b4b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3086095e702bd759192ac5f2a17abd06') in 0.018365 seconds
-  Import took 0.023720 seconds .
+  path: Assets/Settings/UniversalRP-HighQuality.asset
+  artifactKey: Guid(19ba41d7c0026c3459d37c2fe90c55a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Settings/UniversalRP-HighQuality.asset using Guid(19ba41d7c0026c3459d37c2fe90c55a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52e4f4dc50b6864e34ae145096c5d7eb') in 0.019876 seconds
+  Import took 0.023976 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001368 seconds.
+Registered in 0.001191 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Users\Ben\Documents\dev\DarkSide\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.64 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.48 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Warning: Annotation not found!
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
@@ -733,29 +117,119 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.934 seconds
+- Completed reload, in  0.775 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2957 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 207.4 MB.
+System memory in use after: 207.5 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 3546.
+Total: 2.618000 ms (FindLiveObjects: 0.276100 ms CreateObjectMapping: 0.166300 ms MarkObjects: 1.987300 ms  DeleteObjects: 0.187200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001199 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Ben\Documents\dev\DarkSide\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.51 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.780 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.49 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2956 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 207.4 MB.
+System memory in use after: 207.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 3548.
+Total: 2.867300 ms (FindLiveObjects: 0.342500 ms CreateObjectMapping: 0.223800 ms MarkObjects: 2.236600 ms  DeleteObjects: 0.063400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001429 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Ben\Documents\dev\DarkSide\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.50 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.800 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2954 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 209.9 MB.
-System memory in use after: 210.1 MB.
+Unloading 2956 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 207.5 MB.
+System memory in use after: 207.7 MB.
 
-Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 3547.
-Total: 2.543600 ms (FindLiveObjects: 0.350900 ms CreateObjectMapping: 0.174300 ms MarkObjects: 1.959900 ms  DeleteObjects: 0.057700 ms)
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 3550.
+Total: 2.892500 ms (FindLiveObjects: 0.348900 ms CreateObjectMapping: 0.156500 ms MarkObjects: 2.324400 ms  DeleteObjects: 0.061300 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 378.483556 seconds.
+  path: Assets/Content/Level/Sections/32by32to8by8.prefab
+  artifactKey: Guid(c76ef6490f0f2a3468c40655487e86a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Content/Level/Sections/32by32to8by8.prefab using Guid(c76ef6490f0f2a3468c40655487e86a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '691284da6406295d8e293b03a093a33b') in 0.031766 seconds
+  Import took 0.036284 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 403.965908 seconds.
+  path: Assets/Content/Level/Sections/8by8to8by8.prefab
+  artifactKey: Guid(2749481f84bd77442a7c952fd3a8dbe9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Content/Level/Sections/8by8to8by8.prefab using Guid(2749481f84bd77442a7c952fd3a8dbe9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08de44b5486be64bc8b0b9f6cfa94e8a') in 0.009170 seconds
+  Import took 0.014263 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001733 seconds.
+Registered in 0.054932 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Users\Ben\Documents\dev\DarkSide\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.50 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Warning: Annotation not found!
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
@@ -770,29 +244,29 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.912 seconds
+- Completed reload, in  0.931 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2954 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 210.0 MB.
-System memory in use after: 210.2 MB.
+Unloading 2956 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 207.5 MB.
+System memory in use after: 207.7 MB.
 
-Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 3549.
-Total: 3.205300 ms (FindLiveObjects: 0.343400 ms CreateObjectMapping: 0.233100 ms MarkObjects: 2.559400 ms  DeleteObjects: 0.067800 ms)
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 3552.
+Total: 2.981900 ms (FindLiveObjects: 0.294100 ms CreateObjectMapping: 0.158800 ms MarkObjects: 2.462700 ms  DeleteObjects: 0.064700 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001476 seconds.
+Registered in 0.001190 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Users\Ben\Documents\dev\DarkSide\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.50 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Warning: Annotation not found!
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
@@ -807,127 +281,16 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.927 seconds
+- Completed reload, in  0.771 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.49 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2954 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 211.1 MB.
-System memory in use after: 211.3 MB.
+Unloading 2956 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 207.6 MB.
+System memory in use after: 207.7 MB.
 
-Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 3551.
-Total: 3.500700 ms (FindLiveObjects: 0.322400 ms CreateObjectMapping: 0.167000 ms MarkObjects: 2.934600 ms  DeleteObjects: 0.075800 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001529 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\Ben\Documents\dev\DarkSide\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.53 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Warning: Annotation not found!
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
-UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
-
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.943 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.51 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2954 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 210.1 MB.
-System memory in use after: 210.3 MB.
-
-Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 3553.
-Total: 2.733000 ms (FindLiveObjects: 0.274500 ms CreateObjectMapping: 0.142100 ms MarkObjects: 2.248000 ms  DeleteObjects: 0.067400 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001257 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\Ben\Documents\dev\DarkSide\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Warning: Annotation not found!
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
-UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
-
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.924 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2954 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 210.1 MB.
-System memory in use after: 210.3 MB.
-
-Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 3555.
-Total: 3.325800 ms (FindLiveObjects: 0.338400 ms CreateObjectMapping: 0.155100 ms MarkObjects: 2.763200 ms  DeleteObjects: 0.067900 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001192 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\Ben\Documents\dev\DarkSide\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.51 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Warning: Annotation not found!
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
-UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
-
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.812 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.53 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2954 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 210.2 MB.
-System memory in use after: 210.4 MB.
-
-Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 3557.
-Total: 2.454500 ms (FindLiveObjects: 0.281500 ms CreateObjectMapping: 0.151000 ms MarkObjects: 1.965200 ms  DeleteObjects: 0.055800 ms)
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 3554.
+Total: 2.600500 ms (FindLiveObjects: 0.278300 ms CreateObjectMapping: 0.143300 ms MarkObjects: 2.113100 ms  DeleteObjects: 0.064400 ms)
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

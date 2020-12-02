@@ -386,14 +386,14 @@ MonoBehaviour:
   - {x: 1, y: 0, z: 0, w: -1}
   - {x: 1, y: 0, z: 0, w: -1}
   - {x: 1, y: 0, z: 0, w: -1}
-  - {x: -0.17045173, y: -0.021878619, z: -0.9851231, w: -1}
-  - {x: -0.39580277, y: -0.11898872, z: -0.9105943, w: -1}
-  - {x: -0.254803, y: -0.06816213, z: -0.9645876, w: -1}
-  - {x: -0.017666455, y: 0.045121294, z: -0.9988253, w: -1}
-  - {x: 0, y: 0.052674033, z: -0.9986118, w: -1}
-  - {x: 0, y: 0.05267403, z: -0.9986118, w: -1}
-  - {x: 0, y: 0.05267403, z: -0.9986118, w: -1}
-  - {x: 0, y: 0.052674033, z: -0.9986118, w: -1}
+  - {x: 0, y: 0, z: -1, w: -1}
+  - {x: 0, y: 0, z: -1, w: -1}
+  - {x: 0, y: 0, z: -1, w: -1}
+  - {x: 0, y: 0, z: -1, w: -1}
+  - {x: 0, y: 0, z: -1, w: -1}
+  - {x: 0, y: 0, z: -1, w: -1}
+  - {x: 0, y: 0, z: -1, w: -1}
+  - {x: 0, y: 0, z: -1, w: -1}
   - {x: NaN, y: NaN, z: NaN, w: 1}
   - {x: -1, y: 0, z: 0, w: -1}
   - {x: NaN, y: NaN, z: NaN, w: 1}
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
-  m_SelectedVertices: 14000000
+  m_SelectedVertices: 
 --- !u!23 &3191064843988028428
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -583,7 +583,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3191064844461022309}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 0, z: 8}
+  m_LocalPosition: {x: 12, y: 0, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3191064843988028418}
