@@ -16,12 +16,12 @@ namespace HackedDesign
 
         public void Begin()
         {
-            
+
         }
 
         public void End()
         {
-            
+
         }
 
         public void EndDialog()
@@ -31,12 +31,12 @@ namespace HackedDesign
 
         public void FixedUpdate()
         {
-            
+
         }
 
         public void LateUpdate()
         {
-            
+
         }
 
         public void ShowDialog()
@@ -44,14 +44,22 @@ namespace HackedDesign
             throw new System.NotImplementedException();
         }
 
-        void IState.Start()
+        public void Start()
         {
             throw new System.NotImplementedException();
         }
 
 
-        void IState.Update()
+        public void Update()
         {
+            if (GameManager.Instance.RunStarted)
+            {
+                GameManager.Instance.Data.timer -= Time.deltaTime;
+                if(GameManager.Instance.Data.timer <= 0)
+                {
+                    Logger.Log("Playing State", "Game Over");
+                }
+            }
             this.player.UpdateBehaviour();
         }
     }

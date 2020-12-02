@@ -14,6 +14,7 @@ namespace HackedDesign
         [SerializeField] private LevelGenerator levelGenerator;
         [SerializeField] private int gameLength = 24;
         [SerializeField] private bool isRandom = false;
+        [SerializeField] private bool runStarted = false;
 
         [Header("Data")]
         [SerializeField] public int currentSlot = 0;
@@ -27,6 +28,7 @@ namespace HackedDesign
 
         public PlayerController Player { get { return playerController; } private set { playerController = value; } }
         public GameData Data { get { return isRandom ? randomGameSlot : this.gameSlots[this.currentSlot]; } private set { if (isRandom) { randomGameSlot = value; } else { this.gameSlots[this.currentSlot] = value; } } }
+        public bool RunStarted { get => runStarted; set => runStarted = value; }
 
         public IState CurrentState
         {
@@ -48,6 +50,8 @@ namespace HackedDesign
             }
         }
 
+        
+
         void Awake() => CheckBindings();
         void Start() => Initialization();
 
@@ -57,6 +61,8 @@ namespace HackedDesign
 
         public void SetPlaying() => CurrentState = new PlayingState(this.playerController);
         public void AddTime(int time) => Data.timer += time;
+        public void StartRun() => RunStarted = true;
+        public void EndRun() => RunStarted = false;
 
         private GameManager() => Instance = this;
 
@@ -71,12 +77,14 @@ namespace HackedDesign
 
         private void Initialization()
         {
+            RunStarted = false;
             for(int i = 0; i < 3; i++)
             {
                 gameSlots.Add(new GameData());
             }
             LoadLevel();
             SetPlaying();
+            
         }
 
         private void LoadLevel()

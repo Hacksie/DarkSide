@@ -17,7 +17,7 @@ namespace HackedDesign
         // Update is called once per frame
         void Update()
         {
-            timer.text = GameManager.Instance.Data.timer.ToString();
+            timer.text = GameManager.Instance.Data.timer.ToString("N0");
         }
     }
 }

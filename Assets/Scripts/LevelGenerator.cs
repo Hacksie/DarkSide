@@ -29,23 +29,22 @@ namespace HackedDesign
 
             remainingLength -= section.length;
 
-            SpawnBarrier(startTimeBarrier, entryPos);
+            SpawnBarrier(startTimeBarrier, 8, true, section.exit.transform.position);
 
 
             Logger.Log(this, "Remaining Length:", remainingLength.ToString());
 
-            while(remainingLength > 1)
+            while (remainingLength > 1)
             {
                 section = SpawnSection(sectionPrefabs, section.exit.transform.position, remainingLength);
-                
+
                 remainingLength -= section.length;
 
-                SpawnBarrier(sectionTimeBarrier, section.exit.transform.position);
-
+                SpawnBarrier(sectionTimeBarrier, section.length, false, section.exit.transform.position);
 
                 Logger.Log(this, "Remaining Length:", remainingLength.ToString());
             }
-            
+
             //Logger.Log(this, "remainingLength:", remainingLength.ToString());
 
             section = SpawnSection(endPrefabs, section.exit.transform.position, 1);
@@ -59,9 +58,9 @@ namespace HackedDesign
             }
         }
 
-        public Section SpawnSection(List<Section> sectionList, Vector3 position, int remainingLength)
+        public Section SpawnSection(List<Section> sectionPrefabList, Vector3 position, int remainingLength)
         {
-            var available = sectionList.Where(s => s.length <= remainingLength).ToList();
+            var available = sectionPrefabList.Where(s => s.length <= remainingLength).ToList();
 
             int index = Random.Range(0, available.Count());
 
@@ -69,10 +68,14 @@ namespace HackedDesign
             return sectionObj.GetComponent<Section>();
         }
 
-        public TimeBarrier SpawnBarrier(GameObject barrier, Vector3 position)
+        public TimeBarrier SpawnBarrier(GameObject barrierPrefab, int time, bool start, Vector3 position)
         {
-            var barrierObj = GameObject.Instantiate(barrier, position, Quaternion.identity, parent.transform);
-            return barrierObj.GetComponent<TimeBarrier>();
+            var barrierObj = GameObject.Instantiate(barrierPrefab, position, Quaternion.identity, parent.transform);
+            var barrier = barrierObj.GetComponent<TimeBarrier>();
+
+            barrier.SetTime(time, start);
+
+            return barrier;
         }
     }
 }

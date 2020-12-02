@@ -16,7 +16,7 @@ namespace HackedDesign
         [SerializeField] public float maxEnergy = 100;
         [SerializeField] public int bullets = 32;
         [SerializeField] public int maxBullets = 32;
-        [SerializeField] public float timer = 64;
+        [SerializeField] public float timer = 0;
         [SerializeField] public int score = 0;
         [SerializeField] public int currentLevelIndex = 0;
         [SerializeField] public int seed = 0;
