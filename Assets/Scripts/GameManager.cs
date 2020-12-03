@@ -15,12 +15,18 @@ namespace HackedDesign
         [SerializeField] private int gameLength = 24;
         [SerializeField] private bool isRandom = false;
         [SerializeField] private bool runStarted = false;
+        [SerializeField] private GameSettings settings = null;
 
         [Header("Data")]
         [SerializeField] public int currentSlot = 0;
         [SerializeField] public List<GameData> gameSlots = new List<GameData>(3);
         [SerializeField] public GameData randomGameSlot = new GameData();
-        
+
+        [Header("UI")]
+        [SerializeField] private UI.AbstractPresenter mainMenuPresenter = null;
+        [SerializeField] private UI.AbstractPresenter hudPresenter = null;
+        [SerializeField] private UI.AbstractPresenter levelOverPresenter = null;
+
 
         private IState currentState;
 
@@ -29,6 +35,7 @@ namespace HackedDesign
         public PlayerController Player { get { return playerController; } private set { playerController = value; } }
         public GameData Data { get { return isRandom ? randomGameSlot : this.gameSlots[this.currentSlot]; } private set { if (isRandom) { randomGameSlot = value; } else { this.gameSlots[this.currentSlot] = value; } } }
         public bool RunStarted { get => runStarted; set => runStarted = value; }
+        public GameSettings GameSettings { get { return settings; } private set { settings = value; } }
 
         public IState CurrentState
         {
@@ -50,7 +57,7 @@ namespace HackedDesign
             }
         }
 
-        
+
 
         void Awake() => CheckBindings();
         void Start() => Initialization();
@@ -59,39 +66,43 @@ namespace HackedDesign
         void LateUpdate() => CurrentState.LateUpdate();
         void FixedUpdate() => CurrentState.FixedUpdate();
 
-        public void SetPlaying() => CurrentState = new PlayingState(this.playerController);
+        public void SetPlaying() => CurrentState = new PlayingState(this.playerController, this.hudPresenter);
+        public void SetMainMenu() => CurrentState = new MainMenuState(this.mainMenuPresenter);
+        public void SetLevelOver() => CurrentState = new LevelOverState(this.playerController, this.levelOverPresenter);
+        
         public void AddTime(int time) => Data.timer += time;
         public void StartRun() => RunStarted = true;
         public void EndRun() => RunStarted = false;
 
-        private GameManager() => Instance = this;
+        public void LoadLevel()
+        {
+            levelGenerator.Generate(gameLength);
+        }
 
-        
+        private GameManager() => Instance = this;
 
         private void CheckBindings()
         {
             Player = this.playerController ?? FindObjectOfType<PlayerController>();
-            // LevelRenderer = this.levelRenderer ?? FindObjectOfType<LevelRenderer>();
-            // EntityPool = this.entityPool ?? FindObjectOfType<EntityPool>();
         }
 
         private void Initialization()
         {
             RunStarted = false;
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 gameSlots.Add(new GameData());
             }
-            LoadLevel();
-            SetPlaying();
-            
+
+            HideAllUI();
+
+            SetMainMenu();
         }
 
-        private void LoadLevel()
+        private void HideAllUI()
         {
-            levelGenerator.Generate(gameLength);
-            //this.currentLevel = levelGenerator.Generate(10, 9);
+            hudPresenter.Hide();
+            levelOverPresenter.Hide();
         }
-
     }
 }

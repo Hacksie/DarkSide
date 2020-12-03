@@ -5,30 +5,30 @@ namespace HackedDesign
     public class PlayingState : IState
     {
         private PlayerController player;
+        private UI.AbstractPresenter hudPresenter;
 
         public bool PlayerActionAllowed => true;
 
-        public PlayingState(PlayerController player)
+        public PlayingState(PlayerController player, UI.AbstractPresenter hudPresenter)
         {
             this.player = player;
+            this.hudPresenter = hudPresenter;
         }
 
 
         public void Begin()
         {
-
+            GameManager.Instance.LoadLevel();
+            hudPresenter.Show();
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         public void End()
         {
-
+            hudPresenter.Hide();
         }
 
-        public void EndDialog()
-        {
-            throw new System.NotImplementedException();
-        }
-
+  
         public void FixedUpdate()
         {
 
@@ -36,17 +36,13 @@ namespace HackedDesign
 
         public void LateUpdate()
         {
-
+            hudPresenter.Repaint();
         }
 
-        public void ShowDialog()
-        {
-            throw new System.NotImplementedException();
-        }
-
+   
         public void Start()
         {
-            throw new System.NotImplementedException();
+            
         }
 
 

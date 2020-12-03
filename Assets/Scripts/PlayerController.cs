@@ -43,7 +43,7 @@ namespace HackedDesign
         // Start is called before the first frame update
         void Start()
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            //
         }
 
         // Update is called once per frame
@@ -74,7 +74,10 @@ namespace HackedDesign
 
         public void FireEvent(InputAction.CallbackContext context)
         {
-            Logger.Log(this, "Fire!");
+            if (GameManager.Instance.CurrentState.PlayerActionAllowed)
+            {
+                Logger.Log(this, "Fire!");
+            }
         }
 
         public void DashEvent(InputAction.CallbackContext context)

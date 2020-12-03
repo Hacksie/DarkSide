@@ -29,8 +29,7 @@ namespace HackedDesign
 
             remainingLength -= section.length;
 
-            SpawnBarrier(startTimeBarrier, 8, true, section.exit.transform.position);
-
+            SpawnBarrier(startTimeBarrier, GameManager.Instance.GameSettings.initialAddTime, true, section.exit.transform.position);
 
             Logger.Log(this, "Remaining Length:", remainingLength.ToString());
 
@@ -48,6 +47,11 @@ namespace HackedDesign
             //Logger.Log(this, "remainingLength:", remainingLength.ToString());
 
             section = SpawnSection(endPrefabs, section.exit.transform.position, 1);
+
+
+            var spawnLocations = GetSpawnLocations();
+
+            SpawnLargeEnemies(spawnLocations, 2);
         }
 
         public void DestroyLevel()
@@ -76,6 +80,41 @@ namespace HackedDesign
             barrier.SetTime(time, start);
 
             return barrier;
+        }
+
+        public void SpawnLargeEnemies(List<GameObject> spawnLocations, int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                GameObject loc = spawnLocations.FirstOrDefault(l => l.CompareTag("LargeSpawn"));
+
+                if (loc != null)
+                {
+                    Logger.Log(this, loc.transform.position.ToString());
+
+                    var enemy = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+
+                    enemy.transform.position = loc.transform.position + new Vector3(0, 1, 0);
+                    spawnLocations.Remove(loc);
+                } 
+                else 
+                {
+                    Logger.Log(this, "No large spawn location found");
+                }
+
+            }
+
+
+        }
+
+        public List<GameObject> GetSpawnLocations()
+        {
+            List<GameObject> spawnLocations = new List<GameObject>();
+            spawnLocations.AddRange(GameObject.FindGameObjectsWithTag("SmallSpawn"));
+            spawnLocations.AddRange(GameObject.FindGameObjectsWithTag("MediumSpawn"));
+            spawnLocations.AddRange(GameObject.FindGameObjectsWithTag("LargeSpawn"));
+
+            return spawnLocations;
         }
     }
 }

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Entry
   - Exit
+  - SmallSpawn
+  - MediumSpawn
+  - LargeSpawn
   layers:
   - Default
   - TransparentFX

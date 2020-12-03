@@ -20,5 +20,6 @@ namespace HackedDesign
         [SerializeField] public int score = 0;
         [SerializeField] public int currentLevelIndex = 0;
         [SerializeField] public int seed = 0;
+        [SerializeField] public bool permadeath = false;
     }
 }
