@@ -19,7 +19,8 @@ namespace HackedDesign
         public void Begin()
         {
             GameManager.Instance.LoadLevel();
-            hudPresenter.Show();
+            this.hudPresenter.Show();
+            this.player.Reset();
             Cursor.lockState = CursorLockMode.Locked;
         }
 
@@ -36,6 +37,7 @@ namespace HackedDesign
 
         public void LateUpdate()
         {
+            player.LateUpdateBehaviour();
             hudPresenter.Repaint();
         }
 
@@ -48,15 +50,24 @@ namespace HackedDesign
 
         public void Update()
         {
-            if (GameManager.Instance.RunStarted)
+            EnergyRegen();
+            
+
+            if (GameManager.Instance.RunStarted && !GameManager.Instance.GameSettings.infinity)
             {
                 GameManager.Instance.Data.timer -= Time.deltaTime;
-                if(GameManager.Instance.Data.timer <= 0)
+                if(GameManager.Instance.Data.timer <= 0 )
                 {
-                    Logger.Log("Playing State", "Game Over");
+                    //Logger.Log("Playing State", "Game Over");
+                    GameManager.Instance.SetTimeOver();
                 }
             }
             this.player.UpdateBehaviour();
+        }
+
+        private void EnergyRegen()
+        {
+            GameManager.Instance.ConsumeEnergy(-1 * GameManager.Instance.GameSettings.energyBaseRegen * Time.deltaTime);
         }
     }
 }

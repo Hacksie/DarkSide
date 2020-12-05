@@ -12,9 +12,17 @@ namespace HackedDesign
         [SerializeField] public float mediumAdj = 0.8f;
         [SerializeField] public float hardAdj = 0.6f;
         [SerializeField] public int initialAddTime = 8;
+        [SerializeField] public int largeSpawns = 2;
+        [SerializeField] public int mediumSpawns = 5;
+        [SerializeField] public int smallSpawns = 20;
+        [SerializeField] public float energyBaseRegen = 1;
+        [SerializeField] public float dashEnergy = 33;
+        [SerializeField] public float footstepTime = 0.3f;
+        [SerializeField] public float footstepSpeedSqr = 1.0f;
         [Header("Cheats")]
         [SerializeField] public bool invulnerability = true;
         [SerializeField] public bool spawn = true;
+        [SerializeField] public bool infinity = false;
         [SerializeField] public bool skipDialog = true;
     }
 }

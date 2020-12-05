@@ -19,6 +19,12 @@ namespace HackedDesign
         [SerializeField] GameObject sectionTimeBarrier;
         [SerializeField] GameObject endTimeBarrier;
 
+        public void GenerateLevelSelect()
+        {
+            DestroyLevel();
+            var section = SpawnSection(startPrefabs, parent.transform.position, 1);
+        }
+
         public void Generate(int length)
         {
             Logger.Log(this, "Generating level");
@@ -29,7 +35,7 @@ namespace HackedDesign
 
             remainingLength -= section.length;
 
-            SpawnBarrier(startTimeBarrier, GameManager.Instance.GameSettings.initialAddTime, true, section.exit.transform.position);
+            SpawnBarrier(startTimeBarrier, 0, true, section.exit.transform.position);
 
             Logger.Log(this, "Remaining Length:", remainingLength.ToString());
 
@@ -44,14 +50,13 @@ namespace HackedDesign
                 Logger.Log(this, "Remaining Length:", remainingLength.ToString());
             }
 
-            //Logger.Log(this, "remainingLength:", remainingLength.ToString());
-
             section = SpawnSection(endPrefabs, section.exit.transform.position, 1);
 
+            var spawnLocations = GetSpawnLocations().OrderBy(x => System.Guid.NewGuid()).ToList();
 
-            var spawnLocations = GetSpawnLocations();
-
-            SpawnLargeEnemies(spawnLocations, 2);
+            SpawnLargeEnemies(spawnLocations, GameManager.Instance.GameSettings.largeSpawns);
+            SpawnMediumEnemies(spawnLocations, GameManager.Instance.GameSettings.mediumSpawns);
+            SpawnSmallEnemies(spawnLocations, GameManager.Instance.GameSettings.smallSpawns);
         }
 
         public void DestroyLevel()
@@ -86,26 +91,61 @@ namespace HackedDesign
         {
             for (int i = 0; i < count; i++)
             {
-                GameObject loc = spawnLocations.FirstOrDefault(l => l.CompareTag("LargeSpawn"));
+                GameObject spawnLocation = spawnLocations.FirstOrDefault(l => l.CompareTag("LargeSpawn"));
 
-                if (loc != null)
+                if (spawnLocation != null)
                 {
-                    Logger.Log(this, loc.transform.position.ToString());
+                    Logger.Log(this, spawnLocation.transform.position.ToString());
 
-                    var enemy = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-
-                    enemy.transform.position = loc.transform.position + new Vector3(0, 1, 0);
-                    spawnLocations.Remove(loc);
+                    var enemy = GameManager.Instance.EntityPool.SpawnLargeEnemy(spawnLocation.transform.position);
+                    spawnLocations.Remove(spawnLocation);
                 } 
                 else 
                 {
                     Logger.Log(this, "No large spawn location found");
                 }
-
             }
-
-
         }
+
+        public void SpawnMediumEnemies(List<GameObject> spawnLocations, int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                GameObject spawnLocation = spawnLocations.FirstOrDefault(l => (l.CompareTag("MediumSpawn") || l.CompareTag("LargeSpawn")));
+
+                if (spawnLocation != null)
+                {
+                    Logger.Log(this, spawnLocation.transform.position.ToString());
+
+                    var enemy = GameManager.Instance.EntityPool.SpawnMediumEnemy(spawnLocation.transform.position);
+                    spawnLocations.Remove(spawnLocation);
+                } 
+                else 
+                {
+                    Logger.Log(this, "No medium spawn location found");
+                }
+            }
+        }
+
+        public void SpawnSmallEnemies(List<GameObject> spawnLocations, int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                GameObject spawnLocation = spawnLocations.FirstOrDefault(l => (l.CompareTag("SmallSpawn") || l.CompareTag("MediumSpawn") || l.CompareTag("LargeSpawn")));
+
+                if (spawnLocation != null)
+                {
+                    Logger.Log(this, spawnLocation.transform.position.ToString());
+
+                    var enemy = GameManager.Instance.EntityPool.SpawnSmallEnemy(spawnLocation.transform.position);
+                    spawnLocations.Remove(spawnLocation);
+                } 
+                else 
+                {
+                    Logger.Log(this, "No small spawn location found");
+                }
+            }
+        }        
 
         public List<GameObject> GetSpawnLocations()
         {

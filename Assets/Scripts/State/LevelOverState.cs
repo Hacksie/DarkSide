@@ -7,7 +7,7 @@ namespace HackedDesign
         private PlayerController player;
         private UI.AbstractPresenter levelOverPresenter;
 
-        public bool PlayerActionAllowed => true;
+        public bool PlayerActionAllowed => false;
 
         public LevelOverState(PlayerController player, UI.AbstractPresenter levelOverPresenter)
         {

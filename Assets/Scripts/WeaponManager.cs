@@ -8,7 +8,8 @@ namespace HackedDesign
     public class WeaponManager : MonoBehaviour
     {
         [Header("GameObjects")]
-        [SerializeField] List<GameObject> weapons;
+        [SerializeField] List<Weapon> weapons;
+        [SerializeField] Weapon melee;
 
         [Header("Settings")]
         [Range(0, 2)]
@@ -23,12 +24,23 @@ namespace HackedDesign
         {
             HideAll();
 
-            weapons[currentWeapon].SetActive(true);
+            weapons[currentWeapon].gameObject.SetActive(true);
+            
         }
 
         void Update()
         {
-            this.transform.localPosition = new Vector3(offset[currentOffset], verticalOffset, 0);
+            this.transform.localPosition = new Vector3(offset[GameManager.Instance.PlayerPreferences.gunPosition], verticalOffset, 0);
+        }
+
+        public Weapon GetCurrentWeapon()
+        {
+            return weapons[currentWeapon];
+        }
+
+        public Weapon GetMeleeWeapon()
+        {   
+            return melee;
         }
 
         public void NextWeaponEvent(InputAction.CallbackContext context)
@@ -51,30 +63,32 @@ namespace HackedDesign
         {
             for (int i = 0; i < weapons.Count; i++)
             {
-                weapons[i].SetActive(false);
+                weapons[i].gameObject.SetActive(false);
             }
         }
 
+
+
         private void NextWeapon()
         {
-            weapons[currentWeapon].SetActive(false);
+            weapons[currentWeapon].gameObject.SetActive(false);
             currentWeapon++;
             if (currentWeapon >= weapons.Count)
             {
                 currentWeapon = 0;
             }
-            weapons[currentWeapon].SetActive(true);
+            weapons[currentWeapon].gameObject.SetActive(true);
         }
 
         private void PrevWeapon()
         {
-            weapons[currentWeapon].SetActive(false);
+            weapons[currentWeapon].gameObject.SetActive(false);
             currentWeapon--;
             if (currentWeapon < 0)
             {
                 currentWeapon = weapons.Count - 1;
             }
-            weapons[currentWeapon].SetActive(true);
+            weapons[currentWeapon].gameObject.SetActive(true);
         }
 
 
