@@ -5,10 +5,13 @@ namespace HackedDesign
     public class MainMenuState : IState
     {
         private UI.AbstractPresenter menuPresenter;
+        private LevelGenerator levelGenerator;
 
-        public MainMenuState(UI.AbstractPresenter mainMenuPresenter)
+        public MainMenuState(LevelGenerator levelGenerator, UI.AbstractPresenter mainMenuPresenter)
         {
             this.menuPresenter = mainMenuPresenter;
+            this.levelGenerator = levelGenerator;
+            
         }
 
         public bool PlayerActionAllowed => false;
@@ -16,6 +19,7 @@ namespace HackedDesign
 
         public void Begin()
         {
+            this.levelGenerator.DestroyLevel();
             this.menuPresenter.Show();
             Cursor.lockState = CursorLockMode.None;
             //AudioManager.Instance.PlayMenuMusic();

@@ -1,3 +1,4 @@
+#nullable enable
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,14 +7,15 @@ namespace HackedDesign
     public class PlayerController : MonoBehaviour
     {
         [Header("GameObjects")]
-        [SerializeField] private CharacterController character = null;
-        [SerializeField] private Camera lookCam = null;
+        [SerializeField] private CharacterController? character;
+        [SerializeField] private Camera? lookCam;
+        [SerializeField] private WeaponManager? weaponManager;
 
         [Header("Settings")]
         [SerializeField] private float mouseSensitivity = 200f;
         [SerializeField] private float moveSpeed = 20.0f;
         [SerializeField] private float gravity = -9.81f;
-        [SerializeField] private Transform groundCheck;
+        [SerializeField] private Transform? groundCheck;
         [SerializeField] private float groundDistance = 0.4f;
         [SerializeField] private LayerMask groundMask;
         [SerializeField] private float jumpSpeed = 20f;
@@ -21,9 +23,7 @@ namespace HackedDesign
         [SerializeField] private float dashTimeout = 5f;
         [SerializeField] private float dashPlayTime = 0.4f;
 
-
         Vector3 velocity;
-
 
         bool isDashing = false;
         float dashLastTimer = 0;
@@ -39,25 +39,47 @@ namespace HackedDesign
         private Vector2 moveDirection = Vector2.zero;
         private bool jumpFlag = false;
         private bool dashFlag = false;
+        private bool fireFlag = false;
+        private bool meleeFlag = false;
 
-        // Start is called before the first frame update
         void Start()
         {
-            //
+            //weaponManager = GameManager.Instance.wea
         }
 
         // Update is called once per frame
         public void UpdateBehaviour()
         {
-            Look();
-            Movement();
+            if (GameManager.Instance.CurrentState.PlayerActionAllowed)
+            {
+                Fire();
+                Look();
+                Movement();
+            }
+        }
+
+        public void LateUpdateBehaviour()
+        {
+            if (character.velocity.sqrMagnitude > GameManager.Instance.GameSettings.footstepSpeedSqr)
+            {
+                if (isDashing)
+                {
+                    AudioManager.Instance.PlayDash();
+                }
+                else
+                {
+                    AudioManager.Instance.PlayFootsteps();
+                }
+            }
+
+
+
         }
 
         public void MoveEvent(InputAction.CallbackContext context)
         {
             this.moveDirection = context.ReadValue<Vector2>();
         }
-
 
         public void LookEvent(InputAction.CallbackContext context)
         {
@@ -74,9 +96,21 @@ namespace HackedDesign
 
         public void FireEvent(InputAction.CallbackContext context)
         {
-            if (GameManager.Instance.CurrentState.PlayerActionAllowed)
+            if (context.started)
             {
-                Logger.Log(this, "Fire!");
+                this.fireFlag = true;
+            }
+            else if (context.canceled)
+            {
+                this.fireFlag = false;
+            }
+        }
+
+        public void MeleeEvent(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                this.meleeFlag = true;
             }
         }
 
@@ -88,10 +122,51 @@ namespace HackedDesign
             }
         }
 
+        public void Reset()
+        {
+            this.transform.position = Vector3.zero;
+            this.transform.rotation = Quaternion.identity;
+        }
+
+        private void Fire()
+        {
+            if (fireFlag && GameManager.Instance.CurrentState.PlayerActionAllowed)
+            {
+                var weapon = GameManager.Instance.WeaponManager?.GetCurrentWeapon();
+
+                if (weapon != null && weapon.CanFire())
+                {
+                    weapon.Fire();
+                }
+            }
+            else
+            {
+                fireFlag = false;
+            }
+        }
+
+        private void Melee()
+        {
+            if (meleeFlag && GameManager.Instance.CurrentState.PlayerActionAllowed)
+            {
+                var melee = GameManager.Instance.WeaponManager?.GetMeleeWeapon();
+
+                if (melee != null && melee.CanFire())
+                {
+                    melee.Fire();
+                }
+            }
+            else
+            {
+                meleeFlag = false;
+            }
+        }
+
         private void Movement()
         {
             Vector3 direction = Vector3.ClampMagnitude(((transform.right * this.moveDirection.x) + (transform.forward * this.moveDirection.y)), 1);
-            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+            isGrounded = groundCheck != null ? Physics.CheckSphere(groundCheck.position, groundDistance, groundMask) : true;
 
             if (isGrounded)
             {
@@ -122,15 +197,17 @@ namespace HackedDesign
                 doubleJumpAllowed = false;
             }
 
-            if (dashFlag && Time.time >= (dashLastTimer + dashTimeout))
+            if (dashFlag && CanDash())
             {
                 dashLastTimer = Time.time;
                 isDashing = true;
                 dashDirection = direction == Vector3.zero ? transform.forward : direction;
+                GameManager.Instance.ConsumeEnergy(GameManager.Instance.GameSettings.dashEnergy);
             }
 
             Vector3 move = ((direction * moveSpeed) + (transform.up * verticalVelocity) + (isDashing ? dashDirection * dashSpeed : Vector3.zero)) * Time.deltaTime;
-            character.Move(move);
+            character?.Move(move);
+
 
             jumpFlag = false;
             dashFlag = false;
@@ -145,7 +222,16 @@ namespace HackedDesign
             xRotation -= mouse.y;
             xRotation = Mathf.Clamp(xRotation, -90, 90);
 
-            lookCam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+            if (lookCam != null)
+            {
+                lookCam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+            }
         }
+
+        private bool CanDash()
+        {
+            return Time.time >= (dashLastTimer + dashTimeout) && (GameManager.Instance.Data.energy >= GameManager.Instance.GameSettings.dashEnergy);
+        }
+
     }
 }

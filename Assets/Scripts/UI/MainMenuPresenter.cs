@@ -12,7 +12,6 @@ namespace HackedDesign.UI
     {
         [Header("Main")]
         [SerializeField] private GameObject defaultPanel = null;
-        [SerializeField] private GameObject randomPanel = null;
         [SerializeField] private GameObject optionsPanel = null;
         [SerializeField] private GameObject creditsPanel = null;
 
@@ -22,28 +21,19 @@ namespace HackedDesign.UI
         {
             switch (state)
             {
-                case MainMenuState.Random:
-                    defaultPanel.SetActive(false);
-                    randomPanel.SetActive(true);
-                    optionsPanel.SetActive(false);
-                    creditsPanel.SetActive(false);
-                break;
                 case MainMenuState.Options:
                     defaultPanel.SetActive(false);
-                    randomPanel.SetActive(false);
                     optionsPanel.SetActive(true);
                     creditsPanel.SetActive(false);
                 break;
                 case MainMenuState.Credits:
                     defaultPanel.SetActive(false);
-                    randomPanel.SetActive(false);
                     optionsPanel.SetActive(false);
                     creditsPanel.SetActive(true);
                 break;
                 case MainMenuState.Default:
                 default:
                     defaultPanel.SetActive(true);
-                    randomPanel.SetActive(false);
                     optionsPanel.SetActive(false);
                     creditsPanel.SetActive(false);
                 break;
@@ -55,11 +45,6 @@ namespace HackedDesign.UI
             Logger.Log(this,"Play event");
             StartEvent();
         }   
-
-        public void RandomEvent()
-        {
-            state = MainMenuState.Random;
-        }
 
         public void OptionsEvent()
         {
@@ -78,7 +63,7 @@ namespace HackedDesign.UI
 
         public void StartEvent()
         {
-            GameManager.Instance.SetPlaying();
+            GameManager.Instance.SetRunStart();
             // if (GameManager.Instance.gameSlots[GameManager.Instance.currentSlot] == null || GameManager.Instance.gameSlots[GameManager.Instance.currentSlot].newGame)
             // {
             //     Logger.Log(this, "New game");

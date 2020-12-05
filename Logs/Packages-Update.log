@@ -64,3 +64,21 @@ Update Mode: updateDependencies
 The following packages were updated:
   com.unity.ide.visualstudio from version 2.0.3 to 2.0.5
   com.unity.test-framework from version 1.1.18 to 1.1.19
+
+=== Fri Dec  4 07:55:51 2020
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.ide.rider from version 2.0.7 to 3.0.2
+  com.unity.timeline from version 1.4.2 to 1.4.4
+
+=== Sat Dec  5 08:29:24 2020
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.probuilder from version 4.4.0 to 5.0.0-pre.7
+  com.unity.timeline from version 1.4.4 to 1.5.1-pre.2

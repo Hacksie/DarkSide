@@ -16,7 +16,7 @@ namespace HackedDesign.UI
 
         public void NextLevel()
         {
-            //GameManager.Instance
+            GameManager.Instance.SetMainMenu();
         }
     }
 }
