@@ -58,9 +58,12 @@ namespace HackedDesign
 
             var spawnLocations = GetSpawnLocations().OrderBy(x => System.Guid.NewGuid()).ToList();
 
-            SpawnLargeEnemies(spawnLocations, GameManager.Instance.GameSettings.largeSpawns);
-            SpawnMediumEnemies(spawnLocations, GameManager.Instance.GameSettings.mediumSpawns);
-            SpawnSmallEnemies(spawnLocations, GameManager.Instance.GameSettings.smallSpawns);
+            // FIXME: small can spawn at medium etc
+            SpawnEnemies(spawnLocations, "LargeSpawn", 1, GameManager.Instance.GameSettings.largeSpawns);
+            SpawnEnemies(spawnLocations, "MediumSpawn", 0.66f, GameManager.Instance.GameSettings.largeSpawns);
+            SpawnEnemies(spawnLocations, "SmallSpawn", 0.33f, GameManager.Instance.GameSettings.largeSpawns);
+            //SpawnMediumEnemies(spawnLocations, GameManager.Instance.GameSettings.mediumSpawns);
+            //SpawnSmallEnemies(spawnLocations, GameManager.Instance.GameSettings.smallSpawns);
         }
 
         public void DestroyLevel()
@@ -91,6 +94,29 @@ namespace HackedDesign
             return barrier;
         }
 
+        public void SpawnEnemies(List<GameObject> spawnLocations, string spawnLocationTag, float size, int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                GameObject spawnLocation = spawnLocations.FirstOrDefault(l => l.CompareTag(spawnLocationTag));
+
+                if (spawnLocation != null)
+                {
+                    Logger.Log(this, spawnLocation.transform.position.ToString());
+
+                    //var enemy = GameManager.Instance.EntityPool.SpawnRandomLargeEnemy(spawnLocation.transform.position);
+                    var enemy = GameManager.Instance.EntityPool.SpawnRandomEnemy(spawnLocation.transform.position, size);
+                    //enemy.Randomize();
+                    enemy.gameObject.transform.Rotate(0, 180, 0);
+                    spawnLocations.Remove(spawnLocation);
+                }
+                else
+                {
+                    Logger.Log(this, "No spawn location found: ", spawnLocationTag);
+                }
+            }
+        }        
+
         public void SpawnLargeEnemies(List<GameObject> spawnLocations, int count)
         {
             for (int i = 0; i < count; i++)
@@ -101,8 +127,9 @@ namespace HackedDesign
                 {
                     Logger.Log(this, spawnLocation.transform.position.ToString());
 
-                    var enemy = GameManager.Instance.EntityPool.SpawnRandomLargeEnemy(spawnLocation.transform.position);
-                    enemy.Randomize();
+                    //var enemy = GameManager.Instance.EntityPool.SpawnRandomLargeEnemy(spawnLocation.transform.position);
+                    var enemy = GameManager.Instance.EntityPool.SpawnRandomEnemy(spawnLocation.transform.position, 1);
+                    //enemy.Randomize();
                     enemy.gameObject.transform.Rotate(0, 180, 0);
                     spawnLocations.Remove(spawnLocation);
                 }

@@ -10,6 +10,7 @@ namespace HackedDesign
         public const string gameVersion = "1.0";
 
         [Header("Game")]
+        [SerializeField] private Camera? mainCamera = null;
         [SerializeField] private PlayerController? playerController = null;
         [SerializeField] private LevelGenerator? levelGenerator = null;
         [SerializeField] private EntityPool? entityPool = null;
@@ -37,6 +38,7 @@ namespace HackedDesign
 
         public static GameManager Instance { get; private set; }
 
+        public Camera? MainCamera { get { return mainCamera; } private set { mainCamera = value; } }
         public PlayerController? Player { get { return playerController; } private set { playerController = value; } }
         public GameData Data { get { return isRandom ? randomGameSlot : this.gameSlots[this.currentSlot]; } private set { if (isRandom) { randomGameSlot = value; } else { this.gameSlots[this.currentSlot] = value; } } }
         public bool RunStarted { get => runStarted; set => runStarted = value; }
@@ -108,6 +110,7 @@ namespace HackedDesign
 
         private void Initialization()
         {
+            mainCamera = mainCamera ?? Camera.main;
             preferences = new PlayerPreferences();
             RunStarted = false;
             for (int i = 0; i < 3; i++)

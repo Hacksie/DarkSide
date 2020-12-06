@@ -27,9 +27,12 @@ namespace HackedDesign
 
         void Update()
         {
-            body.transform.LookAt(GameManager.Instance.Player.transform);
-            
+            TrackPlayer();            
+        }
 
+        private void TrackPlayer()
+        {   
+            body.transform.LookAt(GameManager.Instance.MainCamera.transform);
         }
 
         private void HideAll()
