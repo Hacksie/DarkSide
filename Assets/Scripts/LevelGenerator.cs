@@ -41,7 +41,8 @@ namespace HackedDesign
 
             while (remainingLength > 1)
             {
-                section = SpawnSection(sectionPrefabs, section.exit.transform.position, remainingLength);
+                var start = section.exit.transform.position + (section.exit.transform.forward * GameManager.Instance.GameSettings.islandGap);
+                section = SpawnSection(sectionPrefabs, start, remainingLength);
 
                 remainingLength -= section.length;
 
@@ -50,7 +51,9 @@ namespace HackedDesign
                 Logger.Log(this, "Remaining Length:", remainingLength.ToString());
             }
 
-            section = SpawnSection(endPrefabs, section.exit.transform.position, 1);
+            var endpos = section.exit.transform.position + (section.exit.transform.forward * GameManager.Instance.GameSettings.islandGap);
+
+            section = SpawnSection(endPrefabs, endpos, 1);
 
             var spawnLocations = GetSpawnLocations().OrderBy(x => System.Guid.NewGuid()).ToList();
 

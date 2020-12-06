@@ -24,6 +24,7 @@ MonoBehaviour:
   dashEnergy: 25
   footstepTime: 0.3
   footstepSpeedSqr: 10
+  islandGap: 5
   invulnerability: 1
   spawn: 1
   infinity: 1
