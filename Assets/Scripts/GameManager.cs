@@ -18,7 +18,7 @@ namespace HackedDesign
         [SerializeField] private bool isRandom = false;
         [SerializeField] private bool runStarted = false;
         [SerializeField] private GameSettings? settings = null;
-        [SerializeField] private PlayerPreferences preferences = null;
+        [SerializeField] private PlayerPreferences? preferences = null;
         
 
         [Header("Data")]
@@ -61,7 +61,7 @@ namespace HackedDesign
             }
         }
 
-        static GameManager() => Instance = new GameManager();
+        //static GameManager() => Instance = new GameManager();
         private GameManager() => Instance = this;
 
         void Awake() => CheckBindings();

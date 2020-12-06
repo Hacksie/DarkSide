@@ -124,7 +124,7 @@ namespace HackedDesign
 
         public void Reset()
         {
-            this.transform.position = Vector3.zero;
+            this.transform.position = new Vector3(0, 1, 0);
             this.transform.rotation = Quaternion.identity;
         }
 

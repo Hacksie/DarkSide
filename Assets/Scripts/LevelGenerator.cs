@@ -10,6 +10,7 @@ namespace HackedDesign
     {
         [Header("GameObjects")]
         [SerializeField] GameObject parent;
+        [SerializeField] GameObject floor;
 
         [Header("Prefabs")]
         [SerializeField] List<Section> startPrefabs;
@@ -100,10 +101,12 @@ namespace HackedDesign
                 {
                     Logger.Log(this, spawnLocation.transform.position.ToString());
 
-                    var enemy = GameManager.Instance.EntityPool.SpawnLargeEnemy(spawnLocation.transform.position);
+                    var enemy = GameManager.Instance.EntityPool.SpawnRandomLargeEnemy(spawnLocation.transform.position);
+                    enemy.Randomize();
+                    enemy.gameObject.transform.Rotate(0, 180, 0);
                     spawnLocations.Remove(spawnLocation);
-                } 
-                else 
+                }
+                else
                 {
                     Logger.Log(this, "No large spawn location found");
                 }
@@ -122,8 +125,8 @@ namespace HackedDesign
 
                     var enemy = GameManager.Instance.EntityPool.SpawnMediumEnemy(spawnLocation.transform.position);
                     spawnLocations.Remove(spawnLocation);
-                } 
-                else 
+                }
+                else
                 {
                     Logger.Log(this, "No medium spawn location found");
                 }
@@ -142,13 +145,13 @@ namespace HackedDesign
 
                     var enemy = GameManager.Instance.EntityPool.SpawnSmallEnemy(spawnLocation.transform.position);
                     spawnLocations.Remove(spawnLocation);
-                } 
-                else 
+                }
+                else
                 {
                     Logger.Log(this, "No small spawn location found");
                 }
             }
-        }        
+        }
 
         public List<GameObject> GetSpawnLocations()
         {

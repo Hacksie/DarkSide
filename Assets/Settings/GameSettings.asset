@@ -17,7 +17,7 @@ MonoBehaviour:
   mediumAdj: 0.8
   hardAdj: 0.6
   initialAddTime: 8
-  largeSpawns: 2
+  largeSpawns: 3
   mediumSpawns: 5
   smallSpawns: 20
   energyBaseRegen: 5
