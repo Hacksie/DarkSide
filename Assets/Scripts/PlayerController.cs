@@ -60,7 +60,7 @@ namespace HackedDesign
 
         public void LateUpdateBehaviour()
         {
-            if (character.velocity.sqrMagnitude > GameManager.Instance.GameSettings.footstepSpeedSqr)
+            if (isGrounded && character.velocity.sqrMagnitude > GameManager.Instance.GameSettings.footstepSpeedSqr)
             {
                 if (isDashing)
                 {

@@ -25,6 +25,7 @@ MonoBehaviour:
   footstepTime: 0.3
   footstepSpeedSqr: 10
   islandGap: 5
+  floorDistance: -10
   invulnerability: 1
   spawn: 1
   infinity: 1

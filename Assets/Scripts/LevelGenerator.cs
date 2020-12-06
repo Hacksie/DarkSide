@@ -32,7 +32,11 @@ namespace HackedDesign
             Logger.Log(this, "Length: ", length.ToString());
             DestroyLevel();
             var remainingLength = length;
+            Bounds bounds = new Bounds();
             var section = SpawnSection(startPrefabs, parent.transform.position, remainingLength);
+
+            bounds.Encapsulate(section.gameObject.GetComponent<Renderer>().bounds);
+            
 
             remainingLength -= section.length;
 
@@ -44,6 +48,7 @@ namespace HackedDesign
             {
                 var start = section.exit.transform.position + (section.exit.transform.forward * GameManager.Instance.GameSettings.islandGap);
                 section = SpawnSection(sectionPrefabs, start, remainingLength);
+                bounds.Encapsulate(section.gameObject.GetComponent<Renderer>().bounds);
 
                 remainingLength -= section.length;
 
@@ -55,6 +60,12 @@ namespace HackedDesign
             var endpos = section.exit.transform.position + (section.exit.transform.forward * GameManager.Instance.GameSettings.islandGap);
 
             section = SpawnSection(endPrefabs, endpos, 1);
+            bounds.Encapsulate(section.gameObject.GetComponent<Renderer>().bounds);
+
+            //Logger.Log(this, "Bounds: ", bounds.min.y.ToString());
+            var floorPos = floor.transform.position;
+            floorPos.y = bounds.min.y + GameManager.Instance.GameSettings.floorDistance;
+            floor.transform.position = floorPos;
 
             var spawnLocations = GetSpawnLocations().OrderBy(x => System.Guid.NewGuid()).ToList();
 

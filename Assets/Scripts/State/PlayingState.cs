@@ -52,11 +52,10 @@ namespace HackedDesign
         {
             EnergyRegen();
             
-
-            if (GameManager.Instance.RunStarted && !GameManager.Instance.GameSettings.infinity)
+            if (GameManager.Instance.RunStarted)
             {
                 GameManager.Instance.Data.timer -= Time.deltaTime;
-                if(GameManager.Instance.Data.timer <= 0 )
+                if(GameManager.Instance.Data.timer <= 0 && !GameManager.Instance.GameSettings.infinity)
                 {
                     //Logger.Log("Playing State", "Game Over");
                     GameManager.Instance.SetTimeOver();
