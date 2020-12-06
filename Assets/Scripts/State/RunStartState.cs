@@ -14,11 +14,13 @@ namespace HackedDesign
 
             this.player = player;
             this.runStartPresenter = runStartPresenter;
+
         }
 
 
         public void Begin()
         {
+            this.player.Reset();
             GameManager.Instance.Data.timer = GameManager.Instance.GameSettings.initialAddTime;
             GameManager.Instance.LoadLevelSelect();
             runStartPresenter.Show();

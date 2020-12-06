@@ -10,6 +10,7 @@ namespace HackedDesign
     {
         [Header("GameObjects")]
         [SerializeField] GameObject parent;
+        [SerializeField] GameObject floor;
 
         [Header("Prefabs")]
         [SerializeField] List<Section> startPrefabs;
@@ -41,7 +42,8 @@ namespace HackedDesign
 
             while (remainingLength > 1)
             {
-                section = SpawnSection(sectionPrefabs, section.exit.transform.position, remainingLength);
+                var start = section.exit.transform.position + (section.exit.transform.forward * GameManager.Instance.GameSettings.islandGap);
+                section = SpawnSection(sectionPrefabs, start, remainingLength);
 
                 remainingLength -= section.length;
 
@@ -50,7 +52,9 @@ namespace HackedDesign
                 Logger.Log(this, "Remaining Length:", remainingLength.ToString());
             }
 
-            section = SpawnSection(endPrefabs, section.exit.transform.position, 1);
+            var endpos = section.exit.transform.position + (section.exit.transform.forward * GameManager.Instance.GameSettings.islandGap);
+
+            section = SpawnSection(endPrefabs, endpos, 1);
 
             var spawnLocations = GetSpawnLocations().OrderBy(x => System.Guid.NewGuid()).ToList();
 
@@ -97,10 +101,12 @@ namespace HackedDesign
                 {
                     Logger.Log(this, spawnLocation.transform.position.ToString());
 
-                    var enemy = GameManager.Instance.EntityPool.SpawnLargeEnemy(spawnLocation.transform.position);
+                    var enemy = GameManager.Instance.EntityPool.SpawnRandomLargeEnemy(spawnLocation.transform.position);
+                    enemy.Randomize();
+                    enemy.gameObject.transform.Rotate(0, 180, 0);
                     spawnLocations.Remove(spawnLocation);
-                } 
-                else 
+                }
+                else
                 {
                     Logger.Log(this, "No large spawn location found");
                 }
@@ -119,8 +125,8 @@ namespace HackedDesign
 
                     var enemy = GameManager.Instance.EntityPool.SpawnMediumEnemy(spawnLocation.transform.position);
                     spawnLocations.Remove(spawnLocation);
-                } 
-                else 
+                }
+                else
                 {
                     Logger.Log(this, "No medium spawn location found");
                 }
@@ -139,13 +145,13 @@ namespace HackedDesign
 
                     var enemy = GameManager.Instance.EntityPool.SpawnSmallEnemy(spawnLocation.transform.position);
                     spawnLocations.Remove(spawnLocation);
-                } 
-                else 
+                }
+                else
                 {
                     Logger.Log(this, "No small spawn location found");
                 }
             }
-        }        
+        }
 
         public List<GameObject> GetSpawnLocations()
         {

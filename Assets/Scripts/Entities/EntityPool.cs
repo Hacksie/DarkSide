@@ -18,10 +18,14 @@ namespace HackedDesign
             this.entityPool = entityPool ?? this.transform;
         }
 
-        public IEntity SpawnLargeEnemy(Vector3 position)
+        public Enemy SpawnRandomLargeEnemy(Vector3 position)
         {
             var gameObject = GameObject.Instantiate(largeEnemyPrefab, position, Quaternion.identity, entityPool);
-            IEntity e = gameObject.GetComponent<IEntity>();
+            var e = gameObject.GetComponent<Enemy>();
+
+            e.Randomize();
+            
+
             return e;
         }
 
