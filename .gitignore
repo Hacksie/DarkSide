@@ -4,6 +4,7 @@
 /[Bb]uild[s]/
 /Assets/_External/
 /Assets/Resources/_External/
+/Logs/
 /.vs/
 /.vscode/
 
