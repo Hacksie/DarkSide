@@ -1,6 +1,7 @@
 #nullable enable
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,15 +20,15 @@ namespace HackedDesign
 
         private bool isFiring = false;
 
+        public bool IsAutomatic => settings != null ? settings.automatic : false;
+        public bool CanFire => settings != null ? (Time.time - lastFired) > settings.fireRate : false;
+
         void Awake()
         {
             animator = GetComponent<Animator>();
+            barrel = GameManager.Instance.MainCamera.transform;
         }
 
-        public bool CanFire()
-        {
-            return settings != null ? (Time.time - lastFired) > settings.fireRate : false;
-        }
 
         public void Fire()
         {
@@ -37,13 +38,31 @@ namespace HackedDesign
                 return;
             }
 
-            if (CanFire() && GameManager.Instance.Data.bullets >= settings.boltCost && GameManager.Instance.Data.energy >= settings.energyCost)
+            if (CanFire && GameManager.Instance.Data.bullets >= settings.boltCost && GameManager.Instance.Data.energy >= settings.energyCost)
             {
                 lastFired = Time.time;
                 isFiring = true;
                 Logger.Log(this, "Fired");
                 GameManager.Instance.ConsumeEnergy(settings.energyCost);
                 GameManager.Instance.ConsumeBolts(settings.boltCost);
+
+                if (settings.fireSound != null)
+                {
+                    AudioManager.Instance.PlayFire(settings.fireSound);
+                }
+                else
+                {
+
+                    if (settings.weaponType == WeaponType.Bolt)
+                    {
+                        AudioManager.Instance.PlayBoltFire();
+                    }
+                    else
+                    {
+                        AudioManager.Instance.PlayEnergyFire();
+                    }
+                }
+
                 CalcShots();
             }
         }
@@ -58,39 +77,42 @@ namespace HackedDesign
             RaycastHit hit;
             for (int i = 0; i < settings.fragments; i++)
             {
-
-                if (Physics.Raycast(barrel.transform.position, CalcSpread(barrel.transform.forward, settings.spread), out hit, 2000, hitMask))
+                if (barrel != null && Physics.Raycast(barrel.transform.position, CalcSpread(barrel.transform.forward, settings.spread), out hit, 2000, hitMask))
                 {
                     Debug.DrawLine(barrel.transform.position, hit.point, Color.red, 1);
 
-                    if (settings.weaponType == WeaponType.Bolt)
+                    if (GameManager.Instance.EntityPool != null)
                     {
-                        AudioManager.Instance.PlayBoltFire();
+                        if (settings.weaponType == WeaponType.Energy)
+                        {
+                            GameManager.Instance.EntityPool.SpawnEnergySplash(hit.point);
+                        }
+                        else if (settings.weaponType == WeaponType.Bolt)
+                        {
+                            GameManager.Instance.EntityPool.SpawnBoltSplash(hit.point);
+                        }
                     }
-                    else
-                    {
-                        AudioManager.Instance.PlayEnergyFire();
-                    }
-
-                    Logger.Log(this, "Hit ", hit.transform.tag, " ", hit.transform.name);
 
                     if (hit.transform.CompareTag("Entity"))
                     {
 
                         var distance = hit.distance;
 
-                        Logger.Log(this, "Hit distance", distance.ToString());
+                        Logger.Log(this, "Hit, Distance:", distance.ToString());
 
-                        //var damage = 
+                        var damage = settings.damageRanges.FirstOrDefault(d => distance >= d.minDistance && distance < d.maxDistance);
 
-                        var entity = hit.transform.gameObject.GetComponentInParent<IEntity>();
-
-                        if (entity != null)
+                        if (damage != null)
                         {
-                            entity.Hit(1);
+                            var entity = hit.transform.gameObject.GetComponentInParent<IEntity>();
+
+                            if (entity != null)
+                            {
+                                entity.Hit(Random.Range(damage.minBoltDamage, damage.maxBoltDamage + 1), Random.Range(damage.minEnergyDamage, damage.maxEnergyDamage + 1));
+                            }
                         }
                     }
-                    //Logger.Log(this, "Hit!" + hit.transform.name);
+
                 }
             }
         }
@@ -114,7 +136,7 @@ namespace HackedDesign
         {
             if (animator != null)
             {
-                animator.SetBool("Heavy", settings.heavy);
+                animator.SetBool("Heavy", (settings != null && settings.heavy) || false);
                 animator.SetBool("Fire", isFiring);
             }
         }

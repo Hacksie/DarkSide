@@ -22,6 +22,8 @@ MonoBehaviour:
     maxDistance: 10
     minBoltDamage: 50
     maxBoltDamage: 100
-    minEnergyDamage: 0
-    maxEnergyDamage: 0
+    minEnergyDamage: 50
+    maxEnergyDamage: 100
   spread: 0
+  heavy: 0
+  sprite: {fileID: 0}

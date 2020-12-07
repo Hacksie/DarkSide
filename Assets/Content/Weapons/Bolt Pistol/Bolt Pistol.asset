@@ -38,4 +38,6 @@ MonoBehaviour:
     maxEnergyDamage: 0
   spread: 2
   heavy: 0
+  automatic: 0
   sprite: {fileID: 21300000, guid: 95460c48a2f07e84d99de0d55783a138, type: 3}
+  fireSound: {fileID: 8300000, guid: f19e3fdb9c8082647a2c32beca28ba84, type: 3}

@@ -1,37 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.AI;
 
 namespace HackedDesign
 {
-    public class Entity : MonoBehaviour, IEntity
+    public abstract class Entity : MonoBehaviour, IEntity
     {
-        public EntityState state = EntityState.Idle;
+        [SerializeField] protected NavMeshAgent agent;
+
+        //public EntityState state = EntityState.Passive;
         protected Animator animator = null;
         protected bool fire = false;
 
         protected Vector2 velocity;
         protected Vector2 direction;
 
+        public EntityState State { get; protected set; }
+
         protected void Awake()
         {
             this.animator = GetComponent<Animator>();
         }
 
-        public virtual void Hit(int amount)
+        public virtual void Hit(int boltAmount, int energyAmount)
         {
-            Logger.Log(this, "Hit! ", amount.ToString());
-            state = EntityState.Dead;
-            this.gameObject.SetActive(false);
+            //hitEvent.Invoke(boltAmount, energyAmount);
+            //state = EntityState.Dead;
+            //this.gameObject.SetActive(false);
         }
 
         public virtual void Alert()
         {
-            if (state == EntityState.Idle)
-            {
-                Logger.Log(this, "Alert!");
-                state = EntityState.Attack;
-            }
+ 
         }
 
         public virtual void UpdateBehaviour()
@@ -46,49 +48,16 @@ namespace HackedDesign
 
         protected virtual void Animate()
         {
-            switch (state)
-            {
-                case EntityState.Idle:
-                    // animator.SetFloat("velocity", 0);
-                    // animator.SetBool("shoot", this.fire);
-                    // animator.SetBool("crouch", false);
-                    // animator.SetBool("stealth", false);
-                    // animator.SetBool("alert", false);
-                    // animator.SetBool("dead", false);
-                    break;
-                case EntityState.Patrol:
-                    // animator.SetFloat("velocity", Mathf.Abs(velocity.x));
-                    // animator.SetBool("shoot", this.fire);
-                    // animator.SetBool("crouch", false);
-                    // animator.SetBool("stealth", false);
-                    // animator.SetBool("alert", false);
-                    // animator.SetBool("dead", false);
-                    break;                
-                case EntityState.Attack:
-                    // animator.SetFloat("velocity", 0);
-                    // animator.SetBool("alert", true);
-                    // animator.SetBool("shoot", this.fire);
-                    // animator.SetBool("crouch", false);
-                    // animator.SetBool("stealth", false);
-                    // animator.SetBool("dead", false);
-                    break;
-                case EntityState.Dead:
-                    // animator.SetFloat("velocity", 0);
-                    // animator.SetBool("alert", false);
-                    // animator.SetBool("shoot", false);
-                    // animator.SetBool("crouch", false);
-                    // animator.SetBool("stealth", false);
-                    // animator.SetBool("dead", true);
-                    break;
-            }
+            
         }
     }
 
     public enum EntityState
     {
-        Idle,
-        Patrol,
-        Attack,
+        Passive,
+        Tracking,
+        Angry,
+        Avoiding,
         Dead
     }
     

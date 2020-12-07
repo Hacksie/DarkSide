@@ -60,17 +60,17 @@ namespace HackedDesign
 
         public void LateUpdateBehaviour()
         {
-            if (isGrounded && character.velocity.sqrMagnitude > GameManager.Instance.GameSettings.footstepSpeedSqr)
-            {
-                if (isDashing)
-                {
-                    AudioManager.Instance.PlayDash();
-                }
-                else
-                {
-                    AudioManager.Instance.PlayFootsteps();
-                }
-            }
+            // if (isGrounded && character.velocity.sqrMagnitude > GameManager.Instance.GameSettings.footstepSpeedSqr)
+            // {
+            //     if (isDashing)
+            //     {
+            //         AudioManager.Instance.PlayDash();
+            //     }
+            //     else
+            //     {
+            //         AudioManager.Instance.PlayFootsteps();
+            //     }
+            // }
 
 
 
@@ -124,7 +124,7 @@ namespace HackedDesign
 
         public void Reset()
         {
-            this.transform.position = new Vector3(0, 1, 0);
+            this.transform.position = Vector3.zero; 
             this.transform.rotation = Quaternion.identity;
         }
 
@@ -134,9 +134,14 @@ namespace HackedDesign
             {
                 var weapon = GameManager.Instance.WeaponManager?.GetCurrentWeapon();
 
-                if (weapon != null && weapon.CanFire())
+                if (weapon != null && weapon.CanFire)
                 {
                     weapon.Fire();
+                    
+                    if(!weapon.IsAutomatic)
+                    {
+                        fireFlag = false;
+                    }
                 }
             }
             else
@@ -151,7 +156,7 @@ namespace HackedDesign
             {
                 var melee = GameManager.Instance.WeaponManager?.GetMeleeWeapon();
 
-                if (melee != null && melee.CanFire())
+                if (melee != null && melee.CanFire)
                 {
                     melee.Fire();
                 }
@@ -164,7 +169,7 @@ namespace HackedDesign
 
         private void Movement()
         {
-            Vector3 direction = Vector3.ClampMagnitude(((transform.right * this.moveDirection.x) + (transform.forward * this.moveDirection.y)), 1);
+            Vector3 direction = CalcMovementDirection();
 
             isGrounded = groundCheck != null ? Physics.CheckSphere(groundCheck.position, groundDistance, groundMask) : true;
 
@@ -202,15 +207,21 @@ namespace HackedDesign
                 dashLastTimer = Time.time;
                 isDashing = true;
                 dashDirection = direction == Vector3.zero ? transform.forward : direction;
-                GameManager.Instance.ConsumeEnergy(GameManager.Instance.GameSettings.dashEnergy);
+                GameManager.Instance.ConsumeEnergy(GameManager.Instance.GameSettings != null ? GameManager.Instance.GameSettings.dashEnergy : 0);
             }
 
             Vector3 move = ((direction * moveSpeed) + (transform.up * verticalVelocity) + (isDashing ? dashDirection * dashSpeed : Vector3.zero)) * Time.deltaTime;
+            
             character?.Move(move);
 
 
             jumpFlag = false;
             dashFlag = false;
+        }
+
+        private Vector3 CalcMovementDirection()
+        {
+            return Vector3.ClampMagnitude(((transform.right * this.moveDirection.x) + (transform.forward * this.moveDirection.y)), 1);
         }
 
         private void Look()
@@ -230,6 +241,11 @@ namespace HackedDesign
 
         private bool CanDash()
         {
+            if(GameManager.Instance.GameSettings == null)
+            {
+                Logger.LogError(this, "No GameSettings found");
+                return false;
+            }
             return Time.time >= (dashLastTimer + dashTimeout) && (GameManager.Instance.Data.energy >= GameManager.Instance.GameSettings.dashEnergy);
         }
 

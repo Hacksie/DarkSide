@@ -18,7 +18,7 @@ namespace HackedDesign
 
         public void Begin()
         {
-            GameManager.Instance.LoadLevel();
+            //GameManager.Instance.LoadLevel();
             levelOverPresenter.Show();
             Cursor.lockState = CursorLockMode.None;
         }
@@ -44,6 +44,11 @@ namespace HackedDesign
         {
             
         }
+
+        public void Select()
+        {
+
+        }        
 
 
         public void Update()

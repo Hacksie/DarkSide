@@ -26,6 +26,12 @@ MonoBehaviour:
   footstepSpeedSqr: 10
   islandGap: 5
   floorDistance: -10
+  trackDistance: 100
+  shieldvsenergyfactor: 2
+  shieldvsboltfactor: 0.5
+  bodyvsenergyfactor: 0.75
+  bodyvsboltfactor: 1
+  splashTTL: 0.1
   invulnerability: 1
   spawn: 1
   infinity: 1

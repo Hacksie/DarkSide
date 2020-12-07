@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 353140417739738222}
   - component: {fileID: 2572209433497653567}
   - component: {fileID: 1404423318897161439}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Upper Turret Attachment
-  m_TagString: Untagged
+  m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

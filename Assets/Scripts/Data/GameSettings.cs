@@ -21,6 +21,12 @@ namespace HackedDesign
         [SerializeField] public float footstepSpeedSqr = 1.0f;
         [SerializeField] public float islandGap = 1.0f;
         [SerializeField] public float floorDistance = -5.0f;
+        [SerializeField] public float trackDistance = 200.0f;
+        [SerializeField] public float shieldvsenergyfactor = 2.0f;
+        [SerializeField] public float shieldvsboltfactor = 0.5f;
+        [SerializeField] public float bodyvsenergyfactor = 0.75f;
+        [SerializeField] public float bodyvsboltfactor = 1.0f;
+        [SerializeField] public float splashTTL = 0.1f;
         [Header("Cheats")]
         [SerializeField] public bool invulnerability = true;
         [SerializeField] public bool spawn = true;

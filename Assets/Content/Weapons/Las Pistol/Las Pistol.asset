@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Las Pistol
   m_EditorClassIdentifier: 
   weaponType: 1
-  fireRate: 0.5
+  fireRate: 0.25
   boltCost: 0
   energyCost: 5
   fragments: 1
@@ -36,6 +36,8 @@ MonoBehaviour:
     maxBoltDamage: 0
     minEnergyDamage: 5
     maxEnergyDamage: 25
-  spread: 2.5
+  spread: 2
   heavy: 0
+  automatic: 0
   sprite: {fileID: 21300000, guid: 95460c48a2f07e84d99de0d55783a138, type: 3}
+  fireSound: {fileID: 8300000, guid: be64544bade297e4d872dd74c66256d2, type: 3}

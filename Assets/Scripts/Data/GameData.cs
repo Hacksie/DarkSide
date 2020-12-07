@@ -18,6 +18,7 @@ namespace HackedDesign
         [SerializeField] public int maxBullets = 32;
         [SerializeField] public float timer = 8;
         [SerializeField] public int score = 0;
+        [SerializeField] public int cash = 0;
         [SerializeField] public int currentLevelIndex = 0;
         [SerializeField] public int seed = 0;
         [SerializeField] public bool permadeath = false;

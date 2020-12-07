@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7541466332493776441}
   m_Layer: 11
   m_Name: Lower TwinTurret Attachment
-  m_TagString: Untagged
+  m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

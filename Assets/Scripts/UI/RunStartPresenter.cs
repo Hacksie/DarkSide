@@ -14,10 +14,18 @@ namespace HackedDesign.UI
             
         }
 
-        public void Run()
+
+       public void Run()
         {
             GameManager.Instance.SetPlaying();
         }
+
+        public void Shop()
+        {
+            GameManager.Instance.CurrentState.Select();
+            //GameManager.Instance.SetShop();
+        }
+
 
         public void Leave()
         {

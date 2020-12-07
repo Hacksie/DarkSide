@@ -17,7 +17,9 @@ namespace HackedDesign
         [SerializeField] public List<WeaponDamageRange> damageRanges;
         [SerializeField] public float spread;
         [SerializeField] public bool heavy = false;
+        [SerializeField] public bool automatic = false;
         [SerializeField] public Sprite sprite;
+        [SerializeField] public AudioClip fireSound;
     }
 
     public enum WeaponType {
@@ -29,9 +31,9 @@ namespace HackedDesign
     public class WeaponDamageRange {
         public float minDistance;
         public float maxDistance;
-        public float minBoltDamage;
-        public float maxBoltDamage;
-        public float minEnergyDamage;
-        public float maxEnergyDamage;
+        public int minBoltDamage;
+        public int maxBoltDamage;
+        public int minEnergyDamage;
+        public int maxEnergyDamage;
     }
 } 

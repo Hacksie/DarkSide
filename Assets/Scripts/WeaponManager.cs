@@ -43,6 +43,24 @@ namespace HackedDesign
             return melee;
         }
 
+        public void WeaponScrollEvent(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {  
+                var direction = context.ReadValue<float>();
+                if(direction <=0)
+                {
+                    PrevWeapon();
+                    
+                }
+                else
+                {
+                    NextWeapon();
+                }
+            }
+        }
+
+
         public void NextWeaponEvent(InputAction.CallbackContext context)
         {
             if (context.started)

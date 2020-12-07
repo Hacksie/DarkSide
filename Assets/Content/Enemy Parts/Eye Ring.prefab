@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 1789769232627443888}
   - component: {fileID: 323679460271929265}
   - component: {fileID: 4471529375970759315}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Eye Ring
-  m_TagString: Untagged
+  m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

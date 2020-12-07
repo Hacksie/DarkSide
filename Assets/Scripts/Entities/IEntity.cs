@@ -7,7 +7,8 @@ namespace HackedDesign
     public interface IEntity  {
         void UpdateBehaviour();
         void UpdateLateBehaviour();
-        void Hit(int amount);
+        void Hit(int boltAmount, int energyAmount);
         void Alert();
+        EntityState State { get; }
     }
 }

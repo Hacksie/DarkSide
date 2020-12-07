@@ -6,11 +6,13 @@ namespace HackedDesign
     {
         private UI.AbstractPresenter menuPresenter;
         private LevelGenerator levelGenerator;
+        private EntityPool entityPool;
 
-        public MainMenuState(LevelGenerator levelGenerator, UI.AbstractPresenter mainMenuPresenter)
+        public MainMenuState(LevelGenerator levelGenerator, EntityPool entityPool, UI.AbstractPresenter mainMenuPresenter)
         {
             this.menuPresenter = mainMenuPresenter;
             this.levelGenerator = levelGenerator;
+            this.entityPool = entityPool;
             
         }
 
@@ -20,6 +22,7 @@ namespace HackedDesign
         public void Begin()
         {
             this.levelGenerator.DestroyLevel();
+            this.entityPool.DestroyEntities();
             this.menuPresenter.Show();
             Cursor.lockState = CursorLockMode.None;
             //AudioManager.Instance.PlayMenuMusic();
@@ -49,6 +52,11 @@ namespace HackedDesign
         {
 
         }
+
+        public void Select()
+        {
+
+        }        
 
     }
 }

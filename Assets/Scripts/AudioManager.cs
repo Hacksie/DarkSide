@@ -9,7 +9,10 @@ namespace HackedDesign
     {
         [Header("GameObjects")]
         [SerializeField] private AudioSource footstepsSource = null;
-        [SerializeField] private AudioSource fxSource = null;
+        [SerializeField] private AudioSource dashSource = null;
+        [SerializeField] private AudioSource goSource = null;
+        [SerializeField] private AudioSource weaponSource = null;
+        //[SerializeField] private AudioSource fxSource = null;
         [SerializeField] private AudioSource musicSource = null;
 
         [Header("Clips")]
@@ -18,6 +21,8 @@ namespace HackedDesign
         [SerializeField] private List<AudioClip> energyFire = null;
         [SerializeField] private List<AudioClip> footsteps = null;
         [SerializeField] private List<AudioClip> playMusic = null;
+        [SerializeField] private AudioClip waiting = null;
+        [SerializeField] private AudioClip go = null;
 
         private float footstepTimer = 0;
 
@@ -26,16 +31,34 @@ namespace HackedDesign
 
         private AudioManager() => Instance = this;
 
+        public void PlayWaitingMusic()
+        {
+            musicSource.clip = waiting;
+            musicSource.Play();
+        }
+
+        public void PlayGo()
+        {
+            goSource.clip = go;
+            goSource.Play();
+        }        
+
         public void PlayBoltFire()
         {
-            fxSource.clip = boltFire[Random.Range(0, boltFire.Count)];
-            fxSource.Play();
+            weaponSource.clip = boltFire[Random.Range(0, boltFire.Count)];
+            weaponSource.Play();
         }
 
         public void PlayEnergyFire()
         {
-            fxSource.clip = energyFire[Random.Range(0, energyFire.Count)];
-            fxSource.Play();
+            weaponSource.clip = energyFire[Random.Range(0, energyFire.Count)];
+            weaponSource.Play();
+        }
+
+        public void PlayFire(AudioClip clip)
+        {
+            weaponSource.clip = clip;
+            weaponSource.Play();
         }
 
         public void PlayFootsteps()
@@ -53,6 +76,11 @@ namespace HackedDesign
             footstepTimer = Time.time;
             footstepsSource.clip = dash;
             footstepsSource.Play();
+        }
+
+        public void StopMusic()
+        {
+            musicSource.Stop();
         }
     }
 }

@@ -5,20 +5,21 @@ namespace HackedDesign
     public class PlayingState : IState
     {
         private PlayerController player;
+        private EntityPool pool;
         private UI.AbstractPresenter hudPresenter;
 
         public bool PlayerActionAllowed => true;
 
-        public PlayingState(PlayerController player, UI.AbstractPresenter hudPresenter)
+        public PlayingState(PlayerController player, EntityPool pool, UI.AbstractPresenter hudPresenter)
         {
             this.player = player;
+            this.pool = pool;
             this.hudPresenter = hudPresenter;
         }
 
 
         public void Begin()
         {
-            GameManager.Instance.LoadLevel();
             this.hudPresenter.Show();
             this.player.Reset();
             Cursor.lockState = CursorLockMode.Locked;
@@ -26,7 +27,7 @@ namespace HackedDesign
 
         public void End()
         {
-            hudPresenter.Hide();
+            this.hudPresenter.Hide();
         }
 
   
@@ -37,8 +38,9 @@ namespace HackedDesign
 
         public void LateUpdate()
         {
-            player.LateUpdateBehaviour();
-            hudPresenter.Repaint();
+            this.player.LateUpdateBehaviour();
+            this.pool.UpdateLateBehaviour();
+            this.hudPresenter.Repaint();
         }
 
    
@@ -47,6 +49,10 @@ namespace HackedDesign
             
         }
 
+        public void Select()
+        {
+
+        }
 
         public void Update()
         {
@@ -62,6 +68,7 @@ namespace HackedDesign
                 }
             }
             this.player.UpdateBehaviour();
+            this.pool.UpdateBehaviour();
         }
 
         private void EnergyRegen()

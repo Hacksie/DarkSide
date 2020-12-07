@@ -33,10 +33,13 @@ namespace HackedDesign
         [SerializeField] private UI.AbstractPresenter? levelOverPresenter = null;
         [SerializeField] private UI.AbstractPresenter? timeOverPresenter = null;
         [SerializeField] private UI.AbstractPresenter? runStartPresenter = null;
+        [SerializeField] private UI.AbstractPresenter? shopPresenter = null;
 
         private IState currentState = new EmptyState();
 
+        #pragma warning disable CS8618
         public static GameManager Instance { get; private set; }
+        #pragma warning restore CS8618
 
         public Camera? MainCamera { get { return mainCamera; } private set { mainCamera = value; } }
         public PlayerController? Player { get { return playerController; } private set { playerController = value; } }
@@ -45,7 +48,7 @@ namespace HackedDesign
         public GameSettings? GameSettings { get { return settings; } private set { settings = value; } }
         public EntityPool? EntityPool { get { return entityPool; } private set { entityPool = value; } }
         public WeaponManager? WeaponManager { get { return weaponManager; } private set { weaponManager = value; } }
-        public PlayerPreferences PlayerPreferences { get { return preferences; } private set { preferences = value; } }
+        public PlayerPreferences? PlayerPreferences { get { return preferences; } private set { preferences = value; } }
 
         public IState CurrentState
         {
@@ -73,11 +76,11 @@ namespace HackedDesign
         void LateUpdate() => CurrentState?.LateUpdate();
         void FixedUpdate() => CurrentState?.FixedUpdate();
 
-        public void SetPlaying() => CurrentState = new PlayingState(this.playerController, this.hudPresenter);
-        public void SetMainMenu() => CurrentState = new MainMenuState(this.levelGenerator, this.mainMenuPresenter);
+        public void SetPlaying() => CurrentState = new PlayingState(this.playerController, this.entityPool, this.hudPresenter);
+        public void SetMainMenu() => CurrentState = new MainMenuState(this.levelGenerator, this.entityPool, this.mainMenuPresenter);
         public void SetLevelOver() => CurrentState = new LevelOverState(this.playerController, this.levelOverPresenter);
         public void SetTimeOver() => CurrentState = new TimeOverState(this.playerController, this.timeOverPresenter);
-        public void SetRunStart() => CurrentState = new RunStartState(this.playerController, this.runStartPresenter);
+        public void SetRunStart() => CurrentState = new RunStartState(this.playerController, this.runStartPresenter, this.shopPresenter);
 
         public void AddTime(int time) => Data.timer += time;
         public void StartRun() => RunStarted = true;
@@ -95,11 +98,13 @@ namespace HackedDesign
 
         public void LoadLevel()
         {
+            entityPool?.DestroyEntities();
             levelGenerator?.Generate(gameLength);
         }
 
         public void LoadLevelSelect()
         {
+            entityPool?.DestroyEntities();
             levelGenerator?.GenerateLevelSelect();
         }
 
@@ -128,6 +133,7 @@ namespace HackedDesign
             levelOverPresenter?.Hide();
             timeOverPresenter?.Hide();
             runStartPresenter?.Hide();
+            shopPresenter?.Hide();
         }
     }
 }

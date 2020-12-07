@@ -7,10 +7,10 @@ namespace HackedDesign
     public class EntityPool : MonoBehaviour
     {
         [SerializeField] private Transform entityPool;
-        [SerializeField] private GameObject largeEnemyPrefab;
-        [SerializeField] private GameObject mediumEnemyPrefab;
-        [SerializeField] private GameObject smallEnemyPrefab;
         [SerializeField] private GameObject enemyPrefab;
+        [SerializeField] private GameObject energySplash;
+        [SerializeField] private GameObject boltSplash;
+
 
         [SerializeField] private List<IEntity> pool = new List<IEntity>();
 
@@ -21,44 +21,54 @@ namespace HackedDesign
 
         public void DestroyEntities()
         {
+            for (int i = 0; i < entityPool.transform.childCount; i++)
+            {
+                GameObject.Destroy(entityPool.transform.GetChild(i).gameObject);
+            }
 
+            pool.Clear();
+
+        }
+
+        public void UpdateBehaviour()
+        {
+            foreach (var e in pool)
+            {
+                e.UpdateBehaviour();
+            }
+        }
+
+        public void UpdateLateBehaviour()
+        {
+            foreach (var e in pool)
+            {
+                e.UpdateLateBehaviour();
+            }
         }
 
         public Enemy SpawnRandomEnemy(Vector3 position, float scale)
         {
             var gameObject = GameObject.Instantiate(enemyPrefab, position, Quaternion.identity, entityPool);
-            gameObject.transform.localScale = new Vector3(scale, scale, scale);
             var e = gameObject.GetComponent<Enemy>();
-
-            e.Randomize();
-            
-
+            e.Initialize(scale);
+            pool.Add(e);
             return e;
         }
 
-        public Enemy SpawnRandomLargeEnemy(Vector3 position)
+        public GameObject SpawnEnergySplash(Vector3 position)
         {
-            var gameObject = GameObject.Instantiate(largeEnemyPrefab, position, Quaternion.identity, entityPool);
-            var e = gameObject.GetComponent<Enemy>();
-
-            e.Randomize();
-            
-
-            return e;
+            var gameObject = GameObject.Instantiate(energySplash, position, Quaternion.identity, entityPool);
+            GameObject.Destroy(gameObject, GameManager.Instance.GameSettings.splashTTL);
+            return gameObject;
         }
 
-        public IEntity SpawnMediumEnemy(Vector3 position)
+        public GameObject SpawnBoltSplash(Vector3 position)
         {
-            var gameObject = GameObject.Instantiate(mediumEnemyPrefab, position, Quaternion.identity, entityPool);
-            IEntity e = gameObject.GetComponent<IEntity>();
-            return e;
+            var gameObject = GameObject.Instantiate(boltSplash, position, Quaternion.identity, entityPool);
+            GameObject.Destroy(gameObject, GameManager.Instance.GameSettings.splashTTL);
+            return gameObject;
         }
 
-        public IEntity SpawnSmallEnemy(Vector3 position)
-        {
-            var gameObject = GameObject.Instantiate(smallEnemyPrefab, position, Quaternion.identity, entityPool);
-            IEntity e = gameObject.GetComponent<IEntity>();
-            return e;
-        }                
+
     }
 }

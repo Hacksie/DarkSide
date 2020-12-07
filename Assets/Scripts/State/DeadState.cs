@@ -19,10 +19,10 @@ namespace HackedDesign
 
         public void End()
         {
-            
+
         }
 
-  
+
         public void FixedUpdate()
         {
 
@@ -30,15 +30,19 @@ namespace HackedDesign
 
         public void LateUpdate()
         {
-            
+
         }
 
-   
+
         public void Start()
         {
-            
+
         }
 
+        public void Select()
+        {
+
+        }
 
         public void Update()
         {

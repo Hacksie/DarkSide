@@ -8,7 +8,7 @@ namespace HackedDesign
         void FixedUpdate();
         void End();
         void Start();
-
+        void Select();
        
         bool PlayerActionAllowed { get; }
     }   
