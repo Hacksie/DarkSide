@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: Rail Gun
   m_EditorClassIdentifier: 
   weaponType: 1
-  fireRate: 2
+  fireRate: 1
   boltCost: 1
   energyCost: 30
   fragments: 1
   damageRanges:
   - minDistance: 0
-    maxDistance: 100
+    maxDistance: 150
     minBoltDamage: 125
     maxBoltDamage: 200
-    minEnergyDamage: 10
-    maxEnergyDamage: 30
-  - minDistance: 100
-    maxDistance: 500
-    minBoltDamage: 75
+    minEnergyDamage: 20
+    maxEnergyDamage: 50
+  - minDistance: 150
+    maxDistance: 1000
+    minBoltDamage: 100
     maxBoltDamage: 150
     minEnergyDamage: 8
     maxEnergyDamage: 25

@@ -27,10 +27,16 @@ namespace HackedDesign
         [SerializeField] public float bodyvsenergyfactor = 0.75f;
         [SerializeField] public float bodyvsboltfactor = 1.0f;
         [SerializeField] public float splashTTL = 0.1f;
+        [SerializeField] public int maxScore = 1000000;
+        [SerializeField] public int cashPerKill = 100;
         [Header("Cheats")]
         [SerializeField] public bool invulnerability = true;
+        [SerializeField] public bool unlimitedBolts = false;
+        [SerializeField] public bool unlimitedEnergy = false;
         [SerializeField] public bool spawn = true;
         [SerializeField] public bool infinity = false;
         [SerializeField] public bool skipDialog = true;
+        [SerializeField] public bool enemiesDontMove = false;
+        [SerializeField] public bool enemiesDontAttack = false;
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bolt Pistol
   m_EditorClassIdentifier: 
   weaponType: 0
-  fireRate: 0.5
+  fireRate: 0.3
   boltCost: 1
   energyCost: 0
   fragments: 1
@@ -36,8 +36,9 @@ MonoBehaviour:
     maxBoltDamage: 25
     minEnergyDamage: 0
     maxEnergyDamage: 0
-  spread: 2
+  spread: 1.5
   heavy: 0
   automatic: 0
   sprite: {fileID: 21300000, guid: 95460c48a2f07e84d99de0d55783a138, type: 3}
   fireSound: {fileID: 8300000, guid: f19e3fdb9c8082647a2c32beca28ba84, type: 3}
+  scoreNeeded: 400

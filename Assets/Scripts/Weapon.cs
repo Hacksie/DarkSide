@@ -19,6 +19,7 @@ namespace HackedDesign
         public float lastFired = 0;
 
         private bool isFiring = false;
+        private bool isMeleeing = false;
 
         public bool IsAutomatic => settings != null ? settings.automatic : false;
         public bool CanFire => settings != null ? (Time.time - lastFired) > settings.fireRate : false;
@@ -38,7 +39,7 @@ namespace HackedDesign
                 return;
             }
 
-            if (CanFire && GameManager.Instance.Data.bullets >= settings.boltCost && GameManager.Instance.Data.energy >= settings.energyCost)
+            if (CanFire && GameManager.Instance.Data.bolts >= settings.boltCost && GameManager.Instance.Data.energy >= settings.energyCost)
             {
                 lastFired = Time.time;
                 isFiring = true;
@@ -67,6 +68,46 @@ namespace HackedDesign
             }
         }
 
+        public void Melee()
+        {
+            if (settings == null)
+            {
+                Logger.LogError(this, "Weapon settings are null");
+                return;
+            }
+
+            Logger.Log(this, "Melee");
+
+            if (CanFire)
+            {
+                lastFired = Time.time;
+                isMeleeing = true;
+                Logger.Log(this, "Can Melee Fire");
+                
+                // if (settings.fireSound != null)
+                // {
+                //     AudioManager.Instance.PlayFire(settings.fireSound);
+                // }
+                // else
+                // {
+
+                //     if (settings.weaponType == WeaponType.Bolt)
+                //     {
+                //         AudioManager.Instance.PlayBoltFire();
+                //     }
+                //     else
+                //     {
+                //         AudioManager.Instance.PlayEnergyFire();
+                //     }
+                // }
+
+                CalcShots();
+            }            
+
+
+        }
+
+
         public void CalcShots()
         {
             if (settings == null)
@@ -77,7 +118,7 @@ namespace HackedDesign
             RaycastHit hit;
             for (int i = 0; i < settings.fragments; i++)
             {
-                if (barrel != null && Physics.Raycast(barrel.transform.position, CalcSpread(barrel.transform.forward, settings.spread), out hit, 2000, hitMask))
+                if (barrel != null && Physics.Raycast(barrel.transform.position, CalcSpread(barrel.transform.forward, settings.spread), out hit, 1000, hitMask))
                 {
                     Debug.DrawLine(barrel.transform.position, hit.point, Color.red, 1);
 
@@ -130,14 +171,20 @@ namespace HackedDesign
         {
             Animate();
             isFiring = false;
+            isMeleeing = false;
         }
 
         private void Animate()
         {
             if (animator != null)
             {
+                if(isMeleeing)
+                {
+                    Logger.Log(this, isMeleeing.ToString());
+                }
                 animator.SetBool("Heavy", (settings != null && settings.heavy) || false);
                 animator.SetBool("Fire", isFiring);
+                animator.SetBool("Melee", isMeleeing);
             }
         }
     }

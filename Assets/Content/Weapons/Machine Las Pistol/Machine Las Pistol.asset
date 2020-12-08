@@ -19,25 +19,26 @@ MonoBehaviour:
   fragments: 1
   damageRanges:
   - minDistance: 0
-    maxDistance: 20
+    maxDistance: 15
     minBoltDamage: 0
     maxBoltDamage: 0
-    minEnergyDamage: 30
-    maxEnergyDamage: 60
-  - minDistance: 20
+    minEnergyDamage: 22
+    maxEnergyDamage: 45
+  - minDistance: 15
     maxDistance: 150
     minBoltDamage: 0
     maxBoltDamage: 0
-    minEnergyDamage: 20
-    maxEnergyDamage: 45
+    minEnergyDamage: 18
+    maxEnergyDamage: 35
   - minDistance: 150
-    maxDistance: 1000
+    maxDistance: 400
     minBoltDamage: 0
     maxBoltDamage: 0
-    minEnergyDamage: 5
+    minEnergyDamage: 10
     maxEnergyDamage: 25
-  spread: 2
+  spread: 1.5
   heavy: 0
   automatic: 1
   sprite: {fileID: 21300000, guid: b2a77146e03436b47afbf33c5ed064ac, type: 3}
   fireSound: {fileID: 8300000, guid: 230d59294c9857140b63dd308ea4bd63, type: 3}
+  scoreNeeded: 1500

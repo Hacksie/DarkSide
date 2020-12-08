@@ -11,16 +11,22 @@ namespace HackedDesign
         [SerializeField] public string saveName = "20200811 2153";
         [SerializeField] public int gameSlot = 0;
         [SerializeField] public int health = 100;
+        [SerializeField] public float maxHealth = 100;
         [SerializeField] public float shields = 0;
+        [SerializeField] public float maxShields = 100;
         [SerializeField] public float energy = 100;
         [SerializeField] public float maxEnergy = 100;
-        [SerializeField] public int bullets = 32;
-        [SerializeField] public int maxBullets = 32;
+        
+        [SerializeField] public int bolts = 32;
+        [SerializeField] public int maxBolts = 32;
+
         [SerializeField] public float timer = 8;
         [SerializeField] public int score = 0;
-        [SerializeField] public int cash = 0;
         [SerializeField] public int currentLevelIndex = 0;
         [SerializeField] public int seed = 0;
         [SerializeField] public bool permadeath = false;
+        [SerializeField] public int currentWeapon = 0;
+        [SerializeField] public int maxWeapon = 5;
+        [SerializeField] public float levelStartTime = 0;
     }
 }

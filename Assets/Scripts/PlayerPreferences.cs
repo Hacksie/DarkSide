@@ -11,7 +11,7 @@ namespace HackedDesign
         public int resolutionHeight;
         public int resolutionRefresh;
         public int fullScreen;
-        public float mouseXSensitivity;
+        public float mouseSensitivity;
         public float mouseYSensitivity;
         public float masterVolume;
         public float sfxVolume;
@@ -30,8 +30,7 @@ namespace HackedDesign
             PlayerPrefs.SetInt("ResolutionRefresh", resolutionRefresh);
 
             PlayerPrefs.SetInt("FullScreen", fullScreen);
-            PlayerPrefs.SetFloat("MouseXSensitivity", mouseXSensitivity);
-            PlayerPrefs.SetFloat("MouseYSensitivity", mouseYSensitivity);
+            PlayerPrefs.SetFloat("MouseSensitivity", mouseSensitivity);
             PlayerPrefs.SetFloat("MasterVolume", masterVolume);
             PlayerPrefs.SetFloat("FXVolume", sfxVolume);
             PlayerPrefs.SetFloat("MusicVolume", musicVolume);
@@ -43,8 +42,7 @@ namespace HackedDesign
             resolutionHeight = PlayerPrefs.GetInt("ResolutionHeight", Screen.currentResolution.height);
             resolutionRefresh = PlayerPrefs.GetInt("ResolutionRefresh", Screen.currentResolution.refreshRate);
             fullScreen = PlayerPrefs.GetInt("FullScreen", (int)Screen.fullScreenMode);
-            mouseXSensitivity = PlayerPrefs.GetFloat("MouseXSensitivity", 180);
-            mouseYSensitivity = PlayerPrefs.GetFloat("MouseYSensitivity", 180);
+            mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 100);
             masterVolume = PlayerPrefs.GetFloat("MasterVolume", 0);
             sfxVolume = PlayerPrefs.GetFloat("FXVolume", 0);
             musicVolume = PlayerPrefs.GetFloat("MusicVolume", 0);

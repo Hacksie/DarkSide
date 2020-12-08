@@ -13,24 +13,30 @@ MonoBehaviour:
   m_Name: Plasma Pistol
   m_EditorClassIdentifier: 
   weaponType: 1
-  fireRate: 0.35
+  fireRate: 0.33
   boltCost: 0
   energyCost: 10
   fragments: 1
   damageRanges:
   - minDistance: 0
-    maxDistance: 50
+    maxDistance: 60
     minBoltDamage: 0
     maxBoltDamage: 0
     minEnergyDamage: 50
     maxEnergyDamage: 75
-  - minDistance: 50
-    maxDistance: 500
+  - minDistance: 60
+    maxDistance: 150
     minBoltDamage: 0
     maxBoltDamage: 0
     minEnergyDamage: 30
     maxEnergyDamage: 60
-  spread: 1
+  - minDistance: 150
+    maxDistance: 400
+    minBoltDamage: 0
+    maxBoltDamage: 0
+    minEnergyDamage: 10
+    maxEnergyDamage: 30
+  spread: 0.75
   heavy: 0
   automatic: 1
   sprite: {fileID: 21300000, guid: bbbe4d7e05323bc418fd8be78415a858, type: 3}

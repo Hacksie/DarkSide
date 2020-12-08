@@ -22,22 +22,23 @@ MonoBehaviour:
     maxDistance: 15
     minBoltDamage: 0
     maxBoltDamage: 0
-    minEnergyDamage: 30
-    maxEnergyDamage: 60
+    minEnergyDamage: 15
+    maxEnergyDamage: 40
   - minDistance: 15
     maxDistance: 60
     minBoltDamage: 0
     maxBoltDamage: 0
     minEnergyDamage: 15
-    maxEnergyDamage: 40
+    maxEnergyDamage: 35
   - minDistance: 60
     maxDistance: 150
     minBoltDamage: 0
     maxBoltDamage: 0
-    minEnergyDamage: 5
-    maxEnergyDamage: 25
+    minEnergyDamage: 8
+    maxEnergyDamage: 20
   spread: 2
   heavy: 0
   automatic: 0
   sprite: {fileID: 21300000, guid: 95460c48a2f07e84d99de0d55783a138, type: 3}
   fireSound: {fileID: 8300000, guid: be64544bade297e4d872dd74c66256d2, type: 3}
+  scoreNeeded: 0

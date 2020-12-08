@@ -52,6 +52,7 @@ namespace HackedDesign
         {
             if (GameManager.Instance.CurrentState.PlayerActionAllowed)
             {
+                Melee();
                 Fire();
                 Look();
                 Movement();
@@ -124,7 +125,7 @@ namespace HackedDesign
 
         public void Reset()
         {
-            this.transform.position = Vector3.zero; 
+            this.transform.position = new Vector3(0, 0, 2.0f);
             this.transform.rotation = Quaternion.identity;
         }
 
@@ -137,11 +138,11 @@ namespace HackedDesign
                 if (weapon != null && weapon.CanFire)
                 {
                     weapon.Fire();
-                    
-                    if(!weapon.IsAutomatic)
-                    {
-                        fireFlag = false;
-                    }
+                }
+
+                if (weapon == null || !weapon.IsAutomatic)
+                {
+                    fireFlag = false;
                 }
             }
             else
@@ -154,12 +155,17 @@ namespace HackedDesign
         {
             if (meleeFlag && GameManager.Instance.CurrentState.PlayerActionAllowed)
             {
-                var melee = GameManager.Instance.WeaponManager?.GetMeleeWeapon();
+                Logger.Log(this, "Melee!");
+                var weapon = GameManager.Instance.WeaponManager?.GetMeleeWeapon();
 
-                if (melee != null && melee.CanFire)
+                Logger.Log(this, "Melee!", (weapon != null).ToString(), weapon.CanFire.ToString());
+
+                if (weapon != null && weapon.CanFire)
                 {
-                    melee.Fire();
+                    weapon.Melee();
+
                 }
+                meleeFlag = false; // Melee is always 'single hit'
             }
             else
             {
@@ -211,7 +217,7 @@ namespace HackedDesign
             }
 
             Vector3 move = ((direction * moveSpeed) + (transform.up * verticalVelocity) + (isDashing ? dashDirection * dashSpeed : Vector3.zero)) * Time.deltaTime;
-            
+
             character?.Move(move);
 
 
@@ -241,7 +247,7 @@ namespace HackedDesign
 
         private bool CanDash()
         {
-            if(GameManager.Instance.GameSettings == null)
+            if (GameManager.Instance.GameSettings == null)
             {
                 Logger.LogError(this, "No GameSettings found");
                 return false;

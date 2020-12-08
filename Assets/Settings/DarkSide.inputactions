@@ -62,14 +62,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Crouch",
-                    "type": "Button",
-                    "id": "66cfd475-8db0-49bc-80dd-c8a710838ed2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Melee",
                     "type": "Button",
                     "id": "74be67e5-c0e3-45ad-a8d0-3467b31cefb9",
@@ -392,28 +384,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Prev Weapon",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "80fdea72-bb9a-4a7a-af38-5e74fc90fb33",
-                    "path": "<Keyboard>/c",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "19b7458c-9d30-4c38-8aab-056866248af3",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

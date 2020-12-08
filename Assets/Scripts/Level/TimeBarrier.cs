@@ -24,7 +24,6 @@ namespace HackedDesign
                 if(this.start)
                 {
                     GameManager.Instance.StartRun();
-                    AudioManager.Instance.PlayGo();
                 }
                 Animate();
             }

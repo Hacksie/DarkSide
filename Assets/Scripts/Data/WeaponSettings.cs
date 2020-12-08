@@ -20,11 +20,13 @@ namespace HackedDesign
         [SerializeField] public bool automatic = false;
         [SerializeField] public Sprite sprite;
         [SerializeField] public AudioClip fireSound;
+        [SerializeField] public int scoreNeeded;
     }
 
     public enum WeaponType {
         Bolt,
-        Energy
+        Energy,
+        Melee
     }
 
     [System.Serializable]

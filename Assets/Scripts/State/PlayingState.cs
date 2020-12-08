@@ -7,14 +7,16 @@ namespace HackedDesign
         private PlayerController player;
         private EntityPool pool;
         private UI.AbstractPresenter hudPresenter;
+        private WeaponManager weaponManager;
 
         public bool PlayerActionAllowed => true;
 
-        public PlayingState(PlayerController player, EntityPool pool, UI.AbstractPresenter hudPresenter)
+        public PlayingState(PlayerController player, WeaponManager weaponManager, EntityPool pool, UI.AbstractPresenter hudPresenter)
         {
             this.player = player;
             this.pool = pool;
             this.hudPresenter = hudPresenter;
+            this.weaponManager = weaponManager;
         }
 
 
@@ -22,7 +24,9 @@ namespace HackedDesign
         {
             this.hudPresenter.Show();
             this.player.Reset();
+            this.weaponManager.ShowCurrentWeapon();
             Cursor.lockState = CursorLockMode.Locked;
+            AudioManager.Instance.PlayGo();
         }
 
         public void End()

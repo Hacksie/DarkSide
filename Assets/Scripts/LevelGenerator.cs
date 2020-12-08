@@ -75,8 +75,8 @@ namespace HackedDesign
 
             // FIXME: small can spawn at medium etc
             SpawnEnemies(spawnLocations, "LargeSpawn", 1, GameManager.Instance.GameSettings.largeSpawns);
-            SpawnEnemies(spawnLocations, "MediumSpawn", 0.66f, GameManager.Instance.GameSettings.mediumSpawns);
-            SpawnEnemies(spawnLocations, "SmallSpawn", 0.33f, GameManager.Instance.GameSettings.smallSpawns);
+            SpawnEnemies(spawnLocations, "MediumSpawn", 0.75f, GameManager.Instance.GameSettings.mediumSpawns);
+            SpawnEnemies(spawnLocations, "SmallSpawn", 0.50f, GameManager.Instance.GameSettings.smallSpawns);
 
             
             //SpawnMediumEnemies(spawnLocations, GameManager.Instance.GameSettings.mediumSpawns);

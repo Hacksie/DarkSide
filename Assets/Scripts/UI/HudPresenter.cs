@@ -17,11 +17,11 @@ namespace HackedDesign.UI
         public override void Repaint()
         {
             timer.text = GameManager.Instance.Data.timer.ToString("N0");
-            cash.text = GameManager.Instance.Data.cash.ToString();
-            health.value = GameManager.Instance.Data.health / 100;
-            shields.value = GameManager.Instance.Data.shields / 100;
+            cash.text = GameManager.Instance.Data.score.ToString();
+            health.value = GameManager.Instance.Data.health / GameManager.Instance.Data.maxHealth;
+            shields.value = GameManager.Instance.Data.shields / GameManager.Instance.Data.maxShields;
             energy.value = GameManager.Instance.Data.energy / GameManager.Instance.Data.maxEnergy;
-            bullets.text = GameManager.Instance.Data.bullets.ToString();
+            bullets.text = GameManager.Instance.Data.bolts.ToString();
         }
     }
 }

@@ -45,20 +45,38 @@ namespace HackedDesign
                     break;
                 case EntityState.Tracking:
                     distance = Vector3.Distance(GameManager.Instance.Player.transform.position, this.transform.position);
-                    TrackPlayer(distance);
+                    if (distance <= (GameManager.Instance.GameSettings.trackDistance * this.transform.localScale.x))
+                    {
+                        if (distance <= meleeDistance)
+                        {
+                            State = EntityState.Angry;
+                        }
+                        TrackPlayer();
+                    }
+                    else
+                    {
+                        State = EntityState.Passive;
+                    }
                     break;
                 case EntityState.Angry:
                     distance = Vector3.Distance(GameManager.Instance.Player.transform.position, this.transform.position);
-                    if(distance <= meleeDistance)
+                    if (distance <= meleeDistance)
                     {
-                        agent.SetDestination(GameManager.Instance.Player.transform.position);
-                        
+                        if (!GameManager.Instance.GameSettings.enemiesDontMove)
+                        {
+                            agent.SetDestination(GameManager.Instance.Player.transform.position);
+                            agent.isStopped = false;
+                        }
+                        TrackPlayer();
                     }
-                    State = EntityState.Tracking;
+                    else
+                    {
+                        State = EntityState.Tracking;
+                        agent.isStopped = true;
+                    }
                     break;
                 case EntityState.Dead:
                     break;
-
                 default:
                     break;
             }
@@ -155,46 +173,25 @@ namespace HackedDesign
             Logger.Log(this, "Dead");
             State = EntityState.Dead;
             agent.isStopped = true;
-            body.transform.LookAt(body.transform.position + new Vector3(0,-100,0));
-            //this.gameObject.SetActive(false);
+            body.transform.LookAt(body.transform.position + new Vector3(0, -100, 0));
+            GameManager.Instance.AddScore(Mathf.FloorToInt(GameManager.Instance.GameSettings.cashPerKill * scale));
         }
 
-        private void TrackPlayer(float distance)
+        private void TrackPlayer()
         {
             body.transform.LookAt(GameManager.Instance.MainCamera.transform);
-
-            if (distance <= meleeDistance)
-            {
-                State = EntityState.Angry;
-            }
         }
 
         private void HideAll()
         {
-            for (int i = 0; i < movementOptions.Count; i++)
-            {
-                movementOptions[i].SetActive(false);
-            }
-
-            for (int i = 0; i < eyesOptions.Count; i++)
-            {
-                eyesOptions[i].SetActive(false);
-            }
-
-            for (int i = 0; i < weaponsOptions.Count; i++)
-            {
-                weaponsOptions[i].SetActive(false);
-            }
-
-            for (int i = 0; i < shieldOptions.Count; i++)
-            {
-                shieldOptions[i].SetActive(false);
-            }
+            movementOptions.ForEach(m => m.SetActive(false));
+            eyesOptions.ForEach(m => m.SetActive(false));
+            weaponsOptions.ForEach(m => m.SetActive(false));
+            shieldOptions.ForEach(m => m.SetActive(false));
         }
 
         public void Initialize(float scale)
         {
-            Logger.Log(this, "randomize");
             HideAll();
             this.scale = scale;
 
@@ -225,7 +222,7 @@ namespace HackedDesign
                 shieldIndex = 0;
             }
 
-            weaponsIndex = Random.Range(0, weaponsOptions.Count);
+            weaponsIndex = Mathf.CeilToInt(Random.Range(0, weaponsOptions.Count) * scale);
 
             Logger.Log(this, "movement: ", movementIndex.ToString());
             Logger.Log(this, "eyes:", eyesIndex.ToString());
@@ -241,7 +238,5 @@ namespace HackedDesign
             this.health = this.maxHealth * scale;
             this.shield = this.maxShield * shieldIndex * scale;
         }
-
-
     }
 }

@@ -19,13 +19,19 @@ MonoBehaviour:
   fragments: 8
   damageRanges:
   - minDistance: 0
-    maxDistance: 20
-    minBoltDamage: 10
-    maxBoltDamage: 35
+    maxDistance: 15
+    minBoltDamage: 15
+    maxBoltDamage: 60
     minEnergyDamage: 0
     maxEnergyDamage: 0
-  - minDistance: 20
-    maxDistance: 100
+  - minDistance: 15
+    maxDistance: 60
+    minBoltDamage: 8
+    maxBoltDamage: 20
+    minEnergyDamage: 0
+    maxEnergyDamage: 0
+  - minDistance: 60
+    maxDistance: 150
     minBoltDamage: 3
     maxBoltDamage: 10
     minEnergyDamage: 0

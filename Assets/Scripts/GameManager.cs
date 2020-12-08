@@ -1,6 +1,7 @@
 #nullable enable
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace HackedDesign
@@ -20,7 +21,7 @@ namespace HackedDesign
         [SerializeField] private bool runStarted = false;
         [SerializeField] private GameSettings? settings = null;
         [SerializeField] private PlayerPreferences? preferences = null;
-        
+
 
         [Header("Data")]
         [SerializeField] public int currentSlot = 0;
@@ -28,7 +29,7 @@ namespace HackedDesign
         [SerializeField] public GameData randomGameSlot = new GameData();
 
         [Header("UI")]
-        [SerializeField] private UI.AbstractPresenter? mainMenuPresenter = null;
+        [SerializeField] private UI.MainMenuPresenter? mainMenuPresenter = null;
         [SerializeField] private UI.AbstractPresenter? hudPresenter = null;
         [SerializeField] private UI.AbstractPresenter? levelOverPresenter = null;
         [SerializeField] private UI.AbstractPresenter? timeOverPresenter = null;
@@ -37,9 +38,9 @@ namespace HackedDesign
 
         private IState currentState = new EmptyState();
 
-        #pragma warning disable CS8618
+#pragma warning disable CS8618
         public static GameManager Instance { get; private set; }
-        #pragma warning restore CS8618
+#pragma warning restore CS8618
 
         public Camera? MainCamera { get { return mainCamera; } private set { mainCamera = value; } }
         public PlayerController? Player { get { return playerController; } private set { playerController = value; } }
@@ -76,24 +77,76 @@ namespace HackedDesign
         void LateUpdate() => CurrentState?.LateUpdate();
         void FixedUpdate() => CurrentState?.FixedUpdate();
 
-        public void SetPlaying() => CurrentState = new PlayingState(this.playerController, this.entityPool, this.hudPresenter);
+        public void SetPlaying() => CurrentState = new PlayingState(this.playerController, this.weaponManager, this.entityPool, this.hudPresenter);
         public void SetMainMenu() => CurrentState = new MainMenuState(this.levelGenerator, this.entityPool, this.mainMenuPresenter);
         public void SetLevelOver() => CurrentState = new LevelOverState(this.playerController, this.levelOverPresenter);
         public void SetTimeOver() => CurrentState = new TimeOverState(this.playerController, this.timeOverPresenter);
         public void SetRunStart() => CurrentState = new RunStartState(this.playerController, this.runStartPresenter, this.shopPresenter);
 
         public void AddTime(int time) => Data.timer += time;
-        public void StartRun() => RunStarted = true;
+
+        public void LoadSlots()
+        {
+            this.gameSlots = new List<GameData>(3) { null, null, null };
+            // this.gameSlots[0] = LoadSaveFile(0);
+            // this.gameSlots[1] = LoadSaveFile(1);
+            // this.gameSlots[2] = LoadSaveFile(2);
+            this.gameSlots[0] = new GameData();
+            this.gameSlots[1] = new GameData();
+            this.gameSlots[2] = new GameData();
+        }      
+
+        GameData LoadSaveFile(int slot)
+        {
+            var path = Path.Combine(Application.persistentDataPath, $"SaveFile{slot}.json");
+            Logger.Log(name, "Attempting to load ", path);
+            if (File.Exists(path))
+            {
+                Logger.Log(name, "Loading ", path);
+                var contents = File.ReadAllText(path);
+                return JsonUtility.FromJson<GameData>(contents);
+            }
+            else
+            {
+                Logger.Log(name, "Save file does not exist ", path);
+            }
+
+            return null;
+        }          
+
+        public void StartRun()
+        {
+            RunStarted = true;
+            Data.levelStartTime = Time.time;
+        }
+
         public void EndRun() => RunStarted = false;
 
         public void ConsumeEnergy(float energy)
         {
-            GameManager.Instance.Data.energy = Mathf.Clamp(GameManager.Instance.Data.energy - energy, 0, GameManager.Instance.Data.maxEnergy);
+            if (GameSettings.unlimitedEnergy)
+                return;
+
+            GameManager.Instance.Data.energy = Mathf.Clamp(Data.energy - energy, 0, Data.maxEnergy);
+
         }
 
-        public void ConsumeBolts(int bullets)
+        public void ConsumeShields(float amount)
         {
-            GameManager.Instance.Data.bullets = Mathf.Clamp(GameManager.Instance.Data.bullets - bullets, 0, GameManager.Instance.Data.maxBullets);
+            GameManager.Instance.Data.shields = Mathf.Clamp(Data.shields - amount, 0, Data.maxShields); 
+        }
+
+        public void ConsumeBolts(int bolts)
+        {
+            if (GameSettings.unlimitedBolts)
+                return;
+
+            GameManager.Instance.Data.bolts = Mathf.Clamp(Data.bolts - bolts, 0, Data.maxBolts);
+        }
+
+        public void AddScore(int score)
+        {
+            GameManager.Instance.Data.score = Mathf.Clamp(Data.score + score, 0, GameSettings.maxScore);
         }
 
         public void LoadLevel()
@@ -117,6 +170,8 @@ namespace HackedDesign
         {
             mainCamera = mainCamera ?? Camera.main;
             preferences = new PlayerPreferences();
+
+            LoadSlots();
             RunStarted = false;
             for (int i = 0; i < 3; i++)
             {

@@ -4,11 +4,11 @@ namespace HackedDesign
 {
     public class MainMenuState : IState
     {
-        private UI.AbstractPresenter menuPresenter;
+        private UI.MainMenuPresenter menuPresenter;
         private LevelGenerator levelGenerator;
         private EntityPool entityPool;
 
-        public MainMenuState(LevelGenerator levelGenerator, EntityPool entityPool, UI.AbstractPresenter mainMenuPresenter)
+        public MainMenuState(LevelGenerator levelGenerator, EntityPool entityPool, UI.MainMenuPresenter mainMenuPresenter)
         {
             this.menuPresenter = mainMenuPresenter;
             this.levelGenerator = levelGenerator;
@@ -23,6 +23,7 @@ namespace HackedDesign
         {
             this.levelGenerator.DestroyLevel();
             this.entityPool.DestroyEntities();
+            this.menuPresenter.PopulateValues();
             this.menuPresenter.Show();
             Cursor.lockState = CursorLockMode.None;
             //AudioManager.Instance.PlayMenuMusic();

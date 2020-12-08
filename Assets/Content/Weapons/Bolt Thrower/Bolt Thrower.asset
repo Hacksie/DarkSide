@@ -13,25 +13,32 @@ MonoBehaviour:
   m_Name: Bolt Thrower
   m_EditorClassIdentifier: 
   weaponType: 0
-  fireRate: 0.5
+  fireRate: 0.3
   boltCost: 1
   energyCost: 5
   fragments: 1
   damageRanges:
   - minDistance: 0
-    maxDistance: 50
-    minBoltDamage: 40
-    maxBoltDamage: 75
+    maxDistance: 60
+    minBoltDamage: 45
+    maxBoltDamage: 70
     minEnergyDamage: 0
     maxEnergyDamage: 0
-  - minDistance: 50
-    maxDistance: 400
+  - minDistance: 60
+    maxDistance: 150
     minBoltDamage: 15
     maxBoltDamage: 50
     minEnergyDamage: 0
     maxEnergyDamage: 0
-  spread: 1
+  - minDistance: 150
+    maxDistance: 400
+    minBoltDamage: 10
+    maxBoltDamage: 30
+    minEnergyDamage: 0
+    maxEnergyDamage: 0
+  spread: 0.5
   heavy: 0
   automatic: 0
   sprite: {fileID: 21300000, guid: 953a0e6e50903814794b7aad8064d50a, type: 3}
   fireSound: {fileID: 8300000, guid: f19e3fdb9c8082647a2c32beca28ba84, type: 3}
+  scoreNeeded: 0

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 namespace HackedDesign
 {
@@ -17,14 +18,14 @@ namespace HackedDesign
         [SerializeField] List<float> offset = new List<float>() { -0.3f, 0, 0.3f };
         [SerializeField] float verticalOffset = 0.0f;
 
-        [Header("State")]
-        [SerializeField] int currentWeapon = 0; //FIXME: pull this from game state
+        //[Header("State")]
+        //[SerializeField] int currentWeapon = 0; //FIXME: pull this from game state
 
         void Start()
         {
             HideAll();
 
-            weapons[currentWeapon].gameObject.SetActive(true);
+            //weapons[currentWeapon].gameObject.SetActive(true);
             
         }
 
@@ -33,9 +34,15 @@ namespace HackedDesign
             this.transform.localPosition = new Vector3(offset[GameManager.Instance.PlayerPreferences.gunPosition], verticalOffset, 0);
         }
 
+        public void ShowCurrentWeapon()
+        {
+            HideAll();
+            weapons[GameManager.Instance.Data.currentWeapon].gameObject.SetActive(true);
+        }
+
         public Weapon GetCurrentWeapon()
         {
-            return weapons[currentWeapon];
+            return weapons[GameManager.Instance.Data.currentWeapon];
         }
 
         public Weapon GetMeleeWeapon()
@@ -85,28 +92,26 @@ namespace HackedDesign
             }
         }
 
-
-
         private void NextWeapon()
         {
-            weapons[currentWeapon].gameObject.SetActive(false);
-            currentWeapon++;
-            if (currentWeapon >= weapons.Count)
+            weapons[GameManager.Instance.Data.currentWeapon].gameObject.SetActive(false);
+            GameManager.Instance.Data.currentWeapon++;
+            if (GameManager.Instance.Data.currentWeapon >= GameManager.Instance.Data.maxWeapon)
             {
-                currentWeapon = 0;
+                GameManager.Instance.Data.currentWeapon = 0;
             }
-            weapons[currentWeapon].gameObject.SetActive(true);
+            weapons[GameManager.Instance.Data.currentWeapon].gameObject.SetActive(true);
         }
 
         private void PrevWeapon()
         {
-            weapons[currentWeapon].gameObject.SetActive(false);
-            currentWeapon--;
-            if (currentWeapon < 0)
+            weapons[GameManager.Instance.Data.currentWeapon].gameObject.SetActive(false);
+            GameManager.Instance.Data.currentWeapon--;
+            if (GameManager.Instance.Data.currentWeapon < 0)
             {
-                currentWeapon = weapons.Count - 1;
+                GameManager.Instance.Data.currentWeapon = GameManager.Instance.Data.maxWeapon;
             }
-            weapons[currentWeapon].gameObject.SetActive(true);
+            weapons[GameManager.Instance.Data.currentWeapon].gameObject.SetActive(true);
         }
 
 
