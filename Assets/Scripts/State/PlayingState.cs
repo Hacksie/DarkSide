@@ -22,8 +22,8 @@ namespace HackedDesign
 
         public void Begin()
         {
+            GameManager.Instance.SaveGame();
             this.hudPresenter.Show();
-            this.player.Reset();
             this.weaponManager.ShowCurrentWeapon();
             Cursor.lockState = CursorLockMode.Locked;
             AudioManager.Instance.PlayGo();

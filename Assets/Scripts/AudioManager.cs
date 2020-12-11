@@ -12,8 +12,12 @@ namespace HackedDesign
         [SerializeField] private AudioSource dashSource = null;
         [SerializeField] private AudioSource goSource = null;
         [SerializeField] private AudioSource weaponSource = null;
+        [SerializeField] private AudioSource pickupSource = null;
         //[SerializeField] private AudioSource fxSource = null;
         [SerializeField] private AudioSource musicSource = null;
+        [SerializeField] private AudioSource timeOverSource = null;
+        [SerializeField] private AudioSource deadSource = null;
+        [SerializeField] private AudioSource loserSource = null;
 
         [Header("Clips")]
         [SerializeField] private AudioClip dash = null;
@@ -21,6 +25,12 @@ namespace HackedDesign
         [SerializeField] private List<AudioClip> energyFire = null;
         [SerializeField] private List<AudioClip> footsteps = null;
         [SerializeField] private List<AudioClip> playMusic = null;
+        [SerializeField] private AudioClip pickup = null;
+        [SerializeField] private AudioClip success = null;
+        [SerializeField] private AudioClip deathMusic = null;
+        [SerializeField] private AudioClip gameOver = null;
+        [SerializeField] private AudioClip timeOver = null;
+        [SerializeField] private AudioClip loser = null;
         [SerializeField] private AudioClip waiting = null;
         [SerializeField] private AudioClip go = null;
 
@@ -37,11 +47,47 @@ namespace HackedDesign
             musicSource.Play();
         }
 
+        public void PlaySuccessMusic()
+        {
+            musicSource.clip = success;
+            musicSource.Play();
+        }
+
+        public void PlayPickup()
+        {
+            pickupSource.clip = pickup;
+            pickupSource.Play();
+        }
+
+        public void PlayDeathMusic()
+        {
+            musicSource.clip = deathMusic;
+            musicSource.Play();
+        }
+
+        public void PlayDeath()
+        {
+            deadSource.clip = gameOver;
+            deadSource.Play();
+        }
+
+        public void PlayTimeOver()
+        {
+            timeOverSource.clip = timeOver;
+            timeOverSource.Play();
+        }
+
+        public void PlayLoser()
+        {
+            loserSource.clip = loser;
+            loserSource.Play();
+        }
+
         public void PlayGo()
         {
             goSource.clip = go;
             goSource.Play();
-        }        
+        }
 
         public void PlayBoltFire()
         {
@@ -77,6 +123,24 @@ namespace HackedDesign
             footstepsSource.clip = dash;
             footstepsSource.Play();
         }
+
+        public void PlayRandomGameMusic()
+        {
+            musicSource.clip = playMusic[Random.Range(0, playMusic.Count)];
+            musicSource.loop = true;
+            musicSource.Play();
+        }
+
+        public void PlayMusic()
+        {
+            musicSource.Play();
+        }
+
+        public void PauseMusic()
+        {
+            musicSource.Pause();
+        }
+
 
         public void StopMusic()
         {

@@ -7,19 +7,38 @@ namespace HackedDesign
 
         public bool PlayerActionAllowed => false;
 
-        public DeadState()
+        private UI.AbstractPresenter deadPresenter = null;
+
+        public DeadState(UI.AbstractPresenter deadPresenter)
         {
+            this.deadPresenter = deadPresenter;
 
         }
 
         public void Begin()
         {
+            AudioManager.Instance.StopMusic();
+            AudioManager.Instance.PlayDeathMusic();
+            if (GameManager.Instance.Data.permadeath)
+            {
+                GameManager.Instance.Data.dead = true;
+                GameManager.Instance.SaveGame();
+                AudioManager.Instance.PlayLoser();
+            }
+            else
+            {
+                AudioManager.Instance.PlayDeath();
+            }
 
+            GameManager.Instance.RunStarted = false;
+            this.deadPresenter.Show();
+            Cursor.lockState = CursorLockMode.None;
         }
 
         public void End()
         {
-
+            this.deadPresenter.Hide();
+            AudioManager.Instance.StopMusic();
         }
 
 

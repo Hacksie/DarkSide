@@ -24,6 +24,7 @@ namespace HackedDesign
             this.levelGenerator.DestroyLevel();
             this.entityPool.DestroyEntities();
             this.menuPresenter.PopulateValues();
+            this.menuPresenter.Reset();
             this.menuPresenter.Show();
             Cursor.lockState = CursorLockMode.None;
             //AudioManager.Instance.PlayMenuMusic();

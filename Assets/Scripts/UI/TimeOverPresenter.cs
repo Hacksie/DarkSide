@@ -7,16 +7,24 @@ namespace HackedDesign.UI
 {
     public class TimeOverPresenter : AbstractPresenter
     {
-        
+
 
         public override void Repaint()
         {
-            
+
         }
 
         public void GameOver()
         {
-            GameManager.Instance.SetMainMenu();
+            if (GameManager.Instance.Data.permadeath)
+            {
+                GameManager.Instance.SetMainMenu();
+            }
+            else
+            {
+                //FIXME: reset health etc
+                GameManager.Instance.SetRunStart();
+            }
         }
     }
 }

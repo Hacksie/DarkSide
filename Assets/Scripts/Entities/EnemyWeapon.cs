@@ -6,14 +6,59 @@ namespace HackedDesign
 {
     public class EnemyWeapon : MonoBehaviour
     {
-        void Update()
+        [SerializeField] private List<Transform> barrel;
+        [SerializeField] private WeaponType weaponType;
+        [SerializeField] private float fireRate = 1.0f;
+        [SerializeField] private float projectileSpeed = 1.0f;
+        [SerializeField] private AudioSource attackFX;
+        [SerializeField] private WeaponSettings settings;
+
+        private int barrelIndex = 0;
+
+        private float lastFire = 0;
+
+        void Awake()
         {
-            TrackPlayer();
+            if (settings != null && settings.fireSound != null)
+            {
+                attackFX.clip = settings.fireSound;
+                attackFX.loop = false;
+            }
         }
 
-        private void TrackPlayer()
+        public void Fire()
         {
-            this.transform.LookAt(GameManager.Instance.MainCamera.transform);
-        }        
+            if (Time.time - lastFire > fireRate)
+            {
+
+                lastFire = Time.time;
+                switch (weaponType)
+                {
+                    case WeaponType.Melee:
+                        break;
+                    case WeaponType.Bolt:
+                        GameManager.Instance.EntityPool.SpawnBoltAttack(barrel[barrelIndex].position, barrel[barrelIndex].forward * projectileSpeed);
+                        break;
+                    case WeaponType.Energy:
+                        GameManager.Instance.EntityPool.SpawnEnergyAttack(barrel[barrelIndex].position, barrel[barrelIndex].forward * projectileSpeed);
+                        break;
+                    case WeaponType.Rail:
+                        GameManager.Instance.EntityPool.SpawnRailAttack(barrel[barrelIndex].position, barrel[barrelIndex].forward * projectileSpeed);
+                        break;
+                }
+
+                PlayAttackSound();
+
+                barrelIndex = ++barrelIndex >= barrel.Count ? 0 : barrelIndex;
+            }
+        }
+
+        private void PlayAttackSound()
+        {
+            if (attackFX.clip != null)
+            {
+                attackFX.Play();
+            }
+        }
     }
 }

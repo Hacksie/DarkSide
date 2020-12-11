@@ -10,6 +10,7 @@ namespace HackedDesign
     public class WeaponSettings : ScriptableObject
     {
         [SerializeField] public WeaponType weaponType;
+        [SerializeField] public string description;
         [SerializeField] public float fireRate;
         [SerializeField] public int boltCost;
         [SerializeField] public int energyCost;
@@ -19,14 +20,17 @@ namespace HackedDesign
         [SerializeField] public bool heavy = false;
         [SerializeField] public bool automatic = false;
         [SerializeField] public Sprite sprite;
+        [SerializeField] public Sprite crosshair;
         [SerializeField] public AudioClip fireSound;
         [SerializeField] public int scoreNeeded;
+        [SerializeField] public float projectileSpeed;
     }
 
     public enum WeaponType {
         Bolt,
         Energy,
-        Melee
+        Melee,
+        Rail
     }
 
     [System.Serializable]

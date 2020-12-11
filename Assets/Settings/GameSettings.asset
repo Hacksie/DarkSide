@@ -16,11 +16,11 @@ MonoBehaviour:
   easyAdj: 1
   mediumAdj: 0.8
   hardAdj: 0.6
-  initialAddTime: 8
+  initialAddTime: 12
   largeSpawns: 2
   mediumSpawns: 5
   smallSpawns: 15
-  energyBaseRegen: 5
+  energyBaseRegen: 10
   dashEnergy: 25
   footstepTime: 0.3
   footstepSpeedSqr: 10
@@ -32,13 +32,19 @@ MonoBehaviour:
   bodyvsenergyfactor: 0.75
   bodyvsboltfactor: 1
   splashTTL: 0.1
-  maxCash: 1000000
-  cashPerKill: 100
-  invulnerability: 1
+  attackTTL: 1.5
+  pickupTTL: 10
+  pickupOffset: {x: 0, y: 2, z: 0}
+  minPickups: 1
+  maxPickups: 5
+  pickupForce: 5
+  maxScore: 1000000
+  scorePerKill: 100
+  invulnerability: 0
   unlimitedBolts: 0
   unlimitedEnergy: 0
   spawn: 1
   infinity: 1
   skipDialog: 1
   enemiesDontMove: 0
-  enemiesDontAttack: 1
+  enemiesDontAttack: 0

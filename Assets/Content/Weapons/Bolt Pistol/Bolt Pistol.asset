@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: Bolt Pistol
   m_EditorClassIdentifier: 
   weaponType: 0
-  fireRate: 0.3
+  fireRate: 0.2
   boltCost: 1
   energyCost: 0
   fragments: 1
   damageRanges:
   - minDistance: 0
     maxDistance: 15
-    minBoltDamage: 30
-    maxBoltDamage: 60
+    minBoltDamage: 20
+    maxBoltDamage: 50
     minEnergyDamage: 0
     maxEnergyDamage: 0
   - minDistance: 15
     maxDistance: 60
     minBoltDamage: 15
-    maxBoltDamage: 40
+    maxBoltDamage: 35
     minEnergyDamage: 0
     maxEnergyDamage: 0
   - minDistance: 60
@@ -39,6 +39,8 @@ MonoBehaviour:
   spread: 1.5
   heavy: 0
   automatic: 0
-  sprite: {fileID: 21300000, guid: 95460c48a2f07e84d99de0d55783a138, type: 3}
+  sprite: {fileID: 21300000, guid: 5b52a5a3951efb04fbb587cad98d26f4, type: 3}
+  crosshair: {fileID: 21300000, guid: 0d19db1f7ca65d34681a4c0ab6f084ed, type: 3}
   fireSound: {fileID: 8300000, guid: f19e3fdb9c8082647a2c32beca28ba84, type: 3}
   scoreNeeded: 400
+  projectileSpeed: 0

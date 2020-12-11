@@ -40,5 +40,7 @@ MonoBehaviour:
   heavy: 0
   automatic: 1
   sprite: {fileID: 21300000, guid: b2a77146e03436b47afbf33c5ed064ac, type: 3}
+  crosshair: {fileID: 21300000, guid: c31eb66705e3e5448996c49da65b2d43, type: 3}
   fireSound: {fileID: 8300000, guid: 230d59294c9857140b63dd308ea4bd63, type: 3}
   scoreNeeded: 1500
+  projectileSpeed: 0

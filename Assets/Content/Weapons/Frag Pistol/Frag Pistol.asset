@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Frag Pistol
   m_EditorClassIdentifier: 
   weaponType: 0
-  fireRate: 1
+  fireRate: 0.8
   boltCost: 2
   energyCost: 0
   fragments: 8
@@ -27,7 +27,7 @@ MonoBehaviour:
   - minDistance: 15
     maxDistance: 60
     minBoltDamage: 8
-    maxBoltDamage: 20
+    maxBoltDamage: 40
     minEnergyDamage: 0
     maxEnergyDamage: 0
   - minDistance: 60
@@ -40,4 +40,7 @@ MonoBehaviour:
   heavy: 1
   automatic: 0
   sprite: {fileID: 21300000, guid: 0431a414486e6bb499f81241900e8a05, type: 3}
+  crosshair: {fileID: 21300000, guid: bef25e36870c8c64f998b553a7b92048, type: 3}
   fireSound: {fileID: 8300000, guid: 30114844b380b88418785402b1e582c0, type: 3}
+  scoreNeeded: 0
+  projectileSpeed: 0

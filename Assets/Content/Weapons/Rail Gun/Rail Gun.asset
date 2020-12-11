@@ -20,9 +20,9 @@ MonoBehaviour:
   damageRanges:
   - minDistance: 0
     maxDistance: 150
-    minBoltDamage: 125
-    maxBoltDamage: 200
-    minEnergyDamage: 20
+    minBoltDamage: 100
+    maxBoltDamage: 300
+    minEnergyDamage: 25
     maxEnergyDamage: 50
   - minDistance: 150
     maxDistance: 1000
@@ -34,4 +34,7 @@ MonoBehaviour:
   heavy: 1
   automatic: 0
   sprite: {fileID: 21300000, guid: 3f8ca98cee5bbda48abc22ecc513250e, type: 3}
+  crosshair: {fileID: 21300000, guid: 1120c5a0b8eeadf469a98d040e53634b, type: 3}
   fireSound: {fileID: 8300000, guid: 4d6d816408e48e7428e863203522508f, type: 3}
+  scoreNeeded: 0
+  projectileSpeed: 0

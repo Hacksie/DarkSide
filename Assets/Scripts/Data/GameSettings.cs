@@ -27,8 +27,14 @@ namespace HackedDesign
         [SerializeField] public float bodyvsenergyfactor = 0.75f;
         [SerializeField] public float bodyvsboltfactor = 1.0f;
         [SerializeField] public float splashTTL = 0.1f;
+        [SerializeField] public float attackTTL = 1.0f;
+        [SerializeField] public float pickupTTL = 10.0f;
+        [SerializeField] public Vector3 pickupOffset = new Vector3(0, 3, 0);
+        [SerializeField] public int minPickups = 1;
+        [SerializeField] public int maxPickups = 5;
+        [SerializeField] public float pickupForce = 5;
         [SerializeField] public int maxScore = 1000000;
-        [SerializeField] public int cashPerKill = 100;
+        [SerializeField] public int scorePerKill = 100;
         [Header("Cheats")]
         [SerializeField] public bool invulnerability = true;
         [SerializeField] public bool unlimitedBolts = false;

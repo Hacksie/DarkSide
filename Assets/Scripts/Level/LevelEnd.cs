@@ -14,6 +14,7 @@ namespace HackedDesign
                 Logger.Log(this, "End triggered");
                 // Level Over
                 GameManager.Instance.SetLevelOver();
+
                 Animate();
             }
         }

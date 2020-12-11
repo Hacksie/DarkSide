@@ -24,7 +24,7 @@ TagManager:
   - Env
   - Entity
   - Props
-  - 
+  - EnemyAttack
   - 
   - 
   - 
@@ -46,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: overlay
+    uniqueID: 799861755
     locked: 0

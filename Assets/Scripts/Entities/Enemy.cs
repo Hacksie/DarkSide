@@ -10,8 +10,11 @@ namespace HackedDesign
         [SerializeField] private GameObject body;
         [SerializeField] private List<GameObject> movementOptions;
         [SerializeField] private List<GameObject> eyesOptions;
-        [SerializeField] private List<GameObject> weaponsOptions;
+        [SerializeField] private List<EnemyWeapon> weaponsOptions;
         [SerializeField] private List<GameObject> shieldOptions;
+
+        [SerializeField] private AudioSource deathFX;
+
 
         [Header("Configuration")]
         [SerializeField] private int movementIndex;
@@ -19,10 +22,9 @@ namespace HackedDesign
         [SerializeField] private int weaponsIndex;
         [SerializeField] private int shieldIndex;
         [Header("Settings")]
-        [SerializeField] private float lookTurnSpeed = 360.0f;
-        [SerializeField] private float moveTurnSpeed = 180.0f;
         [SerializeField] private float maxHealth = 200.0f;
         [SerializeField] private float maxShield = 50.0f;
+        [SerializeField] private float attackDistance = 50.0f;
         [SerializeField] private float meleeDistance = 10.0f;
         [Header("State")]
         [SerializeField] private float health = 100.0f;
@@ -33,6 +35,11 @@ namespace HackedDesign
         public override void UpdateBehaviour()
         {
             float distance;
+
+            if (!GameManager.Instance.RunStarted)
+            {
+                return;
+            }
 
             switch (State)
             {
@@ -52,6 +59,10 @@ namespace HackedDesign
                             State = EntityState.Angry;
                         }
                         TrackPlayer();
+                        if (distance <= attackDistance)
+                        {
+                            weaponsOptions[weaponsIndex].Fire();
+                        }
                     }
                     else
                     {
@@ -80,13 +91,17 @@ namespace HackedDesign
                 default:
                     break;
             }
-
-
         }
 
         public override void Hit(int boltAmount, int energyAmount)
         {
             Logger.Log(this, "Hit! Bolt:", boltAmount.ToString(), " Energy:", energyAmount.ToString());
+
+            if (health <= 0)
+            {
+                // We're already dead Jim;
+                return;
+            }
 
             // Subtract energy from shield if any exists
             // Consume all energy if so
@@ -168,13 +183,21 @@ namespace HackedDesign
             // }
         }
 
+        private void PlayDeathSound()
+        {
+            deathFX.Play();
+        }
+
         private void Dead()
         {
             Logger.Log(this, "Dead");
             State = EntityState.Dead;
             agent.isStopped = true;
             body.transform.LookAt(body.transform.position + new Vector3(0, -100, 0));
-            GameManager.Instance.AddScore(Mathf.FloorToInt(GameManager.Instance.GameSettings.cashPerKill * scale));
+            PlayDeathSound();
+            GameManager.Instance.AddScore(Mathf.FloorToInt(GameManager.Instance.GameSettings.scorePerKill * scale));
+
+            GameManager.Instance.EntityPool.SpawnRandomPickups(this.transform.position + GameManager.Instance.GameSettings.pickupOffset);
         }
 
         private void TrackPlayer()
@@ -186,7 +209,7 @@ namespace HackedDesign
         {
             movementOptions.ForEach(m => m.SetActive(false));
             eyesOptions.ForEach(m => m.SetActive(false));
-            weaponsOptions.ForEach(m => m.SetActive(false));
+            weaponsOptions.ForEach(m => m.gameObject.SetActive(false));
             shieldOptions.ForEach(m => m.SetActive(false));
         }
 
@@ -224,14 +247,9 @@ namespace HackedDesign
 
             weaponsIndex = Mathf.CeilToInt(Random.Range(0, weaponsOptions.Count) * scale);
 
-            Logger.Log(this, "movement: ", movementIndex.ToString());
-            Logger.Log(this, "eyes:", eyesIndex.ToString());
-            Logger.Log(this, "weapons:", weaponsIndex.ToString());
-            Logger.Log(this, "shield:", shieldIndex.ToString());
-
             movementOptions[movementIndex].SetActive(true);
             eyesOptions[eyesIndex].SetActive(true);
-            weaponsOptions[weaponsIndex].SetActive(true);
+            weaponsOptions[weaponsIndex].gameObject.SetActive(true);
             shieldOptions[shieldIndex].SetActive(true);
 
             this.transform.localScale = new Vector3(scale, scale, scale);

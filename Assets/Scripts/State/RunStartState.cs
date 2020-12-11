@@ -25,8 +25,10 @@ namespace HackedDesign
         public void Begin()
         {
             this.player.Reset();
+            GameManager.Instance.Reset();
             GameManager.Instance.Data.timer = GameManager.Instance.GameSettings.initialAddTime;
             GameManager.Instance.LoadLevel();
+            GameManager.Instance.RunStarted = false;
             state = RunStartUIState.RunStart;
             runStartPresenter.Show();
             Cursor.lockState = CursorLockMode.None;
@@ -36,6 +38,7 @@ namespace HackedDesign
         public void End()
         {
             runStartPresenter.Hide();
+            this.player.Reset();
             AudioManager.Instance.StopMusic();
         }
 

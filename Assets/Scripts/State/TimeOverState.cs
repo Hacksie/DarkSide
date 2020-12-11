@@ -20,6 +20,8 @@ namespace HackedDesign
         {
             GameManager.Instance.LoadLevel();
             timeOverPresenter.Show();
+            AudioManager.Instance.PlayTimeOver();
+            GameManager.Instance.RunStarted = false;
             Cursor.lockState = CursorLockMode.None;
         }
 

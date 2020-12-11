@@ -21,6 +21,7 @@ namespace HackedDesign
         [SerializeField] private bool runStarted = false;
         [SerializeField] private GameSettings? settings = null;
         [SerializeField] private PlayerPreferences? preferences = null;
+        [SerializeField] private UnityEngine.Audio.AudioMixer mixer = null;
 
 
         [Header("Data")]
@@ -35,6 +36,8 @@ namespace HackedDesign
         [SerializeField] private UI.AbstractPresenter? timeOverPresenter = null;
         [SerializeField] private UI.AbstractPresenter? runStartPresenter = null;
         [SerializeField] private UI.AbstractPresenter? shopPresenter = null;
+        [SerializeField] private UI.AbstractPresenter? pausePresenter = null;
+        [SerializeField] private UI.AbstractPresenter? deadPresenter = null;
 
         private IState currentState = new EmptyState();
 
@@ -50,6 +53,7 @@ namespace HackedDesign
         public EntityPool? EntityPool { get { return entityPool; } private set { entityPool = value; } }
         public WeaponManager? WeaponManager { get { return weaponManager; } private set { weaponManager = value; } }
         public PlayerPreferences? PlayerPreferences { get { return preferences; } private set { preferences = value; } }
+        public bool Random { get { return isRandom; }}
 
         public IState CurrentState
         {
@@ -80,21 +84,23 @@ namespace HackedDesign
         public void SetPlaying() => CurrentState = new PlayingState(this.playerController, this.weaponManager, this.entityPool, this.hudPresenter);
         public void SetMainMenu() => CurrentState = new MainMenuState(this.levelGenerator, this.entityPool, this.mainMenuPresenter);
         public void SetLevelOver() => CurrentState = new LevelOverState(this.playerController, this.levelOverPresenter);
+        public void SetDead() => CurrentState = new DeadState(this.deadPresenter);
         public void SetTimeOver() => CurrentState = new TimeOverState(this.playerController, this.timeOverPresenter);
         public void SetRunStart() => CurrentState = new RunStartState(this.playerController, this.runStartPresenter, this.shopPresenter);
+        public void SetPaused() => CurrentState = new PauseState(this.pausePresenter);
 
         public void AddTime(int time) => Data.timer += time;
 
         public void LoadSlots()
         {
             this.gameSlots = new List<GameData>(3) { null, null, null };
-            // this.gameSlots[0] = LoadSaveFile(0);
-            // this.gameSlots[1] = LoadSaveFile(1);
-            // this.gameSlots[2] = LoadSaveFile(2);
-            this.gameSlots[0] = new GameData();
-            this.gameSlots[1] = new GameData();
-            this.gameSlots[2] = new GameData();
-        }      
+            this.gameSlots[0] = LoadSaveFile(0);
+            this.gameSlots[1] = LoadSaveFile(1);
+            this.gameSlots[2] = LoadSaveFile(2);
+            // this.gameSlots[0] = new GameData();
+            // this.gameSlots[1] = new GameData();
+            // this.gameSlots[2] = new GameData();
+        }
 
         GameData LoadSaveFile(int slot)
         {
@@ -111,13 +117,65 @@ namespace HackedDesign
                 Logger.Log(name, "Save file does not exist ", path);
             }
 
-            return null;
-        }          
+            return new GameData();
+        }
+
+        public void SaveGame()
+        {
+            Data.saveName = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+            Logger.Log(this, "Saving state ", Data.saveName);
+            string json = JsonUtility.ToJson(Data);
+            string path = Path.Combine(Application.persistentDataPath, $"SaveFile{currentSlot}.json");
+            File.WriteAllText(path, json);
+            Logger.Log(this, "Saved ", path);
+        }
+
+        public void NewGame(int seed, string difficulty, bool permadeath, bool random)
+        {
+            var game = new GameData()
+            {
+                dead = false,
+                difficulty = difficulty,
+                permadeath = permadeath,
+                currentLevelIndex = 0,
+                seed = seed,
+            };
+
+            isRandom = random;
+
+            if(random)
+            {
+                randomGameSlot = game;
+            }
+            else
+            {
+                GameManager.Instance.gameSlots[GameManager.Instance.currentSlot] = game;
+            }
+            
+            
+
+            GameManager.Instance.SetRunStart();            
+        }
 
         public void StartRun()
         {
             RunStarted = true;
             Data.levelStartTime = Time.time;
+            AudioManager.Instance.PlayRandomGameMusic();
+        }
+
+        public void NextLevel()
+        {
+            Reset();
+            Data.currentLevelIndex++;
+        }
+
+        public void Reset()
+        {
+            Data.health = Data.maxHealth;
+            Data.energy = Data.maxEnergy;
+            Data.shields = 0;
+            
         }
 
         public void EndRun() => RunStarted = false;
@@ -133,7 +191,34 @@ namespace HackedDesign
 
         public void ConsumeShields(float amount)
         {
-            GameManager.Instance.Data.shields = Mathf.Clamp(Data.shields - amount, 0, Data.maxShields); 
+            GameManager.Instance.Data.shields = Mathf.Clamp(Data.shields - amount, 0, Data.maxShields);
+        }
+
+        public void ConsumeHealth(int amount)
+        {
+            if(GameManager.Instance.GameSettings.invulnerability)
+            {
+                return;
+            }
+
+            // If we're already dead, we can't get more dead
+            if(Data.health <= 0)
+            {
+                return;
+            }
+
+            GameManager.Instance.Data.health = Mathf.Clamp(Data.health - amount, 0, Data.maxHealth);
+            if(Data.health <= 0)
+            {
+                SetDead();   
+            }
+        }
+
+        public void TakeDamage(int boltDamage, int energyDamage)
+        {
+            Logger.Log(this, "player hit with damage ", boltDamage.ToString(), " ", energyDamage.ToString());
+            ConsumeHealth(boltDamage);
+            ConsumeHealth(energyDamage);
         }
 
         public void ConsumeBolts(int bolts)
@@ -169,7 +254,9 @@ namespace HackedDesign
         private void Initialization()
         {
             mainCamera = mainCamera ?? Camera.main;
-            preferences = new PlayerPreferences();
+            preferences = new PlayerPreferences(this.mixer);
+            preferences.Load();
+            preferences.SetPreferences();
 
             LoadSlots();
             RunStarted = false;
@@ -189,6 +276,8 @@ namespace HackedDesign
             timeOverPresenter?.Hide();
             runStartPresenter?.Hide();
             shopPresenter?.Hide();
+            pausePresenter?.Hide();
+            deadPresenter?.Hide();
         }
     }
 }

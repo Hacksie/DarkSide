@@ -123,6 +123,14 @@ namespace HackedDesign
             }
         }
 
+        public void PauseEvent(InputAction.CallbackContext context)
+        {
+            if(context.started && GameManager.Instance.CurrentState.PlayerActionAllowed)
+            {
+                GameManager.Instance.SetPaused();
+            }
+        }
+
         public void Reset()
         {
             this.transform.position = new Vector3(0, 0, 2.0f);
@@ -131,7 +139,7 @@ namespace HackedDesign
 
         private void Fire()
         {
-            if (fireFlag && GameManager.Instance.CurrentState.PlayerActionAllowed)
+            if (fireFlag && GameManager.Instance.CurrentState.PlayerActionAllowed && GameManager.Instance.RunStarted)
             {
                 var weapon = GameManager.Instance.WeaponManager?.GetCurrentWeapon();
 
@@ -153,7 +161,7 @@ namespace HackedDesign
 
         private void Melee()
         {
-            if (meleeFlag && GameManager.Instance.CurrentState.PlayerActionAllowed)
+            if (meleeFlag && GameManager.Instance.CurrentState.PlayerActionAllowed && GameManager.Instance.RunStarted)
             {
                 Logger.Log(this, "Melee!");
                 var weapon = GameManager.Instance.WeaponManager?.GetMeleeWeapon();
@@ -232,7 +240,7 @@ namespace HackedDesign
 
         private void Look()
         {
-            var mouse = this.lookDirection * Time.deltaTime * mouseSensitivity;
+            var mouse = this.lookDirection * Time.deltaTime * GameManager.Instance.PlayerPreferences.mouseSensitivity;
 
             this.transform.Rotate(Vector3.up * mouse.x);
 

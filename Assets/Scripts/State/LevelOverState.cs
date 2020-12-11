@@ -19,13 +19,19 @@ namespace HackedDesign
         public void Begin()
         {
             //GameManager.Instance.LoadLevel();
+            GameManager.Instance.SaveGame();
+            AudioManager.Instance.StopMusic();
+            AudioManager.Instance.PlaySuccessMusic();
+            GameManager.Instance.RunStarted = false;
             levelOverPresenter.Show();
             Cursor.lockState = CursorLockMode.None;
+            GameManager.Instance.NextLevel();
         }
 
         public void End()
         {
             levelOverPresenter.Hide();
+            AudioManager.Instance.StopMusic();
         }
 
   
