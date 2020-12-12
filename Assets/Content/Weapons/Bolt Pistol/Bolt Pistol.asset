@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Bolt Pistol
   m_EditorClassIdentifier: 
   weaponType: 0
+  description: Bolt Pistol. Standard issue Bolt Pistol. Effect bolt damage at closer
+    ranges
   fireRate: 0.2
   boltCost: 1
   energyCost: 0

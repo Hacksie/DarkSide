@@ -25,11 +25,12 @@ namespace HackedDesign
             GameManager.Instance.RunStarted = false;
             levelOverPresenter.Show();
             Cursor.lockState = CursorLockMode.None;
-            GameManager.Instance.NextLevel();
+            
         }
 
         public void End()
         {
+            GameManager.Instance.NextLevel();
             levelOverPresenter.Hide();
             AudioManager.Instance.StopMusic();
         }

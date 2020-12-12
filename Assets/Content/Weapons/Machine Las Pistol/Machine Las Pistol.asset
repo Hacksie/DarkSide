@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Machine Las Pistol
   m_EditorClassIdentifier: 
   weaponType: 1
+  description: Machine Las Pistol. Automatic energy sub machine gun, with a slightly
+    extended range over the Las Pistol
   fireRate: 0.2
   boltCost: 0
   energyCost: 10

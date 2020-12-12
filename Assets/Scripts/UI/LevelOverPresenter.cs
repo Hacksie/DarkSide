@@ -13,9 +13,11 @@ namespace HackedDesign.UI
 
         public override void Repaint()
         {
-            if(GameManager.Instance.Data.currentLevelIndex < (GameManager.Instance.WeaponManager.Count() - 1))
+            if(!GameManager.Instance.Random && GameManager.Instance.Data.currentLevelIndex < (GameManager.Instance.WeaponManager.Count() - 1))
             {
-                upgradeSprite.sprite = GameManager.Instance.WeaponManager.GetWeapon(GameManager.Instance.Data.currentLevelIndex + 1).settings.sprite;
+                var weapon = GameManager.Instance.WeaponManager.GetWeapon(GameManager.Instance.Data.currentLevelIndex + 1);
+                upgradeSprite.sprite = weapon.settings.sprite;
+                upgradeDescriptionText.text = weapon.settings.description;
                 upgradeSprite.gameObject.SetActive(true);
                 upgradeText.gameObject.SetActive(true);
                 upgradeDescriptionText.gameObject.SetActive(true);
@@ -26,7 +28,6 @@ namespace HackedDesign.UI
                 upgradeText.gameObject.SetActive(false);
                 upgradeDescriptionText.gameObject.SetActive(false);
             }
-            
         }
 
         public void NextLevel()

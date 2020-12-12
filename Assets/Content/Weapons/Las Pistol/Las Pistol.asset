@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Las Pistol
   m_EditorClassIdentifier: 
   weaponType: 1
+  description: Las pistol. Basic energy weapon. Effective against shields
   fireRate: 0.2
   boltCost: 0
   energyCost: 5

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Frag Pistol
   m_EditorClassIdentifier: 
   weaponType: 0
+  description: Frag Pistol. Fragments two bolts and launches them in a cloud in front
+    of the firer. Supremely effective at short distances.
   fireRate: 0.8
   boltCost: 2
   energyCost: 0

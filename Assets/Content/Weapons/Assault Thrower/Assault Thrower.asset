@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Assault Thrower
   m_EditorClassIdentifier: 
   weaponType: 0
+  description: 'Mk.3 Assault Thrower. Automatic rifle that uses a tiny jolt of energy
+    to launch bolts over an extended range. '
   fireRate: 0.2
   boltCost: 1
   energyCost: 5

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Bolt Thrower
   m_EditorClassIdentifier: 
   weaponType: 0
+  description: Bolt Thrower. Uses a tiny jolt of energy to launch bolts at a higher
+    velocity, for an extended range and more damage
   fireRate: 0.25
   boltCost: 1
   energyCost: 5

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Plasma Pistol
   m_EditorClassIdentifier: 
   weaponType: 1
+  description: Plasma Pistol. A heavy energy weapon, with extended range and damage.
+    Highly effective against shields.
   fireRate: 0.3
   boltCost: 0
   energyCost: 10
