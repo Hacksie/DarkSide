@@ -48,7 +48,10 @@ namespace HackedDesign
 
         protected virtual void Animate()
         {
-            
+            if (animator != null)
+            {
+                animator.SetFloat("velocity", agent.velocity.magnitude);
+            }
         }
     }
 

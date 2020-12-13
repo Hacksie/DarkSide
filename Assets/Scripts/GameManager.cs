@@ -22,6 +22,7 @@ namespace HackedDesign
         [SerializeField] private GameSettings? settings = null;
         [SerializeField] private PlayerPreferences? preferences = null;
         [SerializeField] private UnityEngine.Audio.AudioMixer mixer = null;
+        [SerializeField] private Animator fullScreenEffectAnimator = null;
 
 
         [Header("Data")]
@@ -38,6 +39,10 @@ namespace HackedDesign
         [SerializeField] private UI.AbstractPresenter? shopPresenter = null;
         [SerializeField] private UI.AbstractPresenter? pausePresenter = null;
         [SerializeField] private UI.AbstractPresenter? deadPresenter = null;
+        [SerializeField] private UnityEngine.UI.RawImage? fullscreenEffect = null;
+        [SerializeField] private Color lowHealthColor = Color.red;
+
+        private bool damageFlag = false;
 
         private IState currentState = new EmptyState();
 
@@ -53,7 +58,7 @@ namespace HackedDesign
         public EntityPool? EntityPool { get { return entityPool; } private set { entityPool = value; } }
         public WeaponManager? WeaponManager { get { return weaponManager; } private set { weaponManager = value; } }
         public PlayerPreferences? PlayerPreferences { get { return preferences; } private set { preferences = value; } }
-        public bool Random { get { return isRandom; }}
+        public bool Random { get { return isRandom; } }
 
         public IState CurrentState
         {
@@ -78,7 +83,14 @@ namespace HackedDesign
         void Start() => Initialization();
 
         void Update() => CurrentState?.Update();
-        void LateUpdate() => CurrentState?.LateUpdate();
+        void LateUpdate()
+        {
+            CurrentState?.LateUpdate();
+            fullScreenEffectAnimator.SetBool("takedamage", damageFlag);
+            fullScreenEffectAnimator.SetInteger("health", Data.health);
+            damageFlag = false;
+        }
+
         void FixedUpdate() => CurrentState?.FixedUpdate();
 
         public void SetPlaying() => CurrentState = new PlayingState(this.playerController, this.weaponManager, this.entityPool, this.hudPresenter);
@@ -143,7 +155,7 @@ namespace HackedDesign
 
             isRandom = random;
 
-            if(random)
+            if (random)
             {
                 randomGameSlot = game;
             }
@@ -151,10 +163,10 @@ namespace HackedDesign
             {
                 GameManager.Instance.gameSlots[GameManager.Instance.currentSlot] = game;
             }
-            
-            
 
-            GameManager.Instance.SetRunStart();            
+
+
+            GameManager.Instance.SetRunStart();
         }
 
         public void StartRun()
@@ -175,7 +187,7 @@ namespace HackedDesign
             Data.health = Data.maxHealth;
             Data.energy = Data.maxEnergy;
             Data.shields = 0;
-            
+
         }
 
         public void EndRun() => RunStarted = false;
@@ -196,21 +208,32 @@ namespace HackedDesign
 
         public void ConsumeHealth(int amount)
         {
-            if(GameManager.Instance.GameSettings.invulnerability)
+            if (GameManager.Instance.GameSettings.invulnerability)
             {
                 return;
             }
 
             // If we're already dead, we can't get more dead
-            if(Data.health <= 0)
+            if (Data.health <= 0)
             {
                 return;
             }
 
+            var prevHealth = Data.health;
             GameManager.Instance.Data.health = Mathf.Clamp(Data.health - amount, 0, Data.maxHealth);
-            if(Data.health <= 0)
+            if (prevHealth > Data.health)
             {
-                SetDead();   
+                damageFlag = true;
+            }
+
+            if(Data.health <= GameSettings.lowHealth)
+            {
+                fullscreenEffect.color = lowHealthColor;
+            }
+
+            if (Data.health <= 0)
+            {
+                SetDead();
             }
         }
 

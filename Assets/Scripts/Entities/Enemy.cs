@@ -12,6 +12,7 @@ namespace HackedDesign
         [SerializeField] private List<GameObject> eyesOptions;
         [SerializeField] private List<EnemyWeapon> weaponsOptions;
         [SerializeField] private List<GameObject> shieldOptions;
+        [SerializeField] private EnemyWeapon meleeOption;
 
         [SerializeField] private AudioSource deathFX;
 
@@ -24,13 +25,18 @@ namespace HackedDesign
         [Header("Settings")]
         [SerializeField] private float maxHealth = 200.0f;
         [SerializeField] private float maxShield = 50.0f;
-        [SerializeField] private float attackDistance = 50.0f;
-        [SerializeField] private float meleeDistance = 10.0f;
+        [SerializeField] private float shootDistance = 50.0f;
+        [SerializeField] private float attackDistance = 10.0f;
+        [SerializeField] private float meleeDistance = 2.0f;
+        [SerializeField] private float bootTimeOut = 2.0f;
         [Header("State")]
         [SerializeField] private float health = 100.0f;
         [SerializeField] private float shield = 50.0f;
 
         private float scale = 1.0f;
+        private float bootTime = int.MaxValue;
+
+
 
         public override void UpdateBehaviour()
         {
@@ -48,20 +54,24 @@ namespace HackedDesign
                     if (distance <= (GameManager.Instance.GameSettings.trackDistance * this.transform.localScale.x))
                     {
                         State = EntityState.Tracking;
+                        bootTime = Time.time;
                     }
                     break;
                 case EntityState.Tracking:
                     distance = Vector3.Distance(GameManager.Instance.Player.transform.position, this.transform.position);
                     if (distance <= (GameManager.Instance.GameSettings.trackDistance * this.transform.localScale.x))
                     {
-                        if (distance <= meleeDistance)
+                        if ((Time.time - bootTimeOut) > bootTime)
                         {
-                            State = EntityState.Angry;
-                        }
-                        TrackPlayer();
-                        if (distance <= attackDistance)
-                        {
-                            weaponsOptions[weaponsIndex].Fire();
+                            if (distance <= attackDistance)
+                            {
+                                State = EntityState.Angry;
+                            }
+                            TrackPlayer();
+                            if (distance <= shootDistance)
+                            {
+                                weaponsOptions[weaponsIndex].Fire();
+                            }
                         }
                     }
                     else
@@ -71,12 +81,17 @@ namespace HackedDesign
                     break;
                 case EntityState.Angry:
                     distance = Vector3.Distance(GameManager.Instance.Player.transform.position, this.transform.position);
-                    if (distance <= meleeDistance)
+                    if (distance <= attackDistance)
                     {
                         if (!GameManager.Instance.GameSettings.enemiesDontMove)
                         {
                             agent.SetDestination(GameManager.Instance.Player.transform.position);
                             agent.isStopped = false;
+                        }
+                        if (distance <= meleeDistance)
+                        {
+                            Logger.Log(this, "Enemy Melee!");
+                            meleeOption.Fire();
                         }
                         TrackPlayer();
                     }

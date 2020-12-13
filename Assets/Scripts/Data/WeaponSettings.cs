@@ -10,6 +10,7 @@ namespace HackedDesign
     public class WeaponSettings : ScriptableObject
     {
         [SerializeField] public WeaponType weaponType;
+        [SerializeField] public string title;
         [SerializeField] public string description;
         [SerializeField] public float fireRate;
         [SerializeField] public int boltCost;

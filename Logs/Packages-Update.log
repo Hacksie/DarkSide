@@ -82,3 +82,13 @@ Update Mode: updateDependencies
 The following packages were updated:
   com.unity.probuilder from version 4.4.0 to 5.0.0-pre.7
   com.unity.timeline from version 1.4.4 to 1.5.1-pre.2
+
+=== Sun Dec 13 08:14:32 2020
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.ide.rider from version 3.0.2 to 3.0.3
+  com.unity.textmeshpro from version 3.0.1 to 3.0.3
+  com.unity.timeline from version 1.5.1-pre.2 to 1.5.1-pre.3

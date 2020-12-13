@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Rail Gun
   m_EditorClassIdentifier: 
   weaponType: 1
-  description: Rail Gun. Uses a large energy jolt to launch a bolt at super high
-    velocities. High range, higher damage.
+  title: ANNE-50 Railgun
+  description: Uses a large energy jolt to launch a bolt at super high velocities.
+    High range, higher damage.
   fireRate: 1
   boltCost: 1
   energyCost: 30

@@ -21,6 +21,7 @@ namespace HackedDesign
         [SerializeField] GameObject startTimeBarrier;
         [SerializeField] GameObject sectionTimeBarrier;
         [SerializeField] GameObject endTimeBarrier;
+        [SerializeField] List<GameObject> greebles;
 
         public void GenerateLevelSelect()
         {
@@ -38,7 +39,7 @@ namespace HackedDesign
             var section = SpawnSection(startPrefabs, parent.transform.position, remainingLength);
 
             bounds.Encapsulate(section.gameObject.GetComponent<Renderer>().bounds);
-            
+
 
             remainingLength -= section.length;
 
@@ -69,6 +70,8 @@ namespace HackedDesign
             floorPos.y = bounds.min.y + GameManager.Instance.GameSettings.floorDistance;
             floor.transform.position = floorPos;
 
+            SpawnGreebles();
+
             navMeshSurface.BuildNavMesh();
 
             var spawnLocations = GetSpawnLocations().OrderBy(x => System.Guid.NewGuid()).ToList();
@@ -78,7 +81,7 @@ namespace HackedDesign
             SpawnEnemies(spawnLocations, "MediumSpawn", 0.75f, GameManager.Instance.GameSettings.mediumSpawns);
             SpawnEnemies(spawnLocations, "SmallSpawn", 0.50f, GameManager.Instance.GameSettings.smallSpawns);
 
-            
+
             //SpawnMediumEnemies(spawnLocations, GameManager.Instance.GameSettings.mediumSpawns);
             //SpawnSmallEnemies(spawnLocations, GameManager.Instance.GameSettings.smallSpawns);
         }
@@ -111,6 +114,17 @@ namespace HackedDesign
             return barrier;
         }
 
+        public void SpawnGreebles()
+        {
+            var spawnLocations = GameObject.FindGameObjectsWithTag("GreebleSpawn").OrderBy(x => System.Guid.NewGuid()).ToList();
+            for (int i = 0; i < Mathf.Min(GameManager.Instance.GameSettings.greebleCount, spawnLocations.Count()); i++)
+            {
+                var index = Random.Range(0, greebles.Count);
+                GameObject.Instantiate(greebles[index], spawnLocations[i].transform.position, Quaternion.Euler(0, Random.Range(0,360), 0), parent.transform);
+            }
+
+        }
+
         public void SpawnEnemies(List<GameObject> spawnLocations, string spawnLocationTag, float size, int count)
         {
             for (int i = 0; i < count; i++)
@@ -124,7 +138,7 @@ namespace HackedDesign
                     //var enemy = GameManager.Instance.EntityPool.SpawnRandomLargeEnemy(spawnLocation.transform.position);
                     var enemy = GameManager.Instance.EntityPool.SpawnRandomEnemy(spawnLocation.transform.position, size);
                     //enemy.Randomize();
-                    enemy.gameObject.transform.Rotate(0,Random.Range(135.0f, 225.0f), 0);
+                    enemy.gameObject.transform.Rotate(0, Random.Range(135.0f, 225.0f), 0);
                     spawnLocations.Remove(spawnLocation);
                 }
                 else
@@ -132,7 +146,7 @@ namespace HackedDesign
                     Logger.Log(this, "No spawn location found: ", spawnLocationTag);
                 }
             }
-        }        
+        }
 
         public List<GameObject> GetSpawnLocations()
         {

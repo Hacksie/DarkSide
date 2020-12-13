@@ -35,6 +35,10 @@ namespace HackedDesign
                 switch (weaponType)
                 {
                     case WeaponType.Melee:
+
+                        var boltDamage = Random.Range(settings.damageRanges[0].minBoltDamage, settings.damageRanges[0].maxBoltDamage);
+                        var energyDamage = Random.Range(settings.damageRanges[0].minEnergyDamage, settings.damageRanges[0].maxEnergyDamage);
+                        GameManager.Instance.TakeDamage(boltDamage, energyDamage);
                         break;
                     case WeaponType.Bolt:
                         GameManager.Instance.EntityPool.SpawnBoltAttack(barrel[barrelIndex].position, barrel[barrelIndex].forward * projectileSpeed);

@@ -10,6 +10,7 @@ TagManager:
   - MediumSpawn
   - LargeSpawn
   - Entity
+  - GreebleSpawn
   layers:
   - Default
   - TransparentFX

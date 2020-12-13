@@ -99,6 +99,71 @@ namespace HackedDesign
             }
         }
 
+        public void Weapon1Event(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                SelectWeapon(0);
+            }
+        }
+
+        public void Weapon2Event(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                SelectWeapon(1);
+            }
+        }
+
+        public void Weapon3Event(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                SelectWeapon(2);
+            }
+        }
+
+        public void Weapon4Event(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                SelectWeapon(3);
+            }
+        }
+
+        public void Weapon5Event(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                SelectWeapon(4);
+            }
+        }
+
+        public void Weapon6Event(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                SelectWeapon(5);
+            }
+        }
+
+        public void Weapon7Event(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                SelectWeapon(6);
+            }
+        }
+
+        public void Weapon8Event(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                SelectWeapon(7);
+            }
+        }
+
+
         public int Count()
         {
             return weapons.Count();
@@ -109,6 +174,18 @@ namespace HackedDesign
             for (int i = 0; i < weapons.Count; i++)
             {
                 weapons[i].gameObject.SetActive(false);
+            }
+        }
+
+        private void SelectWeapon(int weapon)
+        {
+            var max = GameManager.Instance.Random ? weapons.Count - 1 : Mathf.Min(GameManager.Instance.Data.currentLevelIndex, weapons.Count - 1);
+
+            if(weapon <= max)
+            {
+                weapons[GameManager.Instance.Data.currentWeapon].gameObject.SetActive(false);    
+                GameManager.Instance.Data.currentWeapon = weapon;
+                weapons[GameManager.Instance.Data.currentWeapon].gameObject.SetActive(true);    
             }
         }
 
@@ -132,7 +209,7 @@ namespace HackedDesign
             if (GameManager.Instance.Data.currentWeapon < 0)
             {
                 //var max = Mathf.Min(GameManager.Instance.Data.currentLevelIndex, weapons.Count - 1);
-                var max = GameManager.Instance.Random ? weapons.Count -1 : Mathf.Min(GameManager.Instance.Data.currentLevelIndex, weapons.Count - 1);
+                var max = GameManager.Instance.Random ? weapons.Count - 1 : Mathf.Min(GameManager.Instance.Data.currentLevelIndex, weapons.Count - 1);
                 GameManager.Instance.Data.currentWeapon = max;
             }
             weapons[GameManager.Instance.Data.currentWeapon].gameObject.SetActive(true);

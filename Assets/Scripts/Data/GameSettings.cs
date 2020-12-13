@@ -35,6 +35,8 @@ namespace HackedDesign
         [SerializeField] public float pickupForce = 5;
         [SerializeField] public int maxScore = 1000000;
         [SerializeField] public int scorePerKill = 100;
+        [SerializeField] public int lowHealth = 25;
+        [SerializeField] public int greebleCount = 25;
         [Header("Cheats")]
         [SerializeField] public bool invulnerability = true;
         [SerializeField] public bool unlimitedBolts = false;
