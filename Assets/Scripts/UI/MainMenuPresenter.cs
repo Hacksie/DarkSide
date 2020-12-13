@@ -16,6 +16,7 @@ namespace HackedDesign.UI
         [SerializeField] private GameObject defaultPanel = null;
         [SerializeField] private GameObject playPanel = null;
         [SerializeField] private GameObject optionsPanel = null;
+        [SerializeField] private GameObject controlsPanel = null;
         [SerializeField] private GameObject creditsPanel = null;
         [SerializeField] private GameObject newGamePanel = null;
         [SerializeField] private GameObject randomGamePanel = null;
@@ -65,6 +66,8 @@ namespace HackedDesign.UI
                     newGamePanel.SetActive(false);
                     optionsPanel.SetActive(false);
                     creditsPanel.SetActive(false);
+                    randomGamePanel.SetActive(false);
+                    controlsPanel.SetActive(false);
 
                     for (int i = 0; i < slotTexts.Length; i++)
                     {
@@ -95,6 +98,16 @@ namespace HackedDesign.UI
                     optionsPanel.SetActive(true);
                     creditsPanel.SetActive(false);
                     randomGamePanel.SetActive(false);
+                    controlsPanel.SetActive(false);
+                    break;
+                case MainMenuState.Controls:
+                    defaultPanel.SetActive(false);
+                    playPanel.SetActive(false);
+                    newGamePanel.SetActive(false);
+                    optionsPanel.SetActive(false);
+                    creditsPanel.SetActive(false);
+                    randomGamePanel.SetActive(false);
+                    controlsPanel.SetActive(true);
                     break;
                 case MainMenuState.Credits:
                     defaultPanel.SetActive(false);
@@ -103,6 +116,7 @@ namespace HackedDesign.UI
                     optionsPanel.SetActive(false);
                     creditsPanel.SetActive(true);
                     randomGamePanel.SetActive(false);
+                    controlsPanel.SetActive(false);
                     break;
                 case MainMenuState.NewGame:
                     defaultPanel.SetActive(false);
@@ -111,6 +125,7 @@ namespace HackedDesign.UI
                     optionsPanel.SetActive(false);
                     creditsPanel.SetActive(false);
                     randomGamePanel.SetActive(false);
+                    controlsPanel.SetActive(false);
                     break;
                 case MainMenuState.Random:
                     defaultPanel.SetActive(false);
@@ -119,7 +134,8 @@ namespace HackedDesign.UI
                     optionsPanel.SetActive(false);
                     creditsPanel.SetActive(false);
                     randomGamePanel.SetActive(true);
-                    break;                    
+                    controlsPanel.SetActive(false);
+                    break;
                 case MainMenuState.Default:
                 default:
                     defaultPanel.SetActive(true);
@@ -128,6 +144,7 @@ namespace HackedDesign.UI
                     optionsPanel.SetActive(false);
                     creditsPanel.SetActive(false);
                     randomGamePanel.SetActive(false);
+                    controlsPanel.SetActive(false);
                     break;
             }
         }
@@ -162,6 +179,7 @@ namespace HackedDesign.UI
 
         public void ControlsEvent()
         {
+            state = MainMenuState.Controls;
             GameManager.Instance.PlayerPreferences.Save();
         }
 
@@ -259,7 +277,7 @@ namespace HackedDesign.UI
         {
             return (int)System.DateTime.Now.Ticks;
         }
-    
+
 
 
         public void PopulateValues()
@@ -364,6 +382,8 @@ namespace HackedDesign.UI
             NewGame,
             Random,
             Options,
+            Graphics,
+            Controls,
             Screen,
             Credits,
             Quit

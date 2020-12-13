@@ -8,7 +8,6 @@ namespace HackedDesign
     public class AudioManager : MonoBehaviour
     {
         [Header("GameObjects")]
-        [SerializeField] private AudioSource footstepsSource = null;
         [SerializeField] private AudioSource dashSource = null;
         [SerializeField] private AudioSource goSource = null;
         [SerializeField] private AudioSource weaponSource = null;
@@ -33,8 +32,6 @@ namespace HackedDesign
         [SerializeField] private AudioClip loser = null;
         [SerializeField] private AudioClip waiting = null;
         [SerializeField] private AudioClip go = null;
-
-        private float footstepTimer = 0;
 
 
         public static AudioManager Instance { get; private set; }
@@ -107,21 +104,10 @@ namespace HackedDesign
             weaponSource.Play();
         }
 
-        public void PlayFootsteps()
-        {
-            if ((Time.time - GameManager.Instance.GameSettings.footstepTime) >= footstepTimer)
-            {
-                footstepTimer = Time.time;
-                footstepsSource.clip = footsteps[Random.Range(0, footsteps.Count)];
-                footstepsSource.Play();
-            }
-        }
-
         public void PlayDash()
         {
-            footstepTimer = Time.time;
-            footstepsSource.clip = dash;
-            footstepsSource.Play();
+            dashSource.clip = dash;
+            dashSource.Play();
         }
 
         public void PlayRandomGameMusic()

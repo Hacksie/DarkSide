@@ -86,8 +86,11 @@ namespace HackedDesign
         void LateUpdate()
         {
             CurrentState?.LateUpdate();
-            fullScreenEffectAnimator.SetBool("takedamage", damageFlag);
-            fullScreenEffectAnimator.SetInteger("health", Data.health);
+            if (CurrentState.PlayerActionAllowed)
+            {
+                fullScreenEffectAnimator.SetBool("takedamage", damageFlag);
+                fullScreenEffectAnimator.SetInteger("health", Data.health);
+            }
             damageFlag = false;
         }
 
@@ -187,7 +190,25 @@ namespace HackedDesign
             Data.health = Data.maxHealth;
             Data.energy = Data.maxEnergy;
             Data.shields = 0;
+            Data.currentLevelScore = 0;
+            Data.currentWeapon = 0;
+            Data.timer = 0;
+            EntityPool.DestroyEntities();
 
+        }
+
+        public float DifficultyAdjustment()
+        {
+            switch (Data.difficulty)
+            {
+                case "Normal":
+                default:
+                    return GameSettings.normalAdj;
+                case "Hard":
+                    return GameSettings.hardAdj;
+                case "Ultra":
+                    return GameSettings.ultraAdj;
+            }
         }
 
         public void EndRun() => RunStarted = false;
@@ -226,7 +247,7 @@ namespace HackedDesign
                 damageFlag = true;
             }
 
-            if(Data.health <= GameSettings.lowHealth)
+            if (Data.health <= GameSettings.lowHealth)
             {
                 fullscreenEffect.color = lowHealthColor;
             }
@@ -240,8 +261,43 @@ namespace HackedDesign
         public void TakeDamage(int boltDamage, int energyDamage)
         {
             Logger.Log(this, "player hit with damage ", boltDamage.ToString(), " ", energyDamage.ToString());
-            ConsumeHealth(boltDamage);
-            ConsumeHealth(energyDamage);
+
+
+            if (energyDamage > 0 && Data.shields > 0)
+            {
+
+                if ((energyDamage * GameSettings.shieldvsenergyfactor) >= Data.shields)
+                {
+                    var consumed = Mathf.CeilToInt((float)Data.shields / GameSettings.shieldvsenergyfactor);
+                    Data.shields = 0;
+                    energyDamage -= consumed;
+                }
+                else
+                {
+                    Data.shields -= (energyDamage * GameSettings.shieldvsenergyfactor);
+                    energyDamage = 0;
+                }
+            }
+
+            if (boltDamage > 0 && Data.shields > 0)
+            {
+
+                if ((boltDamage * GameSettings.shieldvsboltfactor) >= Data.shields)
+                {
+                    var consumed = Mathf.CeilToInt((float)Data.shields / GameSettings.shieldvsboltfactor);
+                    Data.shields = 0;
+                    boltDamage -= consumed;
+                }
+                else
+                {
+                    Data.shields -= (boltDamage * GameSettings.shieldvsboltfactor);
+                    boltDamage = 0;
+                }
+            }
+
+            ConsumeHealth(Mathf.FloorToInt(energyDamage * GameSettings.bodyvsenergyfactor));
+            ConsumeHealth(Mathf.FloorToInt(boltDamage * GameSettings.bodyvsboltfactor));
+
         }
 
         public void ConsumeBolts(int bolts)
@@ -254,7 +310,7 @@ namespace HackedDesign
 
         public void AddScore(int score)
         {
-            GameManager.Instance.Data.score = Mathf.Clamp(Data.score + score, 0, GameSettings.maxScore);
+            GameManager.Instance.Data.currentLevelScore = Mathf.Clamp(Data.currentLevelScore + score, 0, GameSettings.maxScore);
         }
 
         public void LoadLevel()

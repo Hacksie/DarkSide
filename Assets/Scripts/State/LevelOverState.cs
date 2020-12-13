@@ -22,6 +22,9 @@ namespace HackedDesign
             GameManager.Instance.SaveGame();
             AudioManager.Instance.StopMusic();
             AudioManager.Instance.PlaySuccessMusic();
+            GameManager.Instance.EntityPool.DestroyEntities();
+            GameManager.Instance.Data.score += GameManager.Instance.Data.currentLevelScore;
+            GameManager.Instance.Data.currentLevelScore = 0;
             GameManager.Instance.RunStarted = false;
             levelOverPresenter.Show();
             Cursor.lockState = CursorLockMode.None;

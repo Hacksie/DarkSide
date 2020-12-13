@@ -15,7 +15,7 @@ namespace HackedDesign
             if (other.gameObject.CompareTag("Player"))
             {
                 Logger.Log(this, "Player Hit");
-                GameManager.Instance.TakeDamage(boltDamage, energyDamage);
+                GameManager.Instance.TakeDamage(Mathf.FloorToInt(boltDamage * GameManager.Instance.DifficultyAdjustment()), Mathf.FloorToInt(energyDamage * GameManager.Instance.DifficultyAdjustment()));
                 Animate();
             }
         }

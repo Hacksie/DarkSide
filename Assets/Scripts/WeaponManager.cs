@@ -19,8 +19,6 @@ namespace HackedDesign
         [SerializeField] List<float> offset = new List<float>() { -0.3f, 0, 0.3f };
         [SerializeField] float verticalOffset = 0.0f;
 
-        //[Header("State")]
-        //[SerializeField] int currentWeapon = 0; //FIXME: pull this from game state
 
         void Start()
         {

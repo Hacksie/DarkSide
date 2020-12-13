@@ -118,47 +118,47 @@ namespace HackedDesign
                 return;
             }
 
-            // Subtract energy from shield if any exists
-            // Consume all energy if so
             if (energyAmount > 0 && shield > 0)
             {
-                if (shield >= (energyAmount * GameManager.Instance.GameSettings.shieldvsenergyfactor))
+                if ((energyAmount * GameManager.Instance.GameSettings.shieldvsenergyfactor) >= shield)
                 {
-                    shield -= energyAmount * GameManager.Instance.GameSettings.shieldvsenergyfactor;
-                    energyAmount = 0;
-                    UpdateShield();
+                    var consumed = Mathf.CeilToInt((float)shield / GameManager.Instance.GameSettings.shieldvsenergyfactor);
+                    shield = 0;
+                    energyAmount -= consumed;
                 }
                 else
                 {
-                    shield = 0;
+                    shield -= (energyAmount * GameManager.Instance.GameSettings.shieldvsenergyfactor);
                     energyAmount = 0;
-                    UpdateShield();
                 }
+
+                UpdateShield();
             }
 
-            // Subtract bolt from shield if any exists
-            // Consume the bolt if so
             if (boltAmount > 0 && shield > 0)
             {
-                if (shield >= (boltAmount * GameManager.Instance.GameSettings.shieldvsboltfactor))
+                if ((boltAmount * GameManager.Instance.GameSettings.shieldvsboltfactor) >= shield)
                 {
-                    shield -= boltAmount * GameManager.Instance.GameSettings.shieldvsboltfactor;
-                    boltAmount = 0;
-                    UpdateShield();
+                    var consumed = Mathf.CeilToInt((float)shield / GameManager.Instance.GameSettings.shieldvsboltfactor);
+                    shield = 0;
+                    boltAmount -= consumed;
                 }
                 else
                 {
-                    shield = 0;
+                    shield -= (boltAmount * GameManager.Instance.GameSettings.shieldvsboltfactor);
                     boltAmount = 0;
-                    UpdateShield();
                 }
+
+
+                UpdateShield();
             }
+
 
             Logger.Log(this, "Bolt amount:", boltAmount.ToString(), " Energy Amount:", energyAmount.ToString(), " Shield Amount:", shield.ToString());
 
 
             // if we have any left over damage, and the shield is down, apply it to the body
-            if ((boltAmount > 0 || energyAmount > 0) && shield <= 0)
+            if ((boltAmount > 0 || energyAmount > 0))
             {
                 health -= ((boltAmount * GameManager.Instance.GameSettings.bodyvsboltfactor) + (energyAmount * GameManager.Instance.GameSettings.bodyvsenergyfactor));
             }
@@ -167,6 +167,7 @@ namespace HackedDesign
             {
                 Dead();
             }
+
             Logger.Log(this, health.ToString(), " ", shield.ToString());
         }
 
@@ -268,7 +269,7 @@ namespace HackedDesign
             shieldOptions[shieldIndex].SetActive(true);
 
             this.transform.localScale = new Vector3(scale, scale, scale);
-            this.health = this.maxHealth * scale;
+            this.health = this.maxHealth * GameManager.Instance.DifficultyAdjustment() * scale;
             this.shield = this.maxShield * shieldIndex * scale;
         }
     }

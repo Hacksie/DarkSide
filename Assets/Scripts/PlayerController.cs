@@ -65,12 +65,12 @@ namespace HackedDesign
             // {
             //     if (isDashing)
             //     {
-            //         AudioManager.Instance.PlayDash();
+                    
             //     }
-            //     else
-            //     {
-            //         AudioManager.Instance.PlayFootsteps();
-            //     }
+            //     // else
+            //     // {
+            //     //     AudioManager.Instance.PlayFootsteps();
+            //     // }
             // }
 
 
@@ -220,6 +220,7 @@ namespace HackedDesign
             {
                 dashLastTimer = Time.time;
                 isDashing = true;
+                AudioManager.Instance.PlayDash();
                 dashDirection = direction == Vector3.zero ? transform.forward : direction;
                 GameManager.Instance.ConsumeEnergy(GameManager.Instance.GameSettings != null ? GameManager.Instance.GameSettings.dashEnergy : 0);
             }

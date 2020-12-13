@@ -21,6 +21,7 @@ namespace HackedDesign
             GameManager.Instance.LoadLevel();
             timeOverPresenter.Show();
             AudioManager.Instance.PlayTimeOver();
+            GameManager.Instance.Reset();
             GameManager.Instance.RunStarted = false;
             Cursor.lockState = CursorLockMode.None;
         }

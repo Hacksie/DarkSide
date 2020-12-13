@@ -28,7 +28,7 @@ namespace HackedDesign
 
         public void Fire()
         {
-            if (Time.time - lastFire > fireRate)
+            if (Time.time - lastFire > (fireRate / GameManager.Instance.DifficultyAdjustment()))
             {
 
                 lastFire = Time.time;

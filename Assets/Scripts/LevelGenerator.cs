@@ -76,20 +76,16 @@ namespace HackedDesign
 
             var spawnLocations = GetSpawnLocations().OrderBy(x => System.Guid.NewGuid()).ToList();
 
-            // FIXME: small can spawn at medium etc
             SpawnEnemies(spawnLocations, "LargeSpawn", 1, GameManager.Instance.GameSettings.largeSpawns);
             SpawnEnemies(spawnLocations, "MediumSpawn", 0.75f, GameManager.Instance.GameSettings.mediumSpawns);
             SpawnEnemies(spawnLocations, "SmallSpawn", 0.50f, GameManager.Instance.GameSettings.smallSpawns);
-
-
-            //SpawnMediumEnemies(spawnLocations, GameManager.Instance.GameSettings.mediumSpawns);
-            //SpawnSmallEnemies(spawnLocations, GameManager.Instance.GameSettings.smallSpawns);
         }
 
         public void DestroyLevel()
         {
             for (int i = 0; i < parent.transform.childCount; i++)
             {
+                parent.transform.GetChild(i).gameObject.SetActive(false);
                 GameObject.Destroy(parent.transform.GetChild(i).gameObject);
             }
         }
@@ -151,9 +147,9 @@ namespace HackedDesign
         public List<GameObject> GetSpawnLocations()
         {
             List<GameObject> spawnLocations = new List<GameObject>();
-            spawnLocations.AddRange(GameObject.FindGameObjectsWithTag("SmallSpawn"));
-            spawnLocations.AddRange(GameObject.FindGameObjectsWithTag("MediumSpawn"));
-            spawnLocations.AddRange(GameObject.FindGameObjectsWithTag("LargeSpawn"));
+            spawnLocations.AddRange(GameObject.FindGameObjectsWithTag("SmallSpawn").Where(g => g.activeInHierarchy));
+            spawnLocations.AddRange(GameObject.FindGameObjectsWithTag("MediumSpawn").Where(g => g.activeInHierarchy));
+            spawnLocations.AddRange(GameObject.FindGameObjectsWithTag("LargeSpawn").Where(g => g.activeInHierarchy));
 
             return spawnLocations;
         }

@@ -8,9 +8,9 @@ namespace HackedDesign
     {
         
         [SerializeField] public bool skipTutorial = false;
-        [SerializeField] public float easyAdj = 1.0f;
-        [SerializeField] public float mediumAdj = 0.8f;
-        [SerializeField] public float hardAdj = 0.6f;
+        [SerializeField] public float normalAdj = 1.0f;
+        [SerializeField] public float hardAdj = 1.25f;
+        [SerializeField] public float ultraAdj = 1.5f;
         [SerializeField] public int initialAddTime = 8;
         [SerializeField] public int largeSpawns = 2;
         [SerializeField] public int mediumSpawns = 5;

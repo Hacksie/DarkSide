@@ -25,13 +25,13 @@ MonoBehaviour:
     minBoltDamage: 0
     maxBoltDamage: 0
     minEnergyDamage: 10
-    maxEnergyDamage: 40
+    maxEnergyDamage: 50
   - minDistance: 15
     maxDistance: 60
     minBoltDamage: 0
     maxBoltDamage: 0
     minEnergyDamage: 10
-    maxEnergyDamage: 35
+    maxEnergyDamage: 40
   - minDistance: 60
     maxDistance: 150
     minBoltDamage: 0
