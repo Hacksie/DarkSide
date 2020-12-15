@@ -16,7 +16,7 @@ MonoBehaviour:
   title: FX-28 Frag Pistol
   description: Fragments two bolts and launches them in a cloud in front of the firer.
     Supremely effective at short distances.
-  fireRate: 0.8
+  fireRate: 0.75
   boltCost: 2
   energyCost: 0
   fragments: 8

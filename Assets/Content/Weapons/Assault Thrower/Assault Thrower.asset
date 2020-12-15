@@ -16,7 +16,7 @@ MonoBehaviour:
   title: ASM-103 Assault Bolt Thrower
   description: 'Automatic rifle that uses a tiny jolt of energy to launch bolts over
     an extended range. '
-  fireRate: 0.2
+  fireRate: 0.15
   boltCost: 1
   energyCost: 5
   fragments: 1

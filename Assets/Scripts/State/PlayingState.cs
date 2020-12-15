@@ -26,6 +26,7 @@ namespace HackedDesign
             this.hudPresenter.Show();
             this.weaponManager.ShowCurrentWeapon();
             Cursor.lockState = CursorLockMode.Locked;
+            AudioManager.Instance.PlayRandomGameMusic();
             AudioManager.Instance.PlayGo();
         }
 

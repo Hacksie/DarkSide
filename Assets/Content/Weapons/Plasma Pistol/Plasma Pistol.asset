@@ -16,7 +16,7 @@ MonoBehaviour:
   title: ENE-5000 Plasma Pistol
   description: A heavy energy weapon, with extended range and damage. Highly effective
     against shields.
-  fireRate: 0.3
+  fireRate: 0.25
   boltCost: 0
   energyCost: 10
   fragments: 1

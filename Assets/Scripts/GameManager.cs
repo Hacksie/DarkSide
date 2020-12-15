@@ -176,7 +176,6 @@ namespace HackedDesign
         {
             RunStarted = true;
             Data.levelStartTime = Time.time;
-            AudioManager.Instance.PlayRandomGameMusic();
         }
 
         public void NextLevel()
@@ -191,9 +190,10 @@ namespace HackedDesign
             Data.energy = Data.maxEnergy;
             Data.shields = 0;
             Data.currentLevelScore = 0;
-            Data.currentWeapon = 0;
+            Data.currentWeapon = weaponManager.GetMaxWeapon();
             Data.timer = 0;
             EntityPool.DestroyEntities();
+            Player.Reset();
 
         }
 

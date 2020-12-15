@@ -42,26 +42,6 @@ namespace HackedDesign
             }
         }
 
-        public void ShowCurrentWeapon()
-        {
-            HideAll();
-            weapons[GameManager.Instance.Data.currentWeapon].gameObject.SetActive(true);
-        }
-
-        public Weapon GetCurrentWeapon()
-        {
-            return weapons[GameManager.Instance.Data.currentWeapon];
-        }
-
-        public Weapon GetMeleeWeapon()
-        {
-            return melee;
-        }
-
-        public Weapon GetWeapon(int index)
-        {
-            return weapons[index];
-        }
 
         public void WeaponScrollEvent(InputAction.CallbackContext context)
         {
@@ -160,7 +140,32 @@ namespace HackedDesign
                 SelectWeapon(7);
             }
         }
+        
+        public void ShowCurrentWeapon()
+        {
+            HideAll();
+            weapons[GameManager.Instance.Data.currentWeapon].gameObject.SetActive(true);
+        }
 
+        public Weapon GetCurrentWeapon()
+        {
+            return weapons[GameManager.Instance.Data.currentWeapon];
+        }
+
+        public Weapon GetMeleeWeapon()
+        {
+            return melee;
+        }
+
+        public Weapon GetWeapon(int index)
+        {
+            return weapons[index];
+        }
+
+        public int GetMaxWeapon()
+        {
+            return GameManager.Instance.Random ? weapons.Count - 1 : Mathf.Min(GameManager.Instance.Data.currentLevelIndex, weapons.Count - 1);
+        }        
 
         public int Count()
         {
@@ -177,9 +182,7 @@ namespace HackedDesign
 
         private void SelectWeapon(int weapon)
         {
-            var max = GameManager.Instance.Random ? weapons.Count - 1 : Mathf.Min(GameManager.Instance.Data.currentLevelIndex, weapons.Count - 1);
-
-            if(weapon <= max)
+            if(weapon <= GetMaxWeapon())
             {
                 weapons[GameManager.Instance.Data.currentWeapon].gameObject.SetActive(false);    
                 GameManager.Instance.Data.currentWeapon = weapon;
@@ -191,9 +194,8 @@ namespace HackedDesign
         {
             weapons[GameManager.Instance.Data.currentWeapon].gameObject.SetActive(false);
             GameManager.Instance.Data.currentWeapon++;
-            var max = GameManager.Instance.Random ? weapons.Count - 1 : Mathf.Min(GameManager.Instance.Data.currentLevelIndex, weapons.Count - 1);
 
-            if (GameManager.Instance.Data.currentWeapon >= max)
+            if (GameManager.Instance.Data.currentWeapon >= GetMaxWeapon())
             {
                 GameManager.Instance.Data.currentWeapon = 0;
             }
@@ -206,9 +208,7 @@ namespace HackedDesign
             GameManager.Instance.Data.currentWeapon--;
             if (GameManager.Instance.Data.currentWeapon < 0)
             {
-                //var max = Mathf.Min(GameManager.Instance.Data.currentLevelIndex, weapons.Count - 1);
-                var max = GameManager.Instance.Random ? weapons.Count - 1 : Mathf.Min(GameManager.Instance.Data.currentLevelIndex, weapons.Count - 1);
-                GameManager.Instance.Data.currentWeapon = max;
+                GameManager.Instance.Data.currentWeapon = GetMaxWeapon();
             }
             weapons[GameManager.Instance.Data.currentWeapon].gameObject.SetActive(true);
         }

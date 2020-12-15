@@ -15,7 +15,7 @@ namespace HackedDesign.UI
 
         public override void Repaint()
         {
-            scoreText.text = GameManager.Instance.Data.currentLevelScore.ToString();
+            scoreText.text = GameManager.Instance.Data.score.ToString();
             if(!GameManager.Instance.Random && GameManager.Instance.Data.currentLevelIndex < (GameManager.Instance.WeaponManager.Count() - 1))
             {
                 var weapon = GameManager.Instance.WeaponManager.GetWeapon(GameManager.Instance.Data.currentLevelIndex + 1);

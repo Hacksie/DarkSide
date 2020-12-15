@@ -15,7 +15,7 @@ MonoBehaviour:
   weaponType: 1
   title: NN-02 Las Pistol
   description: Basic energy weapon. Effective against shields
-  fireRate: 0.2
+  fireRate: 0.15
   boltCost: 0
   energyCost: 5
   fragments: 1
